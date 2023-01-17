@@ -1,0 +1,11 @@
+﻿@using Resources;
+@{
+    ViewBag.Title = Resource.Txt_ConEmail;
+}
+
+<h2>@ViewBag.Title.</h2>
+<div>
+    <p>
+        @Resource.Txt_ConClick1 @Html.ActionLink(Resource.Txt_ConClick2, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

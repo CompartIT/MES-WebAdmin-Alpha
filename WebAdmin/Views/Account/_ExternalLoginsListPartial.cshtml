@@ -1,0 +1,28 @@
+﻿@model WebAdmin.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security;
+@using Resources;
+
+<h4>@Resource.Txt_AnotherLog</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                @Html.Raw(@Resource.Txt_NoExternalAuth)
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@Resource.Txt_LogAccount @p.Caption">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

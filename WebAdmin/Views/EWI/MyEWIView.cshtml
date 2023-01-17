@@ -1,0 +1,233 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+    ViewBag.Title = Resource.Menu_EWIMgmt;
+    ViewBag.Item = Resource.Menu_MyEWI;
+
+    List<SimpleMyEWI> MyEWIList = (List<SimpleMyEWI>)(ViewBag.MyEWIList);
+    List<string> MyEWIGroupList = (List<string>)(ViewBag.MyEWIGroupList);
+    string MyEWIType = (string)ViewBag.MyEWIType;
+    string urlPrefix = string.Format("{0}://{1}:{2}/", Request.Url.Scheme, Request.Url.Host, Request.Url.Port);
+}
+
+@section style{
+    <link href="~/Content/Compart/assets/plugins/css-chart/css-chart-mod.css?1" rel="stylesheet" />
+}
+
+@foreach (string tmpMyEWIGroup in MyEWIGroupList)
+{
+    <div class="row">
+        @foreach (SimpleMyEWI tmpMyEWI in MyEWIList)
+        {
+            if (tmpMyEWI.RowIndex == tmpMyEWIGroup)
+            {
+                <div class="col-3">
+                     @*style="cursor:pointer"*@
+                    <div class="divToDo" style="height:180px" data-IsToDo="@tmpMyEWI.IsToDo" data-QueryString="@tmpMyEWI.ListType"  data-DetailIndex="@tmpMyEWI.DetailIndex">
+                        <!-- Row -->
+                        <div class="row">
+                            <!-- Column -->
+                            <div class="col-12 p-r-0">
+                                <h3 class="font-light m-b-0">@tmpMyEWI.ListType</h3>
+                                <br />
+                                <h4 class="font-light m-b-0">@Resource.Txt_Quantity: @tmpMyEWI.Qty</h4>
+                            </div>
+                            @*@if (tmpMyEWI.QtyPercent == "-1")
+                            {
+                                <div class="col-5" style="height: 60px;">
+                                    <div data-IconType="bar" class="dvIcon css-bar m-b-0 css-bar-0" data-DetailIndex="@tmpMyEWI.DetailIndex"></div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-5" style="height: 60px;">
+                                    <div data-IconType="bar" class="dvIcon css-bar m-b-0 css-bar-@tmpMyEWI.QtyPercentShow" data-label="@tmpMyEWI.QtyPercent%" data-DetailIndex="@tmpMyEWI.DetailIndex"></div>
+                                </div>
+                            }*@
+                        </div>
+                        <br />
+                        <div class="row LinkGroupBtn">
+                            @*style="padding-left:0px"*@
+                            <button type="button" class="col-4 btn waves-effect waves-light btn-secondary" value="Normal">@Resource.Txt_Normal : @tmpMyEWI.QtyNormal</button>
+                            <button type="button" class="col-3 btn waves-effect waves-light btn-secondary" value="FA">@Resource.Txt_FA : @tmpMyEWI.QtyFA</button>
+                            <button type="button" class="col-5 btn waves-effect waves-light btn-secondary" value="NPI">@Resource.Txt_NonStd : @tmpMyEWI.QtyTemp</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+
+
+@section script {
+    <script>
+        $(document).ready(function () {
+            $('.divToDo').each(function () {
+                //是否需要处理
+                if ($(this).attr('data-IsToDo') == '1') {
+                    $(this).addClass('card card-body card-inverse card-info');
+
+                    $(this).find('h3').each(function () {
+                        $(this).attr('style','color:white');
+                    });
+                    $(this).find('h4').each(function () {
+                        $(this).attr('style', 'color:white');
+                    });
+
+                    $(this).find('.dvIcon').each(function () {
+                        if ($(this).attr('data-IconType') == "bar")
+                            $(this).addClass('css-bar-white');
+                        else {
+                            $(this).addClass('round-white');
+                            $(this).attr('style', 'color: #999999;');
+                        }
+                    });
+
+                    //需要做的按钮颜色
+                    $(this).find('.waves-effect').each(function () {
+                        $(this).removeClass('btn-secondary');
+                        $(this).addClass('btn-info');
+                        $(this).attr('style', 'border-color:#ffffff');
+                    });
+                }
+                else {
+                    $(this).addClass('card card-body');
+
+                    $(this).find('.dvIcon').each(function () {
+                        if ($(this).attr('data-IconType') == "bar")
+                            $(this).addClass('css-bar-info');
+                        else
+                            $(this).addClass('round-info');
+                    });
+                }
+
+                //图标
+                $(this).find('.dvIcon').each(function () {
+                    switch ($(this).attr('data-DetailIndex')) {
+                        case "0":
+                        case "10":
+                        case "20":
+                            $(this).append('<i class="fa fa-edit"></i>');
+                            break;
+                        case "1":
+                        case "11":
+                        case "21":
+                            $(this).append('<i class="mdi mdi-account-check"></i>');
+                            break;
+                        case "2":
+                        case "12":
+                        case "22":
+                            $(this).append('<i class="mdi mdi-table-edit"></i>');
+                            break;
+                        case "3":
+                        case "13":
+                        case "23":
+                            $(this).append('<i class="mdi mdi-account-alert"></i>');
+                            break;
+                        case "4":
+                        case "14":
+                        case "24":
+                            $(this).append('<i class="mdi mdi-account-remove"></i>');
+                            break;
+                        case "7":
+                            $(this).append('<i class="fa fa-check"></i>');
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                /*$(this).click(function () {*/
+                //按钮链接
+                var divQueryString = $(this).attr('data-QueryString');
+                var divDetailIndex = $(this).attr('data-DetailIndex');
+                //var arrNormal = ["0", "1", "2", "3", "4", "5", "6"];
+                //var arrFA = ["10", "11", "12", "13"];
+                //var arrNPI = ["20", "21", "22", "23"];
+                var arrCheckType = ["2", "3", "4", "5", "42", "43"]; //工程0 品质1 总管2 经理3 4ECN DCC5 ECN+主管42 ECN+经理43
+                var arrOnlyNormal = ["5", "6"]; //divDetailIndex 5待审批 6已拒绝
+                var arrOnlyNormalCheck = ["5", "6", "7"];//divDetailIndex 5待审批 6已拒绝 7已完成
+                //arrCheckType 工程和品质，不显示5，6的明细按钮
+                //arrCheckType 总管 经理 DCC 都不显示
+                if ((arrOnlyNormal.indexOf(divDetailIndex) >= 0 && arrCheckType.indexOf('@MyEWIType') < 0)
+                    || (arrOnlyNormalCheck.indexOf(divDetailIndex) >= 0 && arrCheckType.indexOf('@MyEWIType') >= 0)) {
+                    //隐藏按钮
+                    $(this).find('.LinkGroupBtn').attr("style", "display:none;");
+                    $(this).attr("style", "cursor:pointer;height:180px;");
+
+                    //方块跳转链接 ,只剩4是有用的，前面留着
+                    $(this).click(function () {
+                        switch ("@MyEWIType") {
+                            case "0":
+                                window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI&QueryString=" + $(this).attr('data-QueryString');
+                                break;
+                            case "1":
+                                window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_QM&QueryString=" + $(this).attr('data-QueryString');
+                                break;
+                            case "2":
+                            case "3":
+                            case "4":
+                            case "5":
+                            case "40":
+                            case "41":
+                            case "42":
+                            case "43":
+                                window.location = "@(urlPrefix)EWI/EWICheckView?QueryString=" + $(this).attr('data-QueryString');
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                }
+
+                //方块中按钮链接
+                $(this).find('.waves-effect').each(function () {
+                    var BtnType = $(this).val();
+                    console.log(@MyEWIType, BtnType);
+                    $(this).click(function () {
+                        switch ("@MyEWIType") {
+                            //工程
+                            case "0":
+                            case "40":
+                                if (BtnType == "Normal") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI&QueryString=" + divQueryString;
+                                }
+                                else if (BtnType == "FA") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_FA&QueryString=" + divQueryString;
+                                }
+                                else if (BtnType == "NPI") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_NPI&QueryString=" + divQueryString;
+                                }
+                                break;
+                            //品质
+                            case "1":
+                            case "41":
+                                if (BtnType == "Normal") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_QM&QueryString=" + divQueryString;
+                                }
+                                else if (BtnType == "FA") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_QM_FA&QueryString=" + divQueryString;
+                                }
+                                else if (BtnType == "NPI") {
+                                    window.location = "@(urlPrefix)EWI/EWIView?RoleName=EWI_QM_NPI&QueryString=" + divQueryString;
+                                }
+                                break;
+                            //审批
+                            case "2":
+                            case "3":
+                            case "4":
+                            case "5":
+                            case "42":
+                            case "43":
+                                window.location = "@(urlPrefix)EWI/EWICheckView?QueryString=" + divQueryString;
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

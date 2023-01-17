@@ -1,0 +1,182 @@
+﻿@using Resources;
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MES | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/Content/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="~/Content/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/iCheck/all.css" />
+    <!-- Google Font: Source Sans Pro -->
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+    <link href="~/Content/Compart/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        #rowLogin {
+            width: 690px;
+            height: 295px;
+            padding: 0px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 20px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #divInput {
+            width: 345px;
+            height: 295px;
+        }
+
+        #divRememberMe {
+            text-align: left;
+            float: left;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            background: url('../../Content/Compart/assets/images/background/login-register.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        @*<div class="login-logo">
+                <a href="#"><b>Compart</b>MES</a>
+            </div>*@
+        <!-- /.login-logo -->
+        <div class="row" id="rowLogin">
+            <div class="col-6" style="margin:0px;padding:0px">
+                <img src="~/Content/Compart/login.jpeg" />
+            </div>
+            <div class="col-6" style="margin:0px;padding:0px">
+                <div class="card" id="divInput">
+                    <div class="card-body login-card-body">
+                        <p class="login-box-msg" style="text-align:left; float:left;">MES Sign In</p>
+
+                        <form action="/Ceph/DoLogin" method="post">
+                            <div class="form-group has-feedback">
+                                <input id="txtUsername" type="text" class="form-control" placeholder="Username" value="@ViewBag.Username">
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input id="txtPassword" type="password" class="form-control" placeholder="Password" value="@ViewBag.Password">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="checkbox icheck" id="divRememberMe">
+                                        <label>
+                                            <input type="checkbox" id="chkRemeberMe">
+                                        </label>
+                                        <text>Remember me</text>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="social-auth-links text-center mb-3">
+                                <a id="btnLogin" href="#" class="btn btn-block btn-primary" style="width:80%">
+                                    Login
+                                </a>
+                            </div>
+                            @*<div>
+                                    <p style="font-size:3px">Contact Compart IT Helpdesk if you forgot your password</p>
+                                </div>*@
+                        </form>
+
+
+                        <!-- /.social-auth-links -->
+
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Content/plugins/iCheck/icheck.js"></script>
+    <script src="~/Content/Compart/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input[type="checkbox"]').iCheck({
+                handle: 'checkbox',
+                cursor: true,
+                ncreaseArea: '20%',
+                checkboxClass: 'icheckbox_square-blue'
+            });
+
+            $("#txtUsername").keydown(function (event) {
+                if (event.keyCode == 13) {
+                    $("#txtPassword").focus();
+                }
+            })
+            $("#txtPassword").keydown(function (event) {
+                if (event.keyCode == 13) {
+                    doSubmit();
+                }
+            })
+
+            $("#btnLogin").click(function () {
+                doSubmit();
+            });
+
+            if ('@ViewBag.Remember' == '1')
+            {
+                $("#chkRemeberMe").iCheck("check");
+            }
+
+            $("#txtUsername").focus();
+
+            if ('@ViewBag.Flag' == 'ERROR') {
+                swal(
+                    '@Resource.Txt_UsernamePasswordError！',
+                    '',
+                    'warning'
+                );
+            }
+            else if ('@ViewBag.Flag' == 'ErrLoginTimes') {
+                swal('@Resource.Txt_LoginErrors，@Resource.Txt_ContractIT！', '','warning');
+            }
+            else if ('@ViewBag.Flag' == 'ErrorSession') {
+                swal('@Resource.Txt_SessionExpired', '','warning');
+            }
+        });
+
+        function doSubmit() {
+            if ($("#txtUsername").val() == "" || $("#txtPassword").val() == "") {
+                swal(
+                    '@Resource.Txt_UsernamePasswordNoEmpty！',
+                    '',
+                    'warning'
+                );
+                return;
+            }
+            var remember = "0";
+            if ($("#chkRemeberMe").is(':checked')) {
+                remember = "1";
+            }
+            location.href = "/Login/DoLogin?username=" + $("#txtUsername").val() + "&password=" + $("#txtPassword").val() + "&remember=" + remember;
+        }
+    </script>
+</body>
+</html>

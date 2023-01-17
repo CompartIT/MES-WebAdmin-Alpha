@@ -1,0 +1,16 @@
+﻿table.dataTable {
+    table-layout: fixed !important;
+    white-space: unset !important;
+    overflow: visible !important;
+}
+
+    table.dataTable th {
+        white-space: unset !important;
+        overflow: visible !important;
+    }
+
+    table.dataTable td {
+        white-space: unset !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+    }

@@ -1,0 +1,18 @@
+﻿<row>
+  <Company>{0}</Company>
+  <PackNum>{13}</PackNum>
+  <VendorNum>{1}</VendorNum>
+  <EntryPerson>{2}</EntryPerson>
+  <ShipComment>{3}</ShipComment>
+  <SubShipD_PackLine>0</SubShipD_PackLine>
+  <SubShipD_PONum>{4}</SubShipD_PONum>
+  <SubShipD_POLine>{5}</SubShipD_POLine>
+  <SubShipD_PORelNum>{6}</SubShipD_PORelNum>
+  <SubShipD_ShipQty>{7}</SubShipD_ShipQty>
+  <SubShipD_JobNum>{8}</SubShipD_JobNum>
+  <SubShipD_AssemblySeq>{9}</SubShipD_AssemblySeq>
+  <SubShipD_OprSeq>{10}</SubShipD_OprSeq>
+  <SubShipD_LotNum>{11}</SubShipD_LotNum>
+  <SubShipD_ShipComment></SubShipD_ShipComment>
+  <SubShipD_WebJobNum_c>{12}</SubShipD_WebJobNum_c>
+</row>

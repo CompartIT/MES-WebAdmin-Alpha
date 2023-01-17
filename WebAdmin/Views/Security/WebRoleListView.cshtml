@@ -1,0 +1,294 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+
+    List<SimpleWebRole> roleList = (List<SimpleWebRole>)(ViewBag.RoleList);
+    ViewBag.Title = Resource.Txt_RightList;
+}
+
+@section style{
+    <!-- Bootstrap CheckBox -->
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/iCheck/all.css" />
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                @*<h4 class="card-title">Epicor MO List</h4>
+                    <h6 class="card-subtitle">All MO from Epcior list here</h6>*@
+                <h3>
+                    <button class="btn btn-info" type="button" id="btnRefresh"><i class="fa fa-refresh"></i> @Resource.Txt_Refresh</button>
+                    <button id="btnNew" type="button" class="btn btn-info"><i class="fa fa-plus"></i> @Resource.Txt_Add</button>
+                </h3>
+            </div>
+            <div class="col-md-7">
+                <form class="input-form" id="DoSearch">
+                    <div class="input-group pull-right">
+                        <div class="input-group-btn">
+                            <button type="button" id="searchByTitle" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Search By
+                            </button>
+                            <input type="hidden" name="SearchBy" id="SearchBy">
+                            <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;" id="searchOptions">
+                                <a class="dropdown-item" href="javascript:;" data-searchby="UserName">@Resource.Txt_Username</a>
+                                <a class="dropdown-item" href="javascript:;" data-searchby="EmployeeId">EmployeeID</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-searchby="Date">@Resource.Txt_Date</a>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="SearchKeywords" name="SearchKeywords">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> @Resource.Txt_Search</button>
+                            <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> @Resource.Txt_ShowAll</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="myTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr role="row">
+                        <th>权限</th>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>@Resource.Txt_Operation</th>
+                        <th>参数</th>
+                        <th>排序</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalRoleDtetailView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">权限详情</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="frmRole" role="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>权限</label>
+                                    <input type="text" class="form-control" id="txtModalRoleName" readonly />
+                                    <input type="hidden" id="txtModalId" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>名称</label>
+                                    <input type="text" class="form-control" id="txtModalDisplayName" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>@Resource.Txt_Operation</label><br />
+                                    <input type="text" class="form-control" id="txtModalRoleAction" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>参数</label><br />
+                                    <input type="text" class="form-control" id="txtModalRoleParameter" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>排序</label>
+                                    <input type="text" class="form-control" id="txtModalDisplayOrder" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>类型</label><br />
+                                    <input type="checkbox" class="form-control" id="chkModalRoleType-Web" />web&nbsp;&nbsp;
+                                    <input type="checkbox" class="form-control" id="chkModalRoleType-App" />app
+                                    <input type="hidden" id="txtModalRoleType" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnModalClose" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> @Resource.Txt_Close</button>
+                <button id="btnModalSave" type="button" class="btn btn-default"><i class="fa fa-save"></i> @Resource.Txt_Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+</div>
+
+@section script {
+    <script src="~/Content/plugins/iCheck/icheck.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable(
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "searching": true,
+                    "ajax": {
+                        "url": "/Security/GetWebRoleList",
+                        "type": "POST"
+                    },
+                    "colReorder": true,
+                    "columns": [
+                        {
+                            "data": "RoleName",
+                            "render": function (data, type, row, meta) {
+                                return '<a href="javascript:openRoleDetailViewEdit(' + row["id"] + ',\'' + row["RoleName"] + '\',\'' + row["DisplayName"] + '\',\'' + row["RoleType"] + '\',\'' + row["RoleAction"] + '\',\'' + row["RoleParameter"] + '\',\'' + row["DisplayOrder"] + '\')">' + data + '</a>';
+                            }
+                        },
+                        { "data": "DisplayName" },
+                        { "data": "RoleType" },
+                        { "data": "RoleAction" },
+                        { "data": "RoleParameter" },
+                        { "data": "DisplayOrder" }
+                    ]
+                }
+            );
+
+            $("#searchOptions a").click(function () {
+
+                var getSearchByText = $(this).text().trim();
+                var getSearchByValue = $(this).attr("data-searchby");
+
+                $("#searchByTitle").text(getSearchByText);
+                $("#SearchBy").val(getSearchByValue);
+
+                if (getSearchByValue == "Date") {
+                    $("#SearchKeywords").daterangepicker({
+                        locale: {
+                            format: 'YYYY/MM/DD'
+                        }
+                    });
+
+                    $("#SearchKeywords").attr("readonly", "readonly").focus();
+                } else {
+                    if ($("#SearchKeywords").data('daterangepicker') != undefined) {
+                        $("#SearchKeywords").data('daterangepicker').remove();
+                    }
+                    $("#SearchKeywords").removeAttr("readonly").val("").focus();
+                }
+
+                $("#btnShowAll").click(function () {
+                    var table = $('#myTable').DataTable();
+                    var searchby = $("#SearchBy").val();
+                    var searchvalue = "";
+
+                    table.search("");
+                    table.columns(0).search("");
+                    table.columns(1).search("");
+                    table.columns(2).search("");
+
+                    table.search(searchvalue);
+                    table.draw();
+                });
+
+                $("#btnSearch").click(function () {
+                    var table = $('#myTable').DataTable();
+                    var searchby = $("#SearchBy").val();
+                    var searchvalue = $("#SearchKeywords").val();
+
+                    table.search("");
+                    table.columns(0).search("");
+                    table.columns(2).search("");
+                    table.columns(3).search("");
+
+                    if (searchby == "" || searchvalue == "") {
+                        table.search(searchvalue);
+                        table.draw();
+                    } else {
+                        switch (searchby) {
+                            case "JobNum":
+                                table.columns(0).search(searchvalue);
+                                break;
+                            case "PartNum":
+                                table.columns(2).search(searchvalue);
+                                break;
+                            case "PartDescription":
+                                table.columns(3).search(searchvalue);
+                                break;
+                            default:
+                                break;
+                        }
+
+                        table.draw();
+                    }
+                    if (searchby != "Date") {
+                        $("#SearchKeywords").focus();
+                    }
+
+                });
+
+            });
+
+            $('#SearchKeywords').on("keypress", function () {
+                if (event.keyCode == "13") {
+                    event.preventDefault();
+                    $("#btnSearch").click();
+                }
+            });
+
+            $("#btnNew").click(function () {
+                openRoleDetailViewAdd();
+            });
+
+            $('input[type="checkbox"]').iCheck({
+                handle: 'checkbox',
+                checkboxClass: 'icheckbox_flat-red',
+                radioClass: 'iradio_flat-red'
+            });
+        });
+
+        function openRoleDetailViewAdd() {
+            $("#txtModalId").val("");
+            $("#txtModalRoleName").val("");
+            $("#txtModalDisplayName").val("");
+            $("#txtModalRoleType").val("");
+            $("#txtModalRoleAction").val("");
+            $("#txtModalRoleParameter").val("");
+            $("#txtModalDisplayOrder").val("");
+            $("#chkModalRoleType-Web").iCheck('check');
+
+            $("#ModalRoleDtetailView").modal();
+        }
+
+        function openRoleDetailViewEdit(id, rolename, displayname, roletype, roleaction, roleparameter, displayorder) {
+            $("#txtModalId").val(id);
+            $("#txtModalRoleName").val(rolename);
+            $("#txtModalDisplayName").val(displayname);
+            $("#txtModalRoleType").val(roletype);
+            $("#txtModalRoleAction").val(roleaction);
+            $("#txtModalRoleParameter").val(roleparameter);
+            $("#txtModalDisplayOrder").val(displayorder);
+
+            if (roletype == "web") {
+                $("#chkModalRoleType-Web").iCheck('check');
+                $("#chkModalRoleType-App").iCheck('uncheck');
+            } else {
+                $("#chkModalRoleType-Web").iCheck('uncheck');
+                $("#chkModalRoleType-App").iCheck('check');
+            }
+            $("#ModalRoleDtetailView").modal();
+        }
+    </script>
+}

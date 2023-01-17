@@ -1,0 +1,21 @@
+﻿<row>
+  <Company>{0}</Company>
+  <PackSlip>{14}</PackSlip>
+  <PONum>0</PONum>
+  <VendorNumVendorID>{1}</VendorNumVendorID>
+  <Received>{2}</Received>
+  <ReceivePerson>{3}</ReceivePerson>
+  <RcvDtl_x0023_PackLine>0</RcvDtl_x0023_PackLine>
+  <RcvDtl_x0023_BinNum>{4}</RcvDtl_x0023_BinNum>
+  <RcvDtl_x0023_PONum>{5}</RcvDtl_x0023_PONum>
+  <RcvDtl_x0023_POLine>{6}</RcvDtl_x0023_POLine>
+  <RcvDtl_x0023_PORelNum>{7}</RcvDtl_x0023_PORelNum>
+  <RcvDtl_x0023_InputOurQty>{8}</RcvDtl_x0023_InputOurQty>
+  <RcvDtl_x0023_Received>{9}</RcvDtl_x0023_Received>
+  <RcvDtl_x0023_JobNum>{10}</RcvDtl_x0023_JobNum>
+  <RcvDtl_x0023_AssemblySeq>{11}</RcvDtl_x0023_AssemblySeq>
+  <RcvDtl_x0023_JobSeq>{12}</RcvDtl_x0023_JobSeq>
+  <RcvDtl_x0023_IUM>{13}</RcvDtl_x0023_IUM>
+  <RcvDtl_x0023_WebJobNum_c>{15}</RcvDtl_x0023_WebJobNum_c>
+  <RcvDtl_x0023_WebID_c>{16}</RcvDtl_x0023_WebID_c>
+</row>

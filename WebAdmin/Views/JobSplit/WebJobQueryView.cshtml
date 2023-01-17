@@ -1,0 +1,497 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+
+    List<SimpleEpicorJob> jobList = (List<SimpleEpicorJob>)(ViewBag.JobList);
+    if (ViewBag.JobType.Equals("C"))
+    {
+        ViewBag.Title = Resource.Menu_WebAssemblyJobList;
+        ViewBag.Item = Resource.Menu_WebAssemblyJobList;
+    }
+    else
+    {
+        ViewBag.Title = Resource.Menu_WebJobList;
+        ViewBag.Item = Resource.Menu_WebJobList;
+    }
+
+}
+
+@section style{
+    <!-- Bootstrap CheckBox -->
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/iCheck/all.css" />
+}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                <h3>
+                    <button class="btn btn-info" type="button" id="btnRefresh"><i class="fa fa-refresh"></i> @Resource.Txt_Refresh</button>
+                    <button class="btn btn-info" type="button" id="btnJobPrint"><i class="fa fa-list"></i> @Resource.Txt_PrintLotTraveller</button>
+                    @*<button class="btn btn-info" type="button" id="btnLabelPrint"><i class="fa fa-edit"></i> 打印标签</button>*@
+                </h3>
+            </div>
+            <div class="col-md-7">
+                <form class="input-form" id="DoSearch">
+                    <div class="input-group pull-right">
+                        <div class="input-group-btn">
+                            <button type="button" id="searchByTitle" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Resource.Txt_All
+                            </button>
+                            <input type="hidden" name="SearchBy" id="SearchBy">
+                            <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -2px, 0px); top: 0px; left: 0px; will-change: transform;" id="searchOptions">
+                                <a class="dropdown-item" href="javascript:;" data-searchby="JobNum">@Resource.Txt_JobNum</a>
+                                <a class="dropdown-item" href="javascript:;" data-searchby="PartNum">@Resource.Txt_Material</a>
+                                <a class="dropdown-item" href="javascript:;" data-searchby="PartDescription">@Resource.Txt_Description</a>
+                                <a class="dropdown-item" href="javascript:;" data-searchby="All">@Resource.Txt_All</a>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="SearchKeywords" name="SearchKeywords">
+                            <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> @Resource.Txt_Query</button>
+                            <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> @Resource.Txt_All</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="myTable" class="bordered" width="100%">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <input type="checkbox" name="chkBatchJobSelect" />
+                        </th>
+                        <th>@Resource.Txt_JobNum</th>
+                        <th>@Resource.Txt_ParentJobnum</th>
+                        <th>@Resource.Txt_Material</th>
+                        <th>@Resource.Txt_Description</th>
+                        <th>@Resource.Txt_Drawing</th>
+                        <th>@Resource.Txt_JobnumQuantity</th>
+                        <th>@Resource.Txt_Printer</th>
+                        <th>@Resource.Txt_PrintTime</th>
+                        <th>@Resource.Txt_PrintTimes</th>
+                        <th>@Resource.Txt_Print</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section script {
+    <script src="~/Content/plugins/iCheck/icheck.js"></script>
+    <script>
+        var CONSTANT = {
+            // datatables常量
+            DATA_TABLES: {
+                DEFAULT_OPTION: { // DataTables初始化选项
+                    LANGUAGE: {
+                        sProcessing: "@Resource.Txt_Processing...",
+                        sLengthMenu: "@Resource.Txt_DisplayResults",
+                        sZeroRecords: "@Resource.Txt_NoMatchedResults",
+                        sInfo: "@Resource.Txt_DisplayAreaResults",
+                        sInfoEmpty: "@Resource.Txt_DisplayAreaResults2",
+                        sInfoFiltered: "(@Resource.Txt_FilterResults)",
+                        sInfoPostFix: "",
+                        sSearch: "@Resource.Txt_Search:",
+                        searchPlaceholder: "@Resource.Txt_KeywordSearch",
+                        sUrl: "",
+                        sEmptyTable: "@Resource.Txt_DataEmpty",
+                        sLoadingRecords: "@Resource.Txt_Loading...",
+                        sInfoThousands: ",",
+                        oPaginate: {
+                            sFirst: "@Resource.Txt_First",
+                            sPrevious: "@Resource.Txt_Previous",
+                            sNext: "@Resource.Txt_Next",
+                            sLast: "@Resource.Txt_Last"
+                        },
+                        oAria: {
+                            sSortAscending: ": @Resource.Txt_Ascending",
+                            sSortDescending: ": @Resource.Txt_Descending"
+                        }
+                    },
+                    // 禁用自动调整列宽
+                    autoWidth: false,
+                    // 为奇偶行加上样式，兼容不支持CSS伪类的场合
+                    stripeClasses: ["odd", "even"],
+                    // 取消默认排序查询,否则复选框一列会出现小箭头
+                    order: [],
+                    // 隐藏加载提示,自行处理
+                    processing: false,
+                    // 启用服务器端分页
+                    serverSide: true,
+                    // 禁用原生搜索
+                    searching: false
+                },
+                COLUMN: {
+                    // 复选框单元格
+                    CHECKBOX: {
+                        "orderable": false,
+                        "bSortable": false,
+                        "data": "id",
+                        "width": '30px',
+                        "targets": 0,
+                        "class": "dt-center",
+                        "render": function (data, type, row, meta) {
+                            var content = '';
+                            content += '	<input type="checkbox" name="chkJobID" value="' + data + '" />';
+                            return content;
+                        }
+                    }
+                },
+                // 回调
+                CALLBACKS: {
+                    // 表格绘制前的回调函数
+                    PREDRAWCALLBACK: function (settings) {
+                        if (settings.oInit.scrollX == '100%') {
+                            // 给表格添加css类，处理scrollX : true出现边框问题
+                            $(settings.nTableWrapper).addClass('dataTables_DTS');
+                        }
+                    },
+                    INITCOMPLETE: function (settings, json) {
+                        if (settings.oInit.scrollX == '100%' && $(settings.nTable).parent().innerWidth() - $(settings.nTable).outerWidth() > 5) {
+                            $(settings.nScrollHead).children().width('100%');
+                            $(settings.nTHead).parent().width('100%');
+                            $(settings.nTable).width('100%');
+                        }
+                    },
+                    // 表格每次重绘回调函数
+                    DRAWCALLBACK: function (settings) {
+                        if ($(settings.aoHeader[0][0].cell).find(':checkbox').length > 0) {
+                            // 取消全选
+                            $(settings.aoHeader[0][0].cell).find(':checkbox').prop('checked', false);
+                        }
+                        // 高亮显示当前行
+                        $(settings.nTable).find("tbody tr").click(function (e) {
+                            $(e.target).parents('table').find('tr').removeClass('warning');
+                            $(e.target).parents('tr').addClass('warning');
+                        });
+                    }
+                },
+                // 常用render可以抽取出来，如日期时间、头像等
+                RENDER: {
+                    ELLIPSIS: function (data, type, row, meta) {
+                        data = data || "";
+                        return '<span title="' + data + '">' + data + '</span>';
+                    }
+                }
+
+            }
+        };
+
+        var pageTableId = 'WebJobQuery', table;
+        var columnDefs = [
+            CONSTANT.DATA_TABLES.COLUMN.CHECKBOX,
+            {
+                "data": "JobNum",
+                "width": '200px',
+                "targets": 1
+            },
+            {
+                "data": "ParentJobNum",
+                "width": '200px',
+                "targets": 2
+            },
+            {
+                "data": "PartNum",
+                "targets": 3 },
+            {
+                "data": "PartDescription",
+                "sortable": false,
+                "targets": 4,
+                "render": function (data, type, row, meta) {
+                    var s = "";
+                    if (data.length > 50) {
+                        s = " ...";
+                    }
+                    return data = data.substring(0, 50) + s;
+                }
+            },
+            {
+                "data": "DrawNum",
+                "sortable": false,
+                "targets": 5
+            },
+            {
+                "data": "ProdQty",
+                "sortable": false,
+                "targets": 6,
+                "render": function (data, type, row, meta) {
+                    return Math.round(data);
+                }
+            },
+            {
+                "data": "PrintUserId",
+                "sortable": false,
+                "targets": 7
+            },
+            {
+                "data": "PrintDateTime",
+                "sortable": false,
+                "targets": 8
+            },
+            {
+                "data": "PrintCount",
+                "sortable": false,
+                "targets": 9
+            },
+            {
+                "data": "JobNum",
+                "sortable": false,
+                "width": '100px',
+                "targets": 10,
+                "render": function (data, type, row, meta) {
+                    return '<a href="javascript:jobTravelerPrint(\'' + row["id"] + '\',\'' + row["JobType"] + '\')">@Resource.Txt_LotTraveller</a>';
+                }
+            },
+            {
+                "data": "JobType",
+                "visible": false,
+                "targets": 11
+            }
+        ];
+
+        $(document).ready(function () {
+            loadDataTable();
+
+            $("#myTable_filter").hide();
+
+            $('#myTable').on('draw.dt', function () {
+                $('input[type="checkbox"]').iCheck({
+                    handle: 'checkbox',
+                    checkboxClass: 'icheckbox_flat-red',
+                    radioClass: 'iradio_flat-red'
+                });
+
+                $("input[name='chkBatchJobSelect']").iCheck('uncheck');
+
+                $("input[name='chkBatchJobSelect']").on('ifChecked', function (event) {
+                    $("input[name='chkJobID']").iCheck('check')
+                });
+
+                $("input[name='chkBatchJobSelect']").on('ifUnchecked', function (event) {
+                    $("input[name='chkJobID']").iCheck('uncheck')
+                });
+
+            });
+
+            $("#searchOptions a").click(function () {
+
+                var getSearchByText = $(this).text().trim();
+                var getSearchByValue = $(this).attr("data-searchby");
+
+                $("#searchByTitle").text(getSearchByText);
+                $("#SearchBy").val(getSearchByValue);
+
+                if (getSearchByValue == "Date") {
+                    $("#SearchKeywords").daterangepicker({
+                        locale: {
+                            format: 'YYYY/MM/DD'
+                        }
+                    });
+
+                    $("#SearchKeywords").attr("readonly", "readonly").focus();
+                } else {
+                    if ($("#SearchKeywords").data('daterangepicker') != undefined) {
+                        $("#SearchKeywords").data('daterangepicker').remove();
+                    }
+                    $("#SearchKeywords").removeAttr("readonly").val("").focus();
+                }
+
+
+
+            });
+
+            $('#SearchKeywords').on("keypress", function () {
+                if (event.keyCode == "13") {
+                    event.preventDefault();
+                    $("#btnSearch").click();
+                }
+            });
+
+            $("#btnShowAll").click(function () {
+                var table = $('#myTable').DataTable();
+                var searchby = $("#SearchBy").val();
+                var searchvalue = "";
+
+                $("#SearchKeywords").val("");
+
+                table.search("");
+                table.columns(0).search("");
+                table.columns(2).search("");
+                table.columns(3).search("");
+
+                table.search(searchvalue);
+                table.draw();
+            });
+
+            $("#btnSearch").click(function () {
+                var table = $('#myTable').DataTable();
+                var searchby = $("#SearchBy").val();
+                var searchvalue = $("#SearchKeywords").val();
+
+                table.search("");
+                table.columns(0).search("");
+                table.columns(2).search("");
+                table.columns(3).search("");
+
+                if (searchby == "" || searchby == "All") {
+                    table.search(searchvalue);
+                    table.draw();
+                } else {
+                    switch (searchby) {
+                        case "JobNum":
+                            table.columns(0).search(searchvalue);
+                            break;
+                        case "PartNum":
+                            table.columns(2).search(searchvalue);
+                            break;
+                        case "PartDescription":
+                            table.columns(3).search(searchvalue);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    table.draw();
+                }
+                if (searchby != "Date") {
+                    $("#SearchKeywords").focus();
+                }
+
+            });
+
+            $("#btnRefresh").click(function () {
+                var table = $('#myTable').DataTable();
+                var searchby = $("#SearchBy").val();
+                var searchvalue = $("#SearchKeywords").val();
+
+                table.search("");
+                table.columns(0).search("");
+                table.columns(2).search("");
+                table.columns(3).search("");
+
+                table.search(searchvalue);
+                table.draw();
+            });
+
+            $("#btnJobPrint").click(function () {
+                jobNumList = [];
+                $("input[name='chkJobID']:checked").each(function () {
+                    jobNumList.push(this.value);
+                });
+
+                if (jobNumList.length == 0) {
+                    swal(
+                          '@Resource.Txt_ErrorOccur!',
+                          '@Resource.Txt_LotTravellerSelect。',
+                          ''
+                      );
+                } else {
+                    var jobNumList = "";
+                    $("input[name='chkJobID']:checked").each(function () {
+                        jobNumList += this.value + ",";
+                    });
+
+                    jobNumList = jobNumList.substring(0, jobNumList.length - 1);
+
+                    jobTravelerPrint(jobNumList,'@ViewBag.JobType');
+
+                }
+            });
+        });
+        function loadDataTable() {
+            setUserColumnsDefWidths(pageTableId, columnDefs);
+
+            table = $('#myTable').DataTable({
+                language: {
+                    "sProcessing": "@Resource.Txt_Processing...",
+                    "sLengthMenu": "@Resource.Txt_DisplayResults",
+                    "sZeroRecords": "@Resource.Txt_NoMatchedResults",
+                    "sInfo": "@Resource.Txt_DisplayAreaResults",
+                    "sInfoEmpty": "@Resource.Txt_DisplayAreaResults2",
+                    "sInfoFiltered": "(@Resource.Txt_FilterResults)",
+                    "sInfoPostFix": "",
+                    "sSearch": "@Resource.Txt_Search:",
+                    "sUrl": "",
+                    "sEmptyTable": "@Resource.Txt_DataEmpty",
+                    "sLoadingRecords": "@Resource.Txt_Loading...",
+                    "sInfoThousands": ",",
+                    "oPaginate": {
+                        "sFirst": "@Resource.Txt_First",
+                        "sPrevious": "@Resource.Txt_Previous",
+                        "sNext": "@Resource.Txt_Next",
+                        "sLast": "@Resource.Txt_Last"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": @Resource.Txt_Ascending",
+                        "sSortDescending": ": @Resource.Txt_Descending"
+                    }
+                },
+                destroy: true,
+                scrollY: 400,
+                scrollX: true,
+                scrollCollapse: true,
+                scroller: true,
+                initComplete: function (settings) {
+                    //Add JQueryUI resizable functionality to each th in the ScrollHead table
+                    $('#myTable_wrapper .dataTables_scrollHead thead th').resizable({
+                        handles: "e",
+                        alsoResize: '#myTable_wrapper .dataTables_scrollHead table', //Not essential but makes the resizing smoother
+                        stop: function () {
+                            saveColumnSettings(pageTableId, table);
+                            loadDataTable();
+                        }
+                    });
+                },
+                "autoWidth": false,
+                "bAutoWidth": false,
+                "processing": true,
+                "serverSide": true,
+                "searching": true,
+                "ajax": {
+                    "url": "/JobSplit/GetWebJobQueryList?JobType=@ViewBag.JobType",
+                    "type": "POST"
+                },
+                "aLengthMenu": [10, 25, 50, 100, 200, 300],
+                "iDisplayLength": 300,
+                "order": [[1, 'asc']],//设置第二列为升序，如果不设置order，则默认会按第一列升序，这样Checkbox旁边会出现一个排序的小三角
+                "columns": columnDefs
+            });
+        }
+
+        function jobTravelerPrint(jobId,jobType) {
+
+            //var url = "@ViewBag.PrintServiceUrl";
+            //var jobNumList = "[{\"LotNo\":\"" + jobId + "\",\"PrintName\":\"\"}]";
+            //window.open(url + "/ReportViwer.aspx?Param=" + jobNumList, '_blank');
+
+            var url = "@ViewBag.PrintServiceUrl";
+
+
+            var form = $('<form></form>');
+            if (jobType == "C") {
+                form.attr('action', url + '/MESLotTravellerPrinting.aspx');
+            } else {
+                form.attr('action', url + '/MESLotPrinting.aspx');
+            }
+
+            form.attr('method', 'post');
+            form.attr('target', '_blank');
+
+            var InputID = $('<input type="hidden" name="GetID" />');
+            var UserID = $('<input type="hidden" name="UserID" />');
+            var getID = jobId;
+            var userID = "@ViewBag.UserID";
+
+            InputID.attr('value', getID);
+            UserID.attr('value', userID);
+            form.append(InputID);
+            form.append(UserID);
+            $(document.body).append(form);
+
+            form.submit();
+
+        }
+    </script>
+}

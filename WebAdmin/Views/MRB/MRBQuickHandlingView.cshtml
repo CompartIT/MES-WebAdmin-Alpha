@@ -1,0 +1,842 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+    ViewBag.Title = Resource.Menu_MRBFastProcess;
+    List<string> vendors = (List<string>)(ViewBag.Vendors);
+    List<SimpleOpMaster> opList = (List<SimpleOpMaster>)(ViewBag.opList);
+
+}
+
+@section style{
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/iCheck/all.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/toast-master/css/jquery.toast.css" />
+    <link href="~/Content/ExportReport.css" rel="stylesheet" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            clear: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            margin: 20px auto;
+        }
+
+        .box_l, .box_r {
+            height: 360px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+
+        .box_l {
+            float: left;
+        }
+
+        .box_m {
+            float: left;
+            text-align: center;
+        }
+
+            .box_m a {
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                display: block;
+                width: 70px;
+                margin: 10px auto;
+                border-radius: 5px;
+            }
+
+        .box_r {
+            float: right;
+        }
+
+        .box, ::after {
+            box-sizing: initial
+        }
+
+        .box, ::before {
+            box-sizing: initial
+        }
+
+        .box_l li, .box_r li {
+            line-height: 35px;
+            font-size: 14px;
+            padding-left: 15px;
+            border-bottom: 1px solid #CCCCCC;
+            cursor: pointer
+        }
+
+            .box_l li:last-child, .box_r li:last-child {
+                border: none
+            }
+
+            .box_l li.choose, .box_r li.choose {
+                background: #ddd;
+            }
+    </style>
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Resource.Txt_RapidMRB</h4>
+        <h6 class="card-subtitle">@Resource.Txt_ScanMRBThenRework</h6>
+        <div class="row">
+            <div class="col-md-4">
+                @*<h4 class="card-title">Epicor MO List</h4>
+                    <h6 class="card-subtitle">All MO from Epcior list here</h6>*@
+                <h5>
+                    <input type="checkbox" class="check" id="chkIsContinue">
+                    <label for="chkIsContinue">@Resource.Txt_ContinuousScanningProcessing</label>
+                    <br />
+                    <input type="checkbox" class="check" id="chkIsPrint">
+                    <label for="chkIsPrint">@Resource.Txt_PrintReworkLotTraveller</label>
+                </h5>
+            </div>
+            <div class="col-md-8">
+                <button id="btnStartScanning" class="btn btn-outline-info waves-effect waves-light" type="button"><span class="btn-label"><i class="fa fa-qrcode"></i></span>@Resource.Txt_ClickToStartProcessing</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ModalScanning" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">@Resource.Txt_ScanQRCode</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="txtModalScannMRBNo">@Resource.Txt_MRBNo</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtModalScannMRBNo" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnModalClose" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> @Resource.Txt_Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="ModalMRBHandle" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">@Resource.Txt_MRBProcessing</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">@Resource.Txt_MRBNo</label>
+                                    <p id="txtModalMRBNum"></p>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">@Resource.Txt_JobNum</label>
+                                    <p id="txtModalJobNum"></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">@Resource.Txt_OP</label>
+                                    <p id="txtModalOprSeq"></p>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">@Resource.Txt_OPDescription</label>
+                                    <p id="txtModalOprDesc"></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_MRBQuantity</label>
+                                    <p id="txtModalDiscrepQty"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_MRBReason</label>
+                                    <p id="txtModalReason"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_ReworkQuantity</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalReworkQty" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_ScrapQuantity</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalScrapQty" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="divOSVendorInfo">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_Vendor</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalOSRemarkVendor" list="VendorList" />
+                                    <datalist id="VendorList">
+                                        @foreach (string vendor in vendors)
+                                        {
+                                            <option value="@vendor"></option>
+                                        }
+
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_OP</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalOSRemarkOper" list="OperList" />
+                                    <datalist id="OperList">
+                                        <option value=""></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@Resource.Txt_Classification</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalCategory" list="CateList" />
+                                    <datalist id="CateList">
+                                        <option value="@Resource.Txt_FE"></option>
+                                        <option value="@Resource.Txt_BE"></option>
+                                        <option value="@Resource.Txt_OutSource"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">@(Resource.Txt_Remarks)（@Resource.Txt_SizeOutofTolerance）</label>
+                                    <input type="text" class="form-control  form-control-sm" id="txtModalSizedetail" list="OperList" />
+                                    <datalist id="OperList">
+                                        <option value=""></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="checkbox" name="chkRole" id="chkModalDebitNote" />
+                                    <label>DebitNote</label>
+                                    <input type="hidden" id="txtModalDebitNote" value="0" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnModalClose" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> @Resource.Txt_Close</button>
+                <button id="btnModalSave" type="button" class="btn btn-default"><i class="fa fa-save"></i> @Resource.Txt_Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<div class="modal fade" id="ModalJobRetrun" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-large">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">@Resource.Txt_ReworkOPSelect</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body form-group">
+                <input id="epicorjobnum" type="hidden" />
+                <input id="reworkjobid" type="hidden" />
+                <div class="box row">
+                    <div class="box_l col-4" style="padding-left:0px;padding-right:0px;margin-left:20px;">
+                        @foreach (SimpleOpMaster op in opList)
+                        {
+                            <li>@op.OpCode</li>
+                        }
+
+                    </div>
+                    <div class="box_m col-3">
+                        <a href="javascript:" id="alltop" style="margin-top: 0px; width: 80%">@Resource.Txt_MoveFirst</a>
+                        <a href="javascript:" id="top" style="width:80%">@Resource.Txt_MoveUp</a>
+                        <a href="javascript:" id="allleft" style="width:80%">@Resource.Txt_RemoveAll</a>
+                        <a href="javascript:" id="left" style="width:80%">@Resource.Txt_RemoveSingle</a>
+                        <a href="javascript:" id="right" style="width:80%">@Resource.Txt_AddSingle</a>
+                        <a href="javascript:" id="allright" style="width:80%">@Resource.Txt_AddAll</a>
+                        <a href="javascript:" id="bottom" style="width:80%">@Resource.Txt_MoveDown</a>
+                        <a href="javascript:" id="allbottom" style="width:80%">@Resource.Txt_MoveLast</a>
+                    </div>
+                    <div class="box_r col-4" style="padding-left:0px;padding-right:0px;" id="operList">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnModalClose" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> @Resource.Txt_Close</button>
+                <button id="btnModalSaveRework" type="button" class="btn btn-default"><i class="fa fa-save"></i> @Resource.Txt_Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/plugins/iCheck/icheck.js"></script>
+    <script src="~/Content/plugins/orso/orso.min.js"></script>
+    <script src="~/Content/plugins/toast-master/js/jquery.toast.js"></script>
+    <script>
+        var _clicked = false;
+
+        //Whether the Scanning window is visiable
+        var isScanWinVisiable = false;
+
+        var code = '';
+        var lastTime = 0;
+        function clearCode() {
+            code = '';
+            lastTime = 0;
+        }
+        $(function () {
+            setInterval(function () {
+                var now = new Date().getTime();
+                if (now - lastTime > 200) {
+                    code = "";
+                    lastTime = 0;
+                }
+            }, 200);
+        });
+        $(document).keypress(function (event) {
+            nextTime = new Date().getTime();
+
+            var currCode = event.keyCode;
+
+            var currTime = new Date().getTime();
+            if (lastTime > 0) {
+                if (currTime - lastTime <= 300) {
+                    code += String.fromCharCode(currCode);
+                } else if (currTime - lastTime > 1000) {
+                    clearCode();
+                }
+            }
+            else {
+                code = String.fromCharCode(currCode);
+            }
+            console.log("Lasttime:" + lastTime + "--curr:" + currTime +"--Currn-Last:"+(currTime - lastTime)+ "--Key:" + currCode + "--code:" + code);
+
+
+            lastTime = currTime;
+            // Enter
+            if (currCode == 13) {
+
+                //Only the Scanning window is visiable to handle
+                if ($("#ModalScanning").is(":hidden") == false) {
+                    //Check if it's MRB
+                    code = code.toUpperCase();
+                    var getMRBID = code.toUpperCase().replace("MRB:", "");
+                    console.log("Code:" + code + "----getMRBID:" + getMRBID);
+                    if (code.indexOf("MRB:") >= 0 && parseInt(getMRBID)!="NaN") {
+                        $("#txtModalScannMRBNo").val(getMRBID);
+
+                        checkAndGetQuickMRB(parseInt(getMRBID));
+
+                    } else {
+                        swal('', '@Resource.Txt_ScannedCorrectMRBConfirm！', 'error');
+                        $("#txtModalScannMRBNo").val();
+                    }
+
+                }
+                // clean after Enter key
+                clearCode();
+
+                //Start to proceed the next
+            }
+
+        });
+
+        //Check the MRBID if has been disposied
+        function checkAndGetQuickMRB(MRBID) {
+            $.ajax({
+                type: "POST", url: "/MRB/MRBQuickCheck", dataType: "json", async: false,
+                data: { MRBID: MRBID},
+                success: function (getResponse) {
+
+                    if (getResponse.MsgCode == "OK") {
+                        console.log(getResponse.Data.id);
+
+                        var getData = getResponse.Data;
+
+                        $("#txtModalMRBNum").html(getData.id);
+                        $("#txtModalJobNum").html(getData.JobNum);
+                        $("#txtModalOprSeq").html(getData.OprSeq + ":" + getData.OpCode);
+                        $("#txtModalOprDesc").html(getData.OprDesc);
+                        $("#txtModalDiscrepQty").html(getData.Quantity);
+                        $("#txtModalReason").html(getData.ReasonDesc);
+                        $("#txtModalDebitNote").val("0");
+                        $("#chkModalDebitNote").iCheck("uncheck");
+                        $("#txtModalReworkQty").val("");
+                        $("#txtModalScrapQty").val("");
+                        $("#txtModalOSRemarkVendor").val("");
+                        $("#txtModalOSRemarkOper").val("");
+                        $("#txtModalCategory").val("");
+                        $("#txtModalSizedetail").val("");
+
+                         $("#txtModalScannMRBNo").val("");
+                        $("#ModalScanning").modal("hide");
+
+                        removeModalAlertObj();
+                        $("#ModalMRBHandle").modal();
+                    } else {
+                        var msg = getResponse.MsgCode;
+                        var errMsg = "";
+                        if (msg == "NotReceipt") {
+                            errMsg = "@Resource.Txt_MRBJobnumNotReceived！";
+                        } else if (msg == "NoData"){
+                             errMsg = "@Resource.Txt_MRBJobnumNotFound！";
+                        }
+                        else if (msg == "Handled"){
+                             errMsg = "@Resource.Txt_MRBJobnumProcessed！";
+                        }
+                        swal('',errMsg,'error');
+                    }
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+
+            //Start to scan MRB#
+            $("#btnStartScanning").click(function () {
+                $("#ModalScanning").modal();
+            });
+
+            $("#btnModalSave").click(function () {
+                submitMRPProcess();
+            });
+            $('#chkModalDebitNote').on('ifChanged', function (event) {
+                if ($("#txtModalDebitNote").val() == "1") {
+                    $("#txtModalDebitNote").val("0");
+                } else {
+                    $("#txtModalDebitNote").val("1");
+                }
+
+            });
+
+            //Create Rework
+            $("#btnModalSaveRework").click(function () {
+                createReworkJob();
+            });
+
+            $(".box").orso({
+                boxl: ".box_l",//左边大盒子
+                boxr: ".box_r",//右边大盒子
+                boxlrX: "li",//移动小盒子
+                boxon: "choose",//点击添加属性
+                idclass: true,//添加的属性是否为class//true=class; false=id;
+                boxlan: "#left",//单个向左移动按钮
+                boxran: "#right",//单个向右移动按钮
+                boxtan: "#top",//单个向上移动按钮
+                boxban: "#bottom",//单个向下移动按钮
+                boxalllan: "#allleft",//批量向左移动按钮
+                boxallran: "#allright",//批量向右移动按钮
+                boxalltan: "#alltop",//移动第一个按钮
+                boxallban: "#allbottom"//移动最后一个按钮
+            });
+            $('input[type="checkbox"]').iCheck({
+                handle: 'checkbox',
+                checkboxClass: 'icheckbox_flat-red',
+                radioClass: 'iradio_flat-red'
+            });
+        });
+
+
+
+        //After MRB is diposed, then proceeds the Job Retures
+        function openJobReturnView(id, jobNum) {
+            $(".preloader").fadeIn();
+            var param = {};
+            //param.jobNum = $("#epicorjobnum").val();
+            param.jobNum = jobNum;
+
+            $.post("/JobReturn/GetReworkOpers", param, function (data) {
+                $("#allleft").trigger("click");
+                resetOperSelector();
+                $('#modal-alert').remove();
+
+                $("#reworkjobid").val(id)
+                $("#epicorjobnum").val(jobNum);
+                for (var i = 0; i < data.length; i++) {
+                    $(".box_l").find("li").each(function () {
+                        if ($(this).text() == data[i].OpCode) {
+                            $(this).appendTo(".box_r");
+                        }
+                    });
+                }
+                $(".preloader").fadeOut();
+                $("#ModalJobRetrun").modal();
+            });
+        }
+
+
+        function openDetailView(id, JobNum, OprSeq, OpCode, OprDesc, Quantity, ReasonCode, ReasonDesc, VendorNum, VendorName) {
+            $('.alert-message').remove();
+            $("#txtModalMRBNum").html(id);
+            $("#txtModalJobNum").html(JobNum);
+            $("#txtModalOprSeq").html(OprSeq + ":" + OpCode);
+            $("#txtModalOprDesc").html(OprDesc);
+            $("#txtModalDiscrepQty").html(Quantity);
+            $("#txtModalReason").html(ReasonDesc);
+            $("#txtModalDebitNote").val("0");
+            $("#chkModalDebitNote").iCheck("uncheck");
+            $("#txtModalReworkQty").val("");
+            $("#txtModalScrapQty").val("");
+            $("#txtModalOSRemarkVendor").val("");
+            $("#txtModalOSRemarkOper").val("");
+            $("#txtModalCategory").val("");
+            $("#txtModalSizedetail").val("");
+
+            //if (VendorNum != "") {
+            //    $("#txtModalOSVendor").html(VendorName);
+            //    $("#divOSVendorInfo").show();
+            //} else {
+            //    $("#txtModalOSVendor").html("");
+            //    $("#divOSVendorInfo").hide();
+            //}
+
+            $("#ModalShipment").modal();
+        }
+
+        function submitMRPProcess() {
+
+            console.log("first");
+
+            //if (_clicked) {
+            //    return;
+            //}
+            _clicked = true;
+
+            console.log("second");
+            var param = {};
+            param.MRBNum = $("#txtModalMRBNum").html();
+            param.JobNum = $("#txtModalJobNum").html();
+            param.ReworkQty = $("#txtModalReworkQty").val();
+            param.ScrapQty = $("#txtModalScrapQty").val();
+            param.DebitNote = $("#txtModalDebitNote").val();
+            param.VendorRemark = $("#txtModalOSRemarkVendor").val();
+            param.OperRemark = $("#txtModalOSRemarkOper").val();
+            param.Category = $("#txtModalCategory").val();
+            param.Remark = $("#txtModalSizedetail").val();
+
+
+            var DiscrepQty = $("#txtModalDiscrepQty").html();
+
+            var re = /^[0-9]+.?[0-9]*$/;
+            console.log("showAlert");
+            if (param.ReworkQty == "") {
+                showModalAlert("@Resource.Txt_ReworkQuantityNoEmpty","ModalMRBHandle");
+                return;
+            }
+
+            if (!re.test(param.ReworkQty)) {
+                showModalAlert("@Resource.Txt_ReworkQuantityPositive","ModalMRBHandle");
+                return;
+            }
+
+            if (param.ScrapQty == "") {
+                showModalAlert("@Resource.Txt_ScrapQuantityNoEmpty","ModalMRBHandle");
+                return;
+            }
+
+            if (!re.test(param.ScrapQty)) {
+                showModalAlert("@Resource.Txt_ScrapQuantityPositive","ModalMRBHandle");
+                return;
+            }
+
+            if (parseInt(DiscrepQty) != parseInt(param.ReworkQty) + parseInt(param.ScrapQty)) {
+                showModalAlert("@Resource.Txt_ReworkScrapEqualMRB","ModalMRBHandle");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/MRB/UpdateMRBProcess_new",
+                async: false,
+                dataType: "json",
+                data: param,
+                success: function (data) {
+                    _clicked = false;
+
+                    $("#ModalMRBHandle").modal("hide");
+
+                    //Getting the saved ID for proceeding the Job Rework
+                    if (data.Result == "OK") {
+                        var getID = data.Desc;
+
+                        //Then proceed the Job Return process, if the Reworkd QTY is greater than 1
+                        var reworkQTY = parseInt($("#txtModalReworkQty").val());
+                        console.log(reworkQTY);
+                        if (reworkQTY > 0) {
+                            openJobReturnView(getID, param.JobNum);
+                        } else {
+                            var isContinueScan = $("#chkIsContinue").is(":checked");
+
+                            if (isContinueScan) {
+                                //Window for new Scanning
+                                $("#ModalScanning").modal();
+                            }
+                        }
+                    } else {
+                        swal('', '@Resource.Txt_MRBJobnumErrorOccurred！', 'error');
+                    }
+                },
+                error: function (e) {
+                    var startTitle = e.responseText.indexOf('<title>') + 7;
+                    var endTitle = e.responseText.indexOf('</title>');
+                    swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                }
+            });
+
+            @*$.post("/MRB/UpdateMRBProcess_new", param, function (data) {
+                _clicked = false;
+
+                $("#ModalMRBHandle").modal("hide");
+
+                //Getting the saved ID for proceeding the Job Rework
+                if (data.Result == "OK") {
+                    var getID = data.Desc;
+
+                    //Then proceed the Job Return process, if the Reworkd QTY is greater than 1
+                    var reworkQTY = parseInt($("#txtModalReworkQty").val());
+                    console.log(reworkQTY);
+                    if (reworkQTY > 0) {
+                        openJobReturnView(getID, param.JobNum);
+                    } else {
+                        var isContinueScan = $("#chkIsContinue").is(":checked");
+
+                        if (isContinueScan) {
+                            //Window for new Scanning
+                            $("#ModalScanning").modal();
+                        }
+                    }
+                } else {
+                    swal('','@Resource.Txt_MRBJobnumErrorOccurred！','error');
+                }
+            });*@
+        }
+
+        //Create Rework job
+        function createReworkJob() {
+            var param = {};
+            var opers = new Array();
+
+            $(".box_r").find("li").each(function () {
+                //opers.push($(this).html());
+                opers.push($(this).html().split(':')[0]);
+            })
+
+            if (opers.length == 0) {
+                showModalAlert("@Resource.Txt_ReserveOneOP","ModalJobRetrun");
+                return;
+            }
+            swal({
+                title: '@Resource.Txt_CreateReworkJobnumConfirm？',
+                text: '',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '@Resource.Txt_Confirm',
+                cancelButtonText: '@Resource.Txt_Cancel',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then(function (isConfirm) {
+                $(".preloader").fadeIn();
+                if (isConfirm.value === true) {
+                    $(".preloader").fadeOut();
+                    param.id = $("#reworkjobid").val();
+                    param.jobNum = $("#epicorjobnum").val();
+                    param.opers = opers;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/JobReturn/CreateReworkJob",
+                        async: false,
+                        dataType: "json",
+                        data: param,
+                        success: function (getResponse) {
+                            $(".preloader").fadeOut();
+                            $("#ModalJobRetrun").modal("hide");
+                            var getData = getResponse.Data;
+                            var jobID = getData.ID;
+                            var jobType = getData.JobType;
+
+                            //If need to Print out the Lot Traveller
+                            var isContinueScan = $("#chkIsContinue").is(":checked");
+                            var isPrint = $("#chkIsPrint").is(":checked");
+
+                            $.toast({
+                                heading: '@Resource.Txt_Success',
+                                text: '@Resource.Txt_CreateReworkJobnumSucceeded！',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 2000,
+                                stack: 6,
+                                afterHidden: function () {
+                                    if (isPrint) {
+                                        //Print Lot Traveller
+                                        jobTravelerPrint(jobID, jobType);
+                                    }
+                                    if (isContinueScan) {
+                                        //Window for new Scanning
+                                        $("#ModalScanning").modal();
+                                    }
+                                },
+                            });
+                        },
+                        error: function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        }
+                    });
+
+                    @*$.post("/JobReturn/CreateReworkJob", param, function (getResponse) {
+                        $(".preloader").fadeOut();
+                        $("#ModalJobRetrun").modal("hide");
+
+                        var getData = getResponse.Data;
+
+                        var jobID = getData.ID;
+                        var jobType = getData.JobType;
+
+                        //If need to Print out the Lot Traveller
+                        var isContinueScan = $("#chkIsContinue").is(":checked");
+                        var isPrint=$("#chkIsPrint").is(":checked");
+
+                       $.toast({
+                            heading: '@Resource.Txt_Success',
+                            text: '@Resource.Txt_CreateReworkJobnumSucceeded！',
+                            position: 'top-right',
+                            loaderBg:'#ff6849',
+                            icon: 'success',
+                            hideAfter: 2000,
+                            stack: 6,
+                            afterHidden: function () {
+                                if (isPrint) {
+                                    //Print Lot Traveller
+                                    jobTravelerPrint(jobID, jobType);
+                                }
+                                if (isContinueScan) {
+                                    //Window for new Scanning
+                                    $("#ModalScanning").modal();
+                                }
+                            },
+                        });
+                    });*@
+
+                }
+            });
+        }
+
+        //Print Job Traveller
+        function jobTravelerPrint(jobId,jobType) {
+
+            //var url = "@ViewBag.PrintServiceUrl";
+            //var jobNumList = "[{\"LotNo\":\"" + jobId + "\",\"PrintName\":\"\"}]";
+            //window.open(url + "/ReportViwer.aspx?Param=" + jobNumList, '_blank');
+
+            var url = "@ViewBag.PrintServiceUrl";
+
+
+            var form = $('<form></form>');
+            if (jobType == "C") {
+                form.attr('action', url + '/MESLotTravellerPrinting.aspx');
+            } else {
+                form.attr('action', url + '/MESLotPrinting.aspx');
+            }
+
+            form.attr('method', 'post');
+            form.attr('target', '_blank');
+
+            var InputID = $('<input type="hidden" name="GetID" />');
+            var UserID = $('<input type="hidden" name="UserID" />');
+            var getID = jobId;
+            var userID = "@ViewBag.UserID";
+
+            InputID.attr('value', getID);
+            UserID.attr('value', userID);
+            form.append(InputID);
+            form.append(UserID);
+            $(document.body).append(form);
+
+            form.submit();
+
+        }
+
+        function resetOperSelector() {
+            var opers = new Array();
+        }
+
+        //Show validation alerts in Modal
+        function showModalAlert(message,modalID) {
+            $('#modal-alert').remove();
+            $("#" + modalID + "").find("div[class='modal-header']").after(
+                '<div id="modal-alert" class="alert alert-warning alert-message">' +
+                '<a href="#" class="close" data-dismiss="alert">&times;</a>' +
+                '<strong>警告！</strong>' + message + '。' +
+                '</div>'
+            );
+        }
+        function removeModalAlertObj() {
+            $('#modal-alert').remove();
+        }
+    </script>
+}

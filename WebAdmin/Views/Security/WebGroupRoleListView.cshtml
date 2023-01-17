@@ -1,0 +1,49 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+    ViewBag.Title = Resource.Txt_UserManagement;
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <button id="btnRefresh" type="button" class="btn btn-default"><i class="fa fa-refresh"></i> @Resource.Txt_Refresh</button>
+                        <button id="btnNew" type="button" class="btn btn-default"><i class="fa fa-plus"></i> @Resource.Txt_Add</button>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+                            <div class="col-sm-12">
+
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+</section>
+
+@section ModalView{
+
+}
+
+
+@section script {
+
+
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+}

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DsEWI">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>d0871ede-4d60-47ba-b0f5-38e0e0c3e332</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DsEWI</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="OpCode">
+          <DataField>OpCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OpCodeDesc">
+          <DataField>OpCodeDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FileName">
+          <DataField>FileName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NextType">
+          <DataField>NextType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OprSeq">
+          <DataField>OprSeq</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rid">
+          <DataField>Rid</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DetailGroup">
+          <DataField>DetailGroup</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DsEWI</rd:DataSetName>
+        <rd:SchemaPath>D:\DevelopSoftWare\MESWebAdmin\WebAdmin\Reports\DsEWI.xsd</rd:SchemaPath>
+        <rd:TableName>Report_EWI_OPList</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>Report_EWI_OPListTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>2.45377cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.09004cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.3cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>工  艺  流  程</Value>
+                                  <Style>
+                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.15cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OpCodeDesc">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OpCodeDesc.Value</Value>
+                                  <Style>
+                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontSize>6pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>OpCodeDesc</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OpCode">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OpCode.Value</Value>
+                                  <Style>
+                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontSize>6pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>OpCode</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.3cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Image Name="Image2">
+                          <Source>Embedded</Source>
+                          <Value>IQC</Value>
+                          <Sizing>FitProportional</Sizing>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                          </Style>
+                        </Image>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.15cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Image Name="Image1">
+                          <Source>Embedded</Source>
+                          <Value>Next</Value>
+                          <Sizing>FitProportional</Sizing>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                          </Style>
+                        </Image>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.3cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Image Name="Image3">
+                          <Source>Embedded</Source>
+                          <Value>OQC</Value>
+                          <Sizing>FitProportional</Sizing>
+                          <Style>
+                            <Border>
+                              <Color>#131313</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                          </Style>
+                        </Image>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="详细信息" />
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=Fields!NextType.Value&lt;&gt;0</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=Fields!NextType.Value&lt;&gt;1</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=Fields!NextType.Value&lt;&gt;2</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
+            <Height>1.2cm</Height>
+            <Width>4.54381cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>0.47244in</Height>
+        <Style />
+      </Body>
+      <Width>4.54381cm</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>4.54381cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Next">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAASAAAAAdCAIAAACFciYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVHhe7dzRDYIwEIDh4hzsQegesAcMAswBe8AgENbAEy4RCZoKubf/e9CejyZ/2mJitCyLw04URbpa8f3gjoe+AzBAYIAhAgMMERhgiMAAQwQGGCIwwBCBAYYIDDBEYIAhAgMMERhgiMAAQwQGGCIwwBCBAYYIDDBEYIAh/jLgZRgGXTnnvdfVqu97Xa3SNNUVEIDAXuq6LstSh++qqiqKQgcgAIGpPM+7rtPhTJZlbdvqAIQhMDVNkxz/5FXnT3Ecj+OoAxCMhxxKEvqxQbF34RoCe5MdTG5ZOuzIhzzbwDUcEY+89/uHipLW4UEiEI7AjuQaliTJPM/bKFcvOT1ua+BfHBGPJKemaba1XL2oC3ewg53bfhY7vZIBoZx7AqgFVWvBO3uQAAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="IQC">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="OQC">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>40a4840e-5f0e-4bb6-b9ac-3260e26ede96</rd:ReportID>
+</Report>

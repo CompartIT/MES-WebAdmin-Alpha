@@ -1,0 +1,232 @@
+﻿.modal-dialog {
+    width: 800px;
+    max-width: 800px;
+}
+
+.modal-dialogfull {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal-contentfull {
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+/*信息提示框*/
+.modal-centre {
+    left: 20%;
+    width: 60%;
+    top: 45%;
+    height: 60px;
+    background-color: white;
+    position: absolute;
+    border-radius: 6px;
+}
+
+.Bottom10 {
+    padding-bottom: 10px;
+}
+
+.card-header-mod {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #4cc7db;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+td.darkgrey {
+    background-color: #F0F2F4;
+}
+
+td.orange {
+    background-color: #f8b108;
+}
+
+.alignUL {
+    display:block;
+}
+
+    .alignUL li {
+        float: left;
+        display: block;
+        width: 140px;
+        margin-left: 10px;
+    }
+
+.GDT {
+    font-family:GDT;
+}
+
+
+/*-----------dataTable------------*/
+table.dataTable.nowrap th, table.dataTable.nowrap td {
+    white-space: normal !important;
+}
+
+/* This is the important CSS */
+table.dataTable {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+    table.dataTable th {
+        white-space: nowrap !important;
+        overflow: hidden;
+    }
+
+    table.dataTable td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* CSS below is for appearance only */
+    table.dataTable thead th {
+        text-align: left;
+        color: #ffffff;
+        padding: 0.5rem; /* Centering the text */
+        white-space: nowrap !important;
+    }
+
+table.bordered th {
+    border-right: 1px solid whitesmoke;
+}
+
+    table.bordered th:last-child {
+        border-right-width: 0;
+    }
+
+table.bordered td {
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+    table.bordered td:last-child {
+        border-right-width: 0;
+    }
+/*行高*/
+table.dataTable tbody td {
+    padding: 2px 2px;
+}
+/*换行颜色*/
+table.dataTable tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+/*鼠标行颜色*/
+table.dataTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+/*表头*/
+table.dataTable thead {
+    background-color: #1e88e5 !important;
+    border-left: solid 1px steelblue !important;
+    border-right: solid 1px steelblue !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.dataTables_scrollHead {
+    background: #1e88e5;
+    border-left: solid 1px steelblue !important;
+    border-right: solid 1px steelblue !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+    .dataTables_scrollHead table {
+        border: none;
+        margin-top: 0px !important;
+    }
+
+    .dataTables_scrollHead thead th {
+        border-top: none;
+        border-bottom: none;
+    }
+
+.dataTables_scrollBody {
+    border-left: solid 1px #676a6c;
+    border-right: solid 1px #676a6c;
+    border-bottom: solid 1px #676a6c;
+}
+/*隐藏搜索栏*/
+.dataTables_filter {
+    display: none;
+}
+/*去除空格行*/
+.dataTables_length {
+    margin-top: 0px;
+}
+/*下标颜色*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: white !important;
+    background-color: #1e88e5;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    background-color: #1e88e5;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e88e5), color-stop(100%, #1e88e5));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #1e88e5 0%, #1e88e5 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -moz-linear-gradient(top, #1e88e5 0%, #1e88e5 100%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(top, #1e88e5 0%, #1e88e5 100%);
+    /* IE10+ */
+    background: -o-linear-gradient(top, #1e88e5 0%, #1e88e5 100%);
+    /* Opera 11.10+ */
+    background: linear-gradient(to bottom, #1e88e5 0%, #1e88e5 100%);
+    /* W3C */
+}
+
+
+/*新表格*/
+.modal-centre2 {
+    left: 30%;
+    width: 40%;
+    top: 60%;
+    position: absolute;
+    border-radius: 6px;
+}
+
+.mytooltipNew {
+    display: inline;
+    position: relative;
+}
+    .mytooltipNew .tooltip-item::after {
+        pointer-events: auto;
+    }
+
+    .mytooltipNew .tooltip-item2 {
+        z-index: 1001;
+        color: #ffffff;
+        -webkit-transform: translate3d(0, -0.5em, 0);
+        transform: translate3d(0, -0.5em, 0);
+    }
+
+    .mytooltipNew .tooltip-content4, .mytooltipNew .tooltip-text2 {
+        z-index: 1000;
+        pointer-events: auto;
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }

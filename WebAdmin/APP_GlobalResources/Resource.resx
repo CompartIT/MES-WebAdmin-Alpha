@@ -1,0 +1,1695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_AppearanceInspect" xml:space="preserve">
+    <value>Appearance Inspect</value>
+  </data>
+  <data name="Menu_AssemblyJobSplit" xml:space="preserve">
+    <value>Assembly Job Split</value>
+  </data>
+  <data name="Menu_BasicData" xml:space="preserve">
+    <value>Basic Data</value>
+  </data>
+  <data name="Menu_EpicorJobSplit" xml:space="preserve">
+    <value>Epicor Job Split</value>
+  </data>
+  <data name="Menu_EWIApprove" xml:space="preserve">
+    <value>EWI Approve</value>
+  </data>
+  <data name="Menu_EWIBasic" xml:space="preserve">
+    <value>EWI</value>
+  </data>
+  <data name="Menu_EWIMaintenance" xml:space="preserve">
+    <value>EWI Maintenance</value>
+  </data>
+  <data name="Menu_EWIMaintenanceFA" xml:space="preserve">
+    <value>EWI Maintenance(FA)</value>
+  </data>
+  <data name="Menu_EWIMaintenanceNPI" xml:space="preserve">
+    <value>EWI Maintenance(Non-Std)</value>
+  </data>
+  <data name="Menu_EWIMgmt" xml:space="preserve">
+    <value>EWI</value>
+  </data>
+  <data name="Menu_FirstInspect" xml:space="preserve">
+    <value>First Inspect</value>
+  </data>
+  <data name="Menu_FirstReport" xml:space="preserve">
+    <value>First Report</value>
+  </data>
+  <data name="Menu_InspectMgmt" xml:space="preserve">
+    <value>Inspect Mgmt</value>
+  </data>
+  <data name="Menu_InspectRecord" xml:space="preserve">
+    <value>Inspect Record</value>
+  </data>
+  <data name="Menu_IPQCInspect" xml:space="preserve">
+    <value>IPQC Inspect</value>
+  </data>
+  <data name="Menu_JobMgmt" xml:space="preserve">
+    <value>Job Mgmt</value>
+  </data>
+  <data name="Menu_JobReturn" xml:space="preserve">
+    <value>Create Rework Job</value>
+  </data>
+  <data name="Menu_MRBFastProcess" xml:space="preserve">
+    <value>MRB Fast Process</value>
+  </data>
+  <data name="Menu_MRBMgmt" xml:space="preserve">
+    <value>MRB Mgmt</value>
+  </data>
+  <data name="Menu_MRBPrint" xml:space="preserve">
+    <value>MRB Print</value>
+  </data>
+  <data name="Menu_MRBProcess" xml:space="preserve">
+    <value>MRB Process</value>
+  </data>
+  <data name="Menu_MyEWI" xml:space="preserve">
+    <value>My EWI</value>
+  </data>
+  <data name="Menu_ProdMgmt" xml:space="preserve">
+    <value>Production Mgmt</value>
+  </data>
+  <data name="Menu_QM" xml:space="preserve">
+    <value>QM</value>
+  </data>
+  <data name="Menu_QMFA" xml:space="preserve">
+    <value>QM(FA)</value>
+  </data>
+  <data name="Menu_QMNPI" xml:space="preserve">
+    <value>QM(Non-Std)</value>
+  </data>
+  <data name="Menu_QMSBasic" xml:space="preserve">
+    <value>QMS</value>
+  </data>
+  <data name="Menu_QuanlityMgmt" xml:space="preserve">
+    <value>QM Mgmt</value>
+  </data>
+  <data name="Menu_QuanlityNotice" xml:space="preserve">
+    <value>Quanlity Notice</value>
+  </data>
+  <data name="Menu_QuanlityProblem" xml:space="preserve">
+    <value>Quanlity Problem</value>
+  </data>
+  <data name="Menu_ReportCentre" xml:space="preserve">
+    <value>Report Centre</value>
+  </data>
+  <data name="Menu_ReworkCentre" xml:space="preserve">
+    <value>Rework Centre</value>
+  </data>
+  <data name="Menu_ReworkJobModify" xml:space="preserve">
+    <value>Rework Job Modify</value>
+  </data>
+  <data name="Menu_SubcontractMgmt" xml:space="preserve">
+    <value>Subcontract Mgmt</value>
+  </data>
+  <data name="Menu_SubcontractReceipt" xml:space="preserve">
+    <value>Subcontract Receipt</value>
+  </data>
+  <data name="Menu_SubcontractShipment" xml:space="preserve">
+    <value>Subcontract Shipment</value>
+  </data>
+  <data name="Menu_SystemMgmt" xml:space="preserve">
+    <value>System Mgmt</value>
+  </data>
+  <data name="Menu_UserMgmt" xml:space="preserve">
+    <value>User Mgmt</value>
+  </data>
+  <data name="Menu_WebAssemblyJobList" xml:space="preserve">
+    <value>Web Assembly Job List</value>
+  </data>
+  <data name="Menu_WebJobList" xml:space="preserve">
+    <value>Web Job List</value>
+  </data>
+  <data name="Menu_WebJobSplit" xml:space="preserve">
+    <value>Web Job Split</value>
+  </data>
+  <data name="SQL_CopiedRevNoNotExists" xml:space="preserve">
+    <value>Copied revision number does not exists</value>
+  </data>
+  <data name="SQL_CurEWINotSubmitToYou" xml:space="preserve">
+    <value>Current EWI has not been submitted to you for approval!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotCopy" xml:space="preserve">
+    <value>Current version already approved, not allow to replicate version</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotDelete" xml:space="preserve">
+    <value>Already approve, not allow to delete!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotModify" xml:space="preserve">
+    <value>Already approve, not allow to edit!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotModifyStatus" xml:space="preserve">
+    <value>Already approved, not allow to modify status!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotReApprove" xml:space="preserve">
+    <value>Already approve our not submit, no allow to reapprove!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotRepetitiveReject" xml:space="preserve">
+    <value>Already approved, not allow to reject repeatedly!</value>
+  </data>
+  <data name="SQL_CurRevApprovedCanNotSubmit" xml:space="preserve">
+    <value>Already approved, not allow to resubmit!</value>
+  </data>
+  <data name="SQL_DataCanNotEmpty" xml:space="preserve">
+    <value>Data cannot be empty!</value>
+  </data>
+  <data name="SQL_DataError" xml:space="preserve">
+    <value>Wrong data, please contact IT!</value>
+  </data>
+  <data name="SQL_ExistsUnApprovedRev" xml:space="preserve">
+    <value>There are un approved revision, please handle it first!</value>
+  </data>
+  <data name="SQL_ExistsUnCompletedRevFA" xml:space="preserve">
+    <value>There are unfinished FA version, please handle it first!</value>
+  </data>
+  <data name="SQL_NoECNRelatedApprover" xml:space="preserve">
+    <value>Did not set ECN approval personnel, not allow to submit!</value>
+  </data>
+  <data name="SQL_NoSelfCopy" xml:space="preserve">
+    <value>Cannot self replicate!</value>
+  </data>
+  <data name="SQL_NotSelectCorrectRow" xml:space="preserve">
+    <value>please choose the correct data row!</value>
+  </data>
+  <data name="SQL_OPNoBasicCanNotReject" xml:space="preserve">
+    <value>there are job that has not set basic data, not allow to reject!</value>
+  </data>
+  <data name="SQL_OPNoBasicCanNotSubmit" xml:space="preserve">
+    <value>There are job that has not set basic data, not allow to submit!</value>
+  </data>
+  <data name="SQL_OPNotExists" xml:space="preserve">
+    <value>OP does not exists</value>
+  </data>
+  <data name="SQL_OverLimit" xml:space="preserve">
+    <value>Over the limit!</value>
+  </data>
+  <data name="SQL_ParameterError" xml:space="preserve">
+    <value>Parameter entries error!</value>
+  </data>
+  <data name="SQL_TestInstrumentExists" xml:space="preserve">
+    <value>Test equipment existed!</value>
+  </data>
+  <data name="SQL_TestInstrumentNotExists" xml:space="preserve">
+    <value>Test equipment not existed!</value>
+  </data>
+  <data name="SQL_UpdateTestInstrumentCategoryFailed" xml:space="preserve">
+    <value>Update test instrucment fail, please check if test instrument exists!</value>
+  </data>
+  <data name="SQL_UpdateTestInstrumentFailed" xml:space="preserve">
+    <value>Check on test instrument fail, please check if it exists!</value>
+  </data>
+  <data name="Txt_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Txt_AccountLockout" xml:space="preserve">
+    <value>This account has been locked out, please try again later</value>
+  </data>
+  <data name="Txt_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Txt_AddAll" xml:space="preserve">
+    <value>Add All</value>
+  </data>
+  <data name="Txt_AdditionalInfor" xml:space="preserve">
+    <value>Use this area to provide additional information</value>
+  </data>
+  <data name="Txt_AddRevisionSucceeded" xml:space="preserve">
+    <value>Successed to add revision</value>
+  </data>
+  <data name="Txt_AddSingle" xml:space="preserve">
+    <value>Add Single</value>
+  </data>
+  <data name="Txt_AddSucceeded" xml:space="preserve">
+    <value>Successed to Add</value>
+  </data>
+  <data name="Txt_Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Txt_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Txt_AlternateVersion" xml:space="preserve">
+    <value>Alternative version</value>
+  </data>
+  <data name="Txt_AnotherLog" xml:space="preserve">
+    <value>Use another service to log in.</value>
+  </data>
+  <data name="Txt_ApplicableModels" xml:space="preserve">
+    <value>Applicable models</value>
+  </data>
+  <data name="Txt_Approval" xml:space="preserve">
+    <value>Approval</value>
+  </data>
+  <data name="Txt_Approval2" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Txt_Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Txt_Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Txt_ApproveEWI" xml:space="preserve">
+    <value>has approved a EWI revision</value>
+  </data>
+  <data name="Txt_ApproveFinishEWI" xml:space="preserve">
+    <value>has approved a EWI revision, and the approval is completed</value>
+  </data>
+  <data name="Txt_ApprovingSendingEmail" xml:space="preserve">
+    <value>Please wait while approving and sending email</value>
+  </data>
+  <data name="Txt_AppUser" xml:space="preserve">
+    <value>App User</value>
+  </data>
+  <data name="Txt_Ascending" xml:space="preserve">
+    <value>Arrange this column in ascending order</value>
+  </data>
+  <data name="Txt_AssemblyJobnumSelect" xml:space="preserve">
+    <value>Please select the assembly jobnum to be printed</value>
+  </data>
+  <data name="Txt_AssociateAccount" xml:space="preserve">
+    <value>Associate your account.</value>
+  </data>
+  <data name="Txt_AssociateForm" xml:space="preserve">
+    <value>Association Form</value>
+  </data>
+  <data name="Txt_AttentionItem" xml:space="preserve">
+    <value>Attention Item</value>
+  </data>
+  <data name="Txt_AuthedRelogin1" xml:space="preserve">
+    <value>You've successfully authenticated with </value>
+  </data>
+  <data name="Txt_AuthedRelogin2" xml:space="preserve">
+    <value>Please enter a user name for this site below and click the Register button to finish logging in.</value>
+  </data>
+  <data name="Txt_BasicData" xml:space="preserve">
+    <value>Basic Data</value>
+  </data>
+  <data name="Txt_BasicInfor" xml:space="preserve">
+    <value>Basic Infor</value>
+  </data>
+  <data name="Txt_BatchQuantity" xml:space="preserve">
+    <value>Lot Quantity</value>
+  </data>
+  <data name="Txt_BatchQuantitySet" xml:space="preserve">
+    <value>Lot quantity setting</value>
+  </data>
+  <data name="Txt_BatchReceiptFailed" xml:space="preserve">
+    <value>Failed to lot receipt</value>
+  </data>
+  <data name="Txt_BE" xml:space="preserve">
+    <value>BE</value>
+  </data>
+  <data name="Txt_BeSubmittedForQM" xml:space="preserve">
+    <value>To be submitted for QM</value>
+  </data>
+  <data name="Txt_CAD" xml:space="preserve">
+    <value>CAD</value>
+  </data>
+  <data name="Txt_CADFile" xml:space="preserve">
+    <value>CAD File</value>
+  </data>
+  <data name="Txt_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Txt_CancelSplit" xml:space="preserve">
+    <value>Cancel Split</value>
+  </data>
+  <data name="Txt_CannotSplitted" xml:space="preserve">
+    <value>Can not be splitted</value>
+  </data>
+  <data name="Txt_CannotSplitWebJobnum" xml:space="preserve">
+    <value>The web jobnum can not be splitted</value>
+  </data>
+  <data name="Txt_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Txt_ChangeDescription" xml:space="preserve">
+    <value>Description of Change</value>
+  </data>
+  <data name="Txt_ChangeFrom" xml:space="preserve">
+    <value>Change from</value>
+  </data>
+  <data name="Txt_ChangeTo" xml:space="preserve">
+    <value>Change to</value>
+  </data>
+  <data name="Txt_CheckEmailToResetPass" xml:space="preserve">
+    <value>Please check your email to reset your password.</value>
+  </data>
+  <data name="Txt_Chinese" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="Txt_Classification" xml:space="preserve">
+    <value>Classification</value>
+  </data>
+  <data name="Txt_ClickToPaste" xml:space="preserve">
+    <value>Click the text box to paste your image</value>
+  </data>
+  <data name="Txt_ClickToStartProcessing" xml:space="preserve">
+    <value>Click to start processing</value>
+  </data>
+  <data name="Txt_ClickToView" xml:space="preserve">
+    <value>Click to view</value>
+  </data>
+  <data name="Txt_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Txt_Compare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="Txt_CompartMES" xml:space="preserve">
+    <value>Compart MES</value>
+  </data>
+  <data name="Txt_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Txt_ConClick1" xml:space="preserve">
+    <value>Thank you for confirming your email. Please</value>
+  </data>
+  <data name="Txt_ConClick2" xml:space="preserve">
+    <value>Click here to Log in</value>
+  </data>
+  <data name="Txt_ConEmail" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="Txt_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Txt_Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Txt_ConfirmedNoReconfirm" xml:space="preserve">
+    <value>Confirmed, no need to confirm again</value>
+  </data>
+  <data name="Txt_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Txt_ContinuousScanningProcessing" xml:space="preserve">
+    <value>Continuous scanning processing</value>
+  </data>
+  <data name="Txt_ContractIT" xml:space="preserve">
+    <value>Please contract IT</value>
+  </data>
+  <data name="Txt_ControlFileRevisionRecordCurRev" xml:space="preserve">
+    <value>Control File Revision Record -- Current Revision: </value>
+  </data>
+  <data name="Txt_ControlPlanEmpty" xml:space="preserve">
+    <value>Control plan number is empty, or the length is more than 50</value>
+  </data>
+  <data name="Txt_ControlPlanNo" xml:space="preserve">
+    <value>Control Plan Number</value>
+  </data>
+  <data name="Txt_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Txt_CopyRevision" xml:space="preserve">
+    <value>Copy Revision</value>
+  </data>
+  <data name="Txt_CopyRevisonFailed" xml:space="preserve">
+    <value>Failed to copy revison</value>
+  </data>
+  <data name="Txt_CopyRevisonSucceeded" xml:space="preserve">
+    <value>Successed to copy revison</value>
+  </data>
+  <data name="Txt_CoreTeam" xml:space="preserve">
+    <value>Core Team</value>
+  </data>
+  <data name="Txt_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Txt_CreateAccount" xml:space="preserve">
+    <value>Create a new account.</value>
+  </data>
+  <data name="Txt_CreateReworkJobnumConfirm" xml:space="preserve">
+    <value>Confirm to create a rework jobnum</value>
+  </data>
+  <data name="Txt_CreateReworkJobnumSucceeded" xml:space="preserve">
+    <value>Successed to create a rework jobnum</value>
+  </data>
+  <data name="Txt_Criteria" xml:space="preserve">
+    <value>Criteria</value>
+  </data>
+  <data name="Txt_CriteriaDocumentCompare" xml:space="preserve">
+    <value>Criteria and Document Comparision</value>
+  </data>
+  <data name="Txt_CurrentRevision" xml:space="preserve">
+    <value>Current Revision</value>
+  </data>
+  <data name="Txt_CustomerDrawing" xml:space="preserve">
+    <value>Customer Drawing</value>
+  </data>
+  <data name="Txt_CustomerDrawingRevision" xml:space="preserve">
+    <value>Customer Drawing Revision</value>
+  </data>
+  <data name="Txt_CustomerEngineerApproval" xml:space="preserve">
+    <value>Customer Engineering Approval/Date (If Req'd)</value>
+  </data>
+  <data name="Txt_CustomerPartNum" xml:space="preserve">
+    <value>Customer PartNumber</value>
+  </data>
+  <data name="Txt_CustomerPartnumEmpty" xml:space="preserve">
+    <value>Customer part number is empty, or the length is more than 50</value>
+  </data>
+  <data name="Txt_CustomerQMApproval" xml:space="preserve">
+    <value>Customer Quality Approval/Date (If Req'd)</value>
+  </data>
+  <data name="Txt_DataEmpty" xml:space="preserve">
+    <value>Data in the table is empty</value>
+  </data>
+  <data name="Txt_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Txt_DefaultOPRevision" xml:space="preserve">
+    <value>Default OP Revision</value>
+  </data>
+  <data name="Txt_Definition" xml:space="preserve">
+    <value>Definition</value>
+  </data>
+  <data name="Txt_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Txt_DeleteConfirm1" xml:space="preserve">
+    <value>Are you sure you want to delete [</value>
+  </data>
+  <data name="Txt_DeleteConfirm2" xml:space="preserve">
+    <value>]?</value>
+  </data>
+  <data name="Txt_DeleteFailed" xml:space="preserve">
+    <value>Deletion failed</value>
+  </data>
+  <data name="Txt_DeleteRow" xml:space="preserve">
+    <value>Delete Row</value>
+  </data>
+  <data name="Txt_DeleteSucceeded" xml:space="preserve">
+    <value>Deletion succeeded</value>
+  </data>
+  <data name="Txt_Deleting" xml:space="preserve">
+    <value>Deleting, please wait</value>
+  </data>
+  <data name="Txt_Desc" xml:space="preserve">
+    <value>Desc</value>
+  </data>
+  <data name="Txt_Descending" xml:space="preserve">
+    <value>Arrange this column in descending order</value>
+  </data>
+  <data name="Txt_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Txt_Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Txt_DetermineSplit" xml:space="preserve">
+    <value>Determine Split</value>
+  </data>
+  <data name="Txt_DiscrepReason" xml:space="preserve">
+    <value>Discrep Reason</value>
+  </data>
+  <data name="Txt_DisplayAreaResults" xml:space="preserve">
+    <value>Display results _START_ to _END_ of _TOTAL_</value>
+  </data>
+  <data name="Txt_DisplayAreaResults2" xml:space="preserve">
+    <value>Display results 0 to 0 of 0</value>
+  </data>
+  <data name="Txt_DisplayName" xml:space="preserve">
+    <value>Display name</value>
+  </data>
+  <data name="Txt_DisplayNameNotEmpty" xml:space="preserve">
+    <value>DisplayName can not be empty</value>
+  </data>
+  <data name="Txt_DisplayNameTooLong" xml:space="preserve">
+    <value>DisplayName is too long</value>
+  </data>
+  <data name="Txt_DisplayResults" xml:space="preserve">
+    <value>Display _MENU_ results</value>
+  </data>
+  <data name="Txt_Drawing" xml:space="preserve">
+    <value>Drawing</value>
+  </data>
+  <data name="Txt_DropFileUpload" xml:space="preserve">
+    <value>Drop files here or click to upload.</value>
+  </data>
+  <data name="Txt_ECNApproverNoEmpty" xml:space="preserve">
+    <value>Related Dept. Approver of ECN cannot be empty</value>
+  </data>
+  <data name="Txt_ECNNo" xml:space="preserve">
+    <value>ECN No.</value>
+  </data>
+  <data name="Txt_ECNUserEmailNotMatched" xml:space="preserve">
+    <value>The number of ECN users and email addresses in the setting does not match</value>
+  </data>
+  <data name="Txt_ECRNo" xml:space="preserve">
+    <value>ECR No.</value>
+  </data>
+  <data name="Txt_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Txt_Editing" xml:space="preserve">
+    <value>Editing, please wait</value>
+  </data>
+  <data name="Txt_EditTestInstrument" xml:space="preserve">
+    <value>TestInstrument Edit</value>
+  </data>
+  <data name="Txt_EffectiveDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="Txt_EmailLink" xml:space="preserve">
+    <value>Email Link</value>
+  </data>
+  <data name="Txt_EmployeeID" xml:space="preserve">
+    <value>EmployeeID</value>
+  </data>
+  <data name="Txt_EngineerChangeNotification" xml:space="preserve">
+    <value>Engineering Change Notification</value>
+  </data>
+  <data name="Txt_EngineeringTest" xml:space="preserve">
+    <value>Engineering test</value>
+  </data>
+  <data name="Txt_EngineerProcessing" xml:space="preserve">
+    <value>Engineer processing</value>
+  </data>
+  <data name="Txt_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Txt_EnterCode" xml:space="preserve">
+    <value>Enter verification code</value>
+  </data>
+  <data name="Txt_EnterEmail" xml:space="preserve">
+    <value>Enter your email.</value>
+  </data>
+  <data name="Txt_EnterValidBatchQuantity" xml:space="preserve">
+    <value>You must enter a valid lot quantity</value>
+  </data>
+  <data name="Txt_EpicorJobList" xml:space="preserve">
+    <value>Epicor Job List</value>
+  </data>
+  <data name="Txt_EqualReceivedQuantity" xml:space="preserve">
+    <value>The sum of qualified, reworked, split and scrapped quantities must be equal to the received quantity</value>
+  </data>
+  <data name="Txt_ErrorOccur" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Txt_EWIApprove" xml:space="preserve">
+    <value>EWI Approval</value>
+  </data>
+  <data name="Txt_EWIControlDocRevisionRecord" xml:space="preserve">
+    <value>EWI Control Doc Revision Record</value>
+  </data>
+  <data name="Txt_EWIParameterMaintained" xml:space="preserve">
+    <value>The parameter of EWI revision need to be maintained</value>
+  </data>
+  <data name="Txt_EWIRevisionDetail" xml:space="preserve">
+    <value>EWI Revision Detail</value>
+  </data>
+  <data name="Txt_EWIRevisionInfor" xml:space="preserve">
+    <value>EWI Revision Information</value>
+  </data>
+  <data name="Txt_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Txt_ExportReturn" xml:space="preserve">
+    <value>Export PDF and Return</value>
+  </data>
+  <data name="Txt_FA" xml:space="preserve">
+    <value>FA</value>
+  </data>
+  <data name="Txt_FE" xml:space="preserve">
+    <value>FE</value>
+  </data>
+  <data name="Txt_Figure" xml:space="preserve">
+    <value>Figure</value>
+  </data>
+  <data name="Txt_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Txt_FileRename" xml:space="preserve">
+    <value>The file has been renamed </value>
+  </data>
+  <data name="Txt_FilterResults" xml:space="preserve">
+    <value>By _MAX_ Item result filtering</value>
+  </data>
+  <data name="Txt_First" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Txt_FixtureLink" xml:space="preserve">
+    <value>Fixture Link</value>
+  </data>
+  <data name="Txt_FixtureNo" xml:space="preserve">
+    <value>Fixture No</value>
+  </data>
+  <data name="Txt_ForgetPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="Txt_ForgotPassConfirm" xml:space="preserve">
+    <value>Forgot Password Confirmation</value>
+  </data>
+  <data name="Txt_Handle" xml:space="preserve">
+    <value>Handle</value>
+  </data>
+  <data name="Txt_Handled" xml:space="preserve">
+    <value>Handled</value>
+  </data>
+  <data name="Txt_HomePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="Txt_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Txt_ImproveECN" xml:space="preserve">
+    <value>Please improve ECN information</value>
+  </data>
+  <data name="Txt_Initiator" xml:space="preserve">
+    <value>Initiator</value>
+  </data>
+  <data name="Txt_Initiator2" xml:space="preserve">
+    <value>Initiator</value>
+  </data>
+  <data name="Txt_InsertRowAbove" xml:space="preserve">
+    <value>Insert Row Above</value>
+  </data>
+  <data name="Txt_InsertRowBelow" xml:space="preserve">
+    <value>Insert Row Below</value>
+  </data>
+  <data name="Txt_InternalReworkNotEmpty" xml:space="preserve">
+    <value>Internal Rework quantity cannot be empty</value>
+  </data>
+  <data name="Txt_InternalReworkPositive" xml:space="preserve">
+    <value>Internal Rework quantity must be a positive integer</value>
+  </data>
+  <data name="Txt_InternalReworkQuantity" xml:space="preserve">
+    <value>Internal Rework Quantity</value>
+  </data>
+  <data name="Txt_Invalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
+  <data name="Txt_InvalidateVersionConfirm" xml:space="preserve">
+    <value>Are you sure to invalidate current version?</value>
+  </data>
+  <data name="Txt_InvalidCode" xml:space="preserve">
+    <value>Invalid code.</value>
+  </data>
+  <data name="Txt_InvalidLoginAttempt" xml:space="preserve">
+    <value>Invalid login attempt.</value>
+  </data>
+  <data name="Txt_InvalidSucceeded" xml:space="preserve">
+    <value>Successed to invalid</value>
+  </data>
+  <data name="Txt_Invoice" xml:space="preserve">
+    <value>PackNum</value>
+  </data>
+  <data name="Txt_JobModifyFailed" xml:space="preserve">
+    <value>Failed to midify jobnum {0}</value>
+  </data>
+  <data name="Txt_JobModifySucceeded" xml:space="preserve">
+    <value>Succeeded to midify jobnum {0}</value>
+  </data>
+  <data name="Txt_JobNum" xml:space="preserve">
+    <value>JobNum</value>
+  </data>
+  <data name="Txt_JobnumQuantity" xml:space="preserve">
+    <value>Job Quantity</value>
+  </data>
+  <data name="Txt_JobnumSplitCompleted" xml:space="preserve">
+    <value>Jobnum splitting completed</value>
+  </data>
+  <data name="Txt_JobStartNoModify" xml:space="preserve">
+    <value>Jobnum {0} has started, can't be modified</value>
+  </data>
+  <data name="Txt_KeyContactPhone" xml:space="preserve">
+    <value>Key Contact/Phone</value>
+  </data>
+  <data name="Txt_KeywordSearch" xml:space="preserve">
+    <value>Keyword Search</value>
+  </data>
+  <data name="Txt_Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="Txt_LatestChange" xml:space="preserve">
+    <value>Latest Change Level</value>
+  </data>
+  <data name="Txt_LatestDateRev" xml:space="preserve">
+    <value>Latest Date / Latest Rev.</value>
+  </data>
+  <data name="Txt_Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="Txt_Lockout" xml:space="preserve">
+    <value>Locked out</value>
+  </data>
+  <data name="Txt_LogAccount" xml:space="preserve">
+    <value>Log in using your account</value>
+  </data>
+  <data name="Txt_Login" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Txt_LoginErrors" xml:space="preserve">
+    <value>Username or IP login errors more than 5 times</value>
+  </data>
+  <data name="Txt_LoginFailure" xml:space="preserve">
+    <value>Login Failure</value>
+  </data>
+  <data name="Txt_LoginFailureMsg" xml:space="preserve">
+    <value>Unsuccessful login with service.</value>
+  </data>
+  <data name="Txt_LoginUseLocalAccount" xml:space="preserve">
+    <value>Use a local account to log in.</value>
+  </data>
+  <data name="Txt_MateralHandle" xml:space="preserve">
+    <value>MateralHandle</value>
+  </data>
+  <data name="Txt_Logoff" xml:space="preserve">
+    <value>Log off</value>
+  </data>
+  <data name="Txt_LotTraveller" xml:space="preserve">
+    <value>Lot Traveller</value>
+  </data>
+  <data name="Txt_LotTravellerSelect" xml:space="preserve">
+    <value>Please select the lot traveller to be printed</value>
+  </data>
+  <data name="Txt_Machine" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="Txt_MainMenu" xml:space="preserve">
+    <value>Main Menu</value>
+  </data>
+  <data name="Txt_Mark" xml:space="preserve">
+    <value>Mark</value>
+  </data>
+  <data name="Txt_Material" xml:space="preserve">
+    <value>Part Number</value>
+  </data>
+  <data name="Txt_Modified" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="Txt_Modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="Txt_ModifyBatchQuantityConfirm" xml:space="preserve">
+    <value>Are you sure to modify the lot quantity?</value>
+  </data>
+  <data name="Txt_ModifyBatchQuantitySucceeded" xml:space="preserve">
+    <value>Successed to modify the lot quantity</value>
+  </data>
+  <data name="Txt_ModifyECNSucceeded" xml:space="preserve">
+    <value>Successed to modify ECN</value>
+  </data>
+  <data name="Txt_ModifyFailed" xml:space="preserve">
+    <value>Failed to modify</value>
+  </data>
+  <data name="Txt_ModifyOPConfirm" xml:space="preserve">
+    <value>Are you sure you want to modify the OP？</value>
+  </data>
+  <data name="Txt_ModifyOrderFailed" xml:space="preserve">
+    <value>Failed to modify the order</value>
+  </data>
+  <data name="Txt_ModifyRevisionSucceeded" xml:space="preserve">
+    <value>Successed to modify revision</value>
+  </data>
+  <data name="Txt_ModifyReworkJobnumConfirm" xml:space="preserve">
+    <value>Are you sure to modify the rework jobnum</value>
+  </data>
+  <data name="Txt_ModifyReworkJobnumFailed" xml:space="preserve">
+    <value>Failed to modify rework jobnum</value>
+  </data>
+  <data name="Txt_ModifyReworkJobnumSucceeded" xml:space="preserve">
+    <value>Succeeded to modify rework jobnum</value>
+  </data>
+  <data name="Txt_ModifySucceeded" xml:space="preserve">
+    <value>Succeeded to modify</value>
+  </data>
+  <data name="Txt_MoveDown" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="Txt_MoveFirst" xml:space="preserve">
+    <value>Move First</value>
+  </data>
+  <data name="Txt_MoveLast" xml:space="preserve">
+    <value>Move Last</value>
+  </data>
+  <data name="Txt_MoveUp" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="Txt_MRB" xml:space="preserve">
+    <value>MRB</value>
+  </data>
+  <data name="Txt_MRBJobnumErrorOccurred" xml:space="preserve">
+    <value>An error occurred and the MRB jobnum could not be processed</value>
+  </data>
+  <data name="Txt_MRBJobnumNotFound" xml:space="preserve">
+    <value>The MRB jobnum can not be found</value>
+  </data>
+  <data name="Txt_MRBJobnumNotReceived" xml:space="preserve">
+    <value>The MRB jobnum has not been received by MRB</value>
+  </data>
+  <data name="Txt_MRBJobnumProcessed" xml:space="preserve">
+    <value>The MRB jobnum has been processed</value>
+  </data>
+  <data name="Txt_MRBJobSelect" xml:space="preserve">
+    <value>Please select the MRB job list to be printed</value>
+  </data>
+  <data name="Txt_MRBNo" xml:space="preserve">
+    <value>MRB No.</value>
+  </data>
+  <data name="Txt_MRBProcessing" xml:space="preserve">
+    <value>MRB Processing</value>
+  </data>
+  <data name="Txt_MRBQuantity" xml:space="preserve">
+    <value>MRB Quantity</value>
+  </data>
+  <data name="Txt_MRBReason" xml:space="preserve">
+    <value>MRB Reason</value>
+  </data>
+  <data name="Txt_MRBReasonConfirm" xml:space="preserve">
+    <value>MRB Reason Determine</value>
+  </data>
+  <data name="Txt_MustInputValidInter" xml:space="preserve">
+    <value>You must enter a valid number</value>
+  </data>
+  <data name="Txt_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Txt_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Txt_NoAnyRevision" xml:space="preserve">
+    <value>There is not any version, please add a new version</value>
+  </data>
+  <data name="Txt_NoDetailsPartnum" xml:space="preserve">
+    <value>No details found for the Part number</value>
+  </data>
+  <data name="Txt_NoEngineerChangeNotification" xml:space="preserve">
+    <value>There is not engineering change notification</value>
+  </data>
+  <data name="Txt_NoEWIFile" xml:space="preserve">
+    <value>EWI file has not been generated</value>
+  </data>
+  <data name="Txt_NoExternalAuth" xml:space="preserve">
+    <value>There are no external authentication services configured. See &lt;a href=“http://go.microsoft.com/fwlink/?LinkId=403804“&gt;this article&lt;/a&gt; for details on setting up this ASP.NET application to support logging in via external services.</value>
+  </data>
+  <data name="Txt_NoMatchedResults" xml:space="preserve">
+    <value>No matching results</value>
+  </data>
+  <data name="Txt_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Txt_NonStd" xml:space="preserve">
+    <value>Non-Std</value>
+  </data>
+  <data name="Txt_NoRevisionAddFirst" xml:space="preserve">
+    <value>None revision exists. Please add a new revision, then copy it again</value>
+  </data>
+  <data name="Txt_NoRightAPPUser" xml:space="preserve">
+    <value>Cannot set web platform right for APP user</value>
+  </data>
+  <data name="Txt_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Txt_NoRollbackConfirmed" xml:space="preserve">
+    <value>It cannot be rollback after confirmation</value>
+  </data>
+  <data name="Txt_NoRollbackSplitted" xml:space="preserve">
+    <value>It cannot be rollback after splitted</value>
+  </data>
+  <data name="Txt_NoSubmitConfirmedOutsourceRecords" xml:space="preserve">
+    <value>Confirmed out records cannot be submitted. Please select again</value>
+  </data>
+  <data name="Txt_NotPrinted" xml:space="preserve">
+    <value>Not printed</value>
+  </data>
+  <data name="Txt_NPI" xml:space="preserve">
+    <value>NPI</value>
+  </data>
+  <data name="Txt_OneUserSelect" xml:space="preserve">
+    <value>Please select at least one user</value>
+  </data>
+  <data name="Txt_OP" xml:space="preserve">
+    <value>OP</value>
+  </data>
+  <data name="Txt_OPCode" xml:space="preserve">
+    <value>OP Code</value>
+  </data>
+  <data name="Txt_OPDescription" xml:space="preserve">
+    <value>OP Description</value>
+  </data>
+  <data name="Txt_Operation" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Txt_OperationFailed" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="Txt_OperationSucceeded" xml:space="preserve">
+    <value>Operation succeeded</value>
+  </data>
+  <data name="Txt_OPFile" xml:space="preserve">
+    <value>OP File</value>
+  </data>
+  <data name="Txt_OPGroup" xml:space="preserve">
+    <value>OP Group</value>
+  </data>
+  <data name="Txt_OPManage" xml:space="preserve">
+    <value>OP Management</value>
+  </data>
+  <data name="Txt_OPSelection" xml:space="preserve">
+    <value>OP Selection</value>
+  </data>
+  <data name="Txt_OPTime" xml:space="preserve">
+    <value>OP Time</value>
+  </data>
+  <data name="Txt_Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Txt_OrdinaryUser" xml:space="preserve">
+    <value>Ordinary User</value>
+  </data>
+  <data name="Txt_OrigDate" xml:space="preserve">
+    <value>Date (Orig.)</value>
+  </data>
+  <data name="Txt_OtherApproval" xml:space="preserve">
+    <value>Other Approval/Date (If Req'd)</value>
+  </data>
+  <data name="Txt_OutRecordConfirm" xml:space="preserve">
+    <value>Confirm the selected outsource record?</value>
+  </data>
+  <data name="Txt_OutRecordConfirmSucceeded" xml:space="preserve">
+    <value>Succeeded to confirm the out records</value>
+  </data>
+  <data name="Txt_OutSource" xml:space="preserve">
+    <value>OutSource</value>
+  </data>
+  <data name="Txt_OutsourcePack" xml:space="preserve">
+    <value>Outsource Pack</value>
+  </data>
+  <data name="Txt_OutsourcePackNum" xml:space="preserve">
+    <value>Outsource PackNum</value>
+  </data>
+  <data name="Txt_OutsourcePackNumSelect" xml:space="preserve">
+    <value>Please select the outsource PackNum to be printed</value>
+  </data>
+  <data name="Txt_OutsourceQuantityNotEmpty" xml:space="preserve">
+    <value>Outsource quantity cannot be empty</value>
+  </data>
+  <data name="Txt_OutsourceQuantityPositive" xml:space="preserve">
+    <value>Outsource quantity must be a positive integer</value>
+  </data>
+  <data name="Txt_OutsourceReceipt" xml:space="preserve">
+    <value>Outsource Receipt</value>
+  </data>
+  <data name="Txt_OutsourceReceiptSelect" xml:space="preserve">
+    <value>Please select the outsource receipt to be printed</value>
+  </data>
+  <data name="Txt_OutsourceReworkQuantity" xml:space="preserve">
+    <value>Outsource Rework Quantity</value>
+  </data>
+  <data name="Txt_Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="Txt_ParentJobnum" xml:space="preserve">
+    <value>Parent Jobnum</value>
+  </data>
+  <data name="Txt_Part" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="Txt_PartDescription" xml:space="preserve">
+    <value>Part Description</value>
+  </data>
+  <data name="Txt_PartNumber" xml:space="preserve">
+    <value>PartNumber</value>
+  </data>
+  <data name="Txt_PartnumDetails" xml:space="preserve">
+    <value>Partnum Details</value>
+  </data>
+  <data name="Txt_PartnumEmpty" xml:space="preserve">
+    <value>Part number is empty, or the length is more than 50</value>
+  </data>
+  <data name="Txt_PartNumLatestChange" xml:space="preserve">
+    <value>Part Number/Latest Change Level</value>
+  </data>
+  <data name="Txt_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Txt_PasswordNotEmpty" xml:space="preserve">
+    <value>Password can not be empty</value>
+  </data>
+  <data name="Txt_PasswordTooLong" xml:space="preserve">
+    <value>Password is too long</value>
+  </data>
+  <data name="Txt_PasteFailed" xml:space="preserve">
+    <value>Failed to paste picture</value>
+  </data>
+  <data name="Txt_PasteSucceeded" xml:space="preserve">
+    <value>Succeeded to paste picture</value>
+  </data>
+  <data name="Txt_Pasting" xml:space="preserve">
+    <value>Pasting data, wait for a moment please</value>
+  </data>
+  <data name="Txt_PCNECNNo" xml:space="preserve">
+    <value>P.C.N. &amp; E.C.N. NO.</value>
+  </data>
+  <data name="Txt_PO" xml:space="preserve">
+    <value>PO</value>
+  </data>
+  <data name="Txt_Prelaunch" xml:space="preserve">
+    <value>Pre-launch</value>
+  </data>
+  <data name="Txt_Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Txt_Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Txt_Printed" xml:space="preserve">
+    <value>Printed</value>
+  </data>
+  <data name="Txt_Printer" xml:space="preserve">
+    <value>Printer</value>
+  </data>
+  <data name="Txt_PrintLotTraveller" xml:space="preserve">
+    <value>Print Lot Traveller</value>
+  </data>
+  <data name="Txt_PrintReworkLotTraveller" xml:space="preserve">
+    <value>Print rework lot traveller</value>
+  </data>
+  <data name="Txt_PrintTime" xml:space="preserve">
+    <value>Print Time</value>
+  </data>
+  <data name="Txt_PrintTimes" xml:space="preserve">
+    <value>Print Times</value>
+  </data>
+  <data name="Txt_Processing" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="Txt_ProcessingSucceeded" xml:space="preserve">
+    <value>Processing succeeded</value>
+  </data>
+  <data name="Txt_Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Txt_Prototype" xml:space="preserve">
+    <value>Prototype</value>
+  </data>
+  <data name="Txt_QMProcessing" xml:space="preserve">
+    <value>QM processing</value>
+  </data>
+  <data name="Txt_QMSubmitEWI" xml:space="preserve">
+    <value>QM has submitted a EWI revision</value>
+  </data>
+  <data name="Txt_QMSubmitted" xml:space="preserve">
+    <value>QM has submitted</value>
+  </data>
+  <data name="Txt_QMToBeSubmitted" xml:space="preserve">
+    <value>QM to be submitted</value>
+  </data>
+  <data name="Txt_QualifiedQuantity" xml:space="preserve">
+    <value>Qualified quantity</value>
+  </data>
+  <data name="Txt_QualifiedQuantityNotEmpty" xml:space="preserve">
+    <value>Qualified quantity cannot be empty</value>
+  </data>
+  <data name="Txt_QualifiedQuantityPositive" xml:space="preserve">
+    <value>Qualified quantity must be a positive integer</value>
+  </data>
+  <data name="Txt_Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Txt_QuantityStarted" xml:space="preserve">
+    <value>Quantity Started</value>
+  </data>
+  <data name="Txt_Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Txt_RapidMRB" xml:space="preserve">
+    <value>Rapid scanning and processing MRB</value>
+  </data>
+  <data name="Txt_Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Txt_Reasons" xml:space="preserve">
+    <value>Change Reasons</value>
+  </data>
+  <data name="Txt_ReceiptQuantity" xml:space="preserve">
+    <value>Receipt Quantity</value>
+  </data>
+  <data name="Txt_ReceivedPackNum" xml:space="preserve">
+    <value>PackNum</value>
+  </data>
+  <data name="Txt_ReceivedQuantity" xml:space="preserve">
+    <value>Received Quantity</value>
+  </data>
+  <data name="Txt_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Txt_RegenerateEWI" xml:space="preserve">
+    <value>Regenerate EWI</value>
+  </data>
+  <data name="Txt_RegenerateEWIFailed" xml:space="preserve">
+    <value>Failed to generate EWI file</value>
+  </data>
+  <data name="Txt_RegenerateEWISucceeded" xml:space="preserve">
+    <value>EWI file is regenerated successfully</value>
+  </data>
+  <data name="Txt_RegeneratingEWI" xml:space="preserve">
+    <value>Please wait while the EWI file is regenerated</value>
+  </data>
+  <data name="Txt_Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Txt_RegisterNewUser" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="Txt_Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Txt_Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Txt_RejectEWI" xml:space="preserve">
+    <value>has rejected a EWI revision</value>
+  </data>
+  <data name="Txt_RejectingSendingEmail" xml:space="preserve">
+    <value>Please wait while rejecting and sending email</value>
+  </data>
+  <data name="Txt_RejectReason" xml:space="preserve">
+    <value>Please fill in the reason for rejection</value>
+  </data>
+  <data name="Txt_RelatedDeptApprover" xml:space="preserve">
+    <value>Related Dept. Approver</value>
+  </data>
+  <data name="Txt_Remarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="Txt_RemoveAll" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
+  <data name="Txt_RemoveSingle" xml:space="preserve">
+    <value>Remove Single</value>
+  </data>
+  <data name="Txt_Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Txt_Reported" xml:space="preserve">
+    <value>Reported Qty</value>
+  </data>
+  <data name="Txt_RequestError" xml:space="preserve">
+    <value>An error occurred while processing your request</value>
+  </data>
+  <data name="Txt_ReserveOneOP" xml:space="preserve">
+    <value>At least one process shall be reserved</value>
+  </data>
+  <data name="Txt_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Txt_ResetConfirm" xml:space="preserve">
+    <value>Reset password confirmation</value>
+  </data>
+  <data name="Txt_ResetPassToLogin1" xml:space="preserve">
+    <value>Your password has been reset. Please</value>
+  </data>
+  <data name="Txt_ResetPassToLogin2" xml:space="preserve">
+    <value>click here to log in</value>
+  </data>
+  <data name="Txt_ResetPassword" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Txt_ResetPassword2" xml:space="preserve">
+    <value>Reset your password.</value>
+  </data>
+  <data name="Txt_ResponsePlan" xml:space="preserve">
+    <value>Response Plan</value>
+  </data>
+  <data name="Txt_Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="Txt_Revision" xml:space="preserve">
+    <value>Revision</value>
+  </data>
+  <data name="Txt_RevisionDetails" xml:space="preserve">
+    <value>Revision Details</value>
+  </data>
+  <data name="Txt_RevisionList" xml:space="preserve">
+    <value>Revision List</value>
+  </data>
+  <data name="Txt_RevisionNoEmpty" xml:space="preserve">
+    <value>The revision No. is empty, or the length is more than 50</value>
+  </data>
+  <data name="Txt_ReworkOP" xml:space="preserve">
+    <value>Rework OP</value>
+  </data>
+  <data name="Txt_ReworkOPSelect" xml:space="preserve">
+    <value>Select Rework OP</value>
+  </data>
+  <data name="Txt_ReworkQuantity" xml:space="preserve">
+    <value>Rework Quantity</value>
+  </data>
+  <data name="Txt_ReworkQuantityNoEmpty" xml:space="preserve">
+    <value>Rework quantity cannot be empty</value>
+  </data>
+  <data name="Txt_ReworkQuantityPositive" xml:space="preserve">
+    <value>Rework quantity must be a positive integer</value>
+  </data>
+  <data name="Txt_ReworkScrapEqualMRB" xml:space="preserve">
+    <value>The sum of rework and scrap quantity must be equal to the MRB quantity</value>
+  </data>
+  <data name="Txt_Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="Txt_RightDetails" xml:space="preserve">
+    <value>Right Details</value>
+  </data>
+  <data name="Txt_RightGroup" xml:space="preserve">
+    <value>Right Group</value>
+  </data>
+  <data name="Txt_RightList" xml:space="preserve">
+    <value>Right list</value>
+  </data>
+  <data name="Txt_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Txt_ScanMRBThenRework" xml:space="preserve">
+    <value>Scan the MRB jobnum list for processing, and then rework</value>
+  </data>
+  <data name="Txt_ScannedCorrectMRBConfirm" xml:space="preserve">
+    <value>Please confirm that you have scanned the correct MRB processing jobnum</value>
+  </data>
+  <data name="Txt_ScanQRCode" xml:space="preserve">
+    <value>Please scan the QR code on the MRB jobnum</value>
+  </data>
+  <data name="Txt_ScrapPartNum" xml:space="preserve">
+    <value>Scrap PartNum</value>
+  </data>
+  <data name="Txt_ScrapQuantity" xml:space="preserve">
+    <value>Scrap Quantity</value>
+  </data>
+  <data name="Txt_ScrapQuantityNoEmpty" xml:space="preserve">
+    <value>Scrap quantity cannot be empty</value>
+  </data>
+  <data name="Txt_ScrapQuantityPositive" xml:space="preserve">
+    <value>Scrap quantity must be a positive integer</value>
+  </data>
+  <data name="Txt_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Txt_SearchBy" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="Txt_SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="Txt_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Txt_SendAuth" xml:space="preserve">
+    <value>Select Two-Factor Authentication Provider:</value>
+  </data>
+  <data name="Txt_SendCode" xml:space="preserve">
+    <value>Send verification code</value>
+  </data>
+  <data name="Txt_SendingEmailToQM" xml:space="preserve">
+    <value>Please wait for a moment while sending mail to QM</value>
+  </data>
+  <data name="Txt_SentEmail" xml:space="preserve">
+    <value>System has sent email successfully</value>
+  </data>
+  <data name="Txt_ShowAll" xml:space="preserve">
+    <value>Show All</value>
+  </data>
+  <data name="Txt_SizeOutofTolerance" xml:space="preserve">
+    <value>Size out of tolerance details</value>
+  </data>
+  <data name="Txt_SOP" xml:space="preserve">
+    <value>SOP</value>
+  </data>
+  <data name="Txt_SpecialOP" xml:space="preserve">
+    <value>Special OP</value>
+  </data>
+  <data name="Txt_Split" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="Txt_SplitEpicorJobnumConfirm" xml:space="preserve">
+    <value>Are you sure to split the selected Epicor Jobnum</value>
+  </data>
+  <data name="Txt_SplitJobnumFailed" xml:space="preserve">
+    <value>Failed to split jobnum</value>
+  </data>
+  <data name="Txt_SplitJobnumSucceeded" xml:space="preserve">
+    <value>Succeeded to split jobnum</value>
+  </data>
+  <data name="Txt_SplitPerQty" xml:space="preserve">
+    <value>Split Per Qty</value>
+  </data>
+  <data name="Txt_SplitQuantity" xml:space="preserve">
+    <value>Split Quantity</value>
+  </data>
+  <data name="Txt_Splitted" xml:space="preserve">
+    <value>Splitted</value>
+  </data>
+  <data name="Txt_SplitWebJobnumConfirm" xml:space="preserve">
+    <value>Are you sure to split the selected web Jobnum</value>
+  </data>
+  <data name="Txt_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Txt_SubJobNumSplit" xml:space="preserve">
+    <value>Sub JobNum Split</value>
+  </data>
+  <data name="Txt_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Txt_SubmitApproval" xml:space="preserve">
+    <value>Submit for approval</value>
+  </data>
+  <data name="Txt_SubmitApprovalSucceeded" xml:space="preserve">
+    <value>Succeeded to submitt approval</value>
+  </data>
+  <data name="Txt_SubmitComplete" xml:space="preserve">
+    <value>Submit to Complete</value>
+  </data>
+  <data name="Txt_SubmitEWI" xml:space="preserve">
+    <value>has submitted a EWI revision</value>
+  </data>
+  <data name="Txt_SubmitFailed" xml:space="preserve">
+    <value>Failed to submit</value>
+  </data>
+  <data name="Txt_SubmitManager" xml:space="preserve">
+    <value>Submit to Manager</value>
+  </data>
+  <data name="Txt_SubmitQMSucceeded" xml:space="preserve">
+    <value>Submitted to QM successfully</value>
+  </data>
+  <data name="Txt_SubmittedToQM" xml:space="preserve">
+    <value>Submitted to QM</value>
+  </data>
+  <data name="Txt_SubmittingApproval" xml:space="preserve">
+    <value>Please wait for a moment while submitting approval and sending mail</value>
+  </data>
+  <data name="Txt_SubmitToQM" xml:space="preserve">
+    <value>Submit to QM</value>
+  </data>
+  <data name="Txt_Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Txt_Supplier" xml:space="preserve">
+    <value>Supplier/Plant</value>
+  </data>
+  <data name="Txt_SupplierApproval" xml:space="preserve">
+    <value>Supplier/Plant Approval/Date</value>
+  </data>
+  <data name="Txt_SupplierCode" xml:space="preserve">
+    <value>Supplier Code</value>
+  </data>
+  <data name="Txt_SwitchViews" xml:space="preserve">
+    <value>Switch Views</value>
+  </data>
+  <data name="Txt_Synchronize" xml:space="preserve">
+    <value>Synchronize</value>
+  </data>
+  <data name="Txt_SynchronizeConfirm1" xml:space="preserve">
+    <value>The synchronization takes a long time. Do not close the page</value>
+  </data>
+  <data name="Txt_SynchronizeConfirm2" xml:space="preserve">
+    <value>Are you sure you want to synchronize data from Epicor?</value>
+  </data>
+  <data name="Txt_SynchronizeFailed" xml:space="preserve">
+    <value>Failed to Synchronize</value>
+  </data>
+  <data name="Txt_SynchronizeSucceeded" xml:space="preserve">
+    <value>Succeeded to Synchronize</value>
+  </data>
+  <data name="Txt_Synchronizing" xml:space="preserve">
+    <value>Synchronizing (do not close the page), please wait</value>
+  </data>
+  <data name="Txt_TempFile" xml:space="preserve">
+    <value>Temp File</value>
+  </data>
+  <data name="Txt_TestFrequency" xml:space="preserve">
+    <value>TestFrequency</value>
+  </data>
+  <data name="Txt_TestInstrument" xml:space="preserve">
+    <value>TestInstrument</value>
+  </data>
+  <data name="Txt_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Txt_TitleNoEmpty" xml:space="preserve">
+    <value>Title cannot be empty</value>
+  </data>
+  <data name="Txt_ToBeConfirmedByEngineer" xml:space="preserve">
+    <value>To be confirmed by Engineer</value>
+  </data>
+  <data name="Txt_ToBeQMProcessed" xml:space="preserve">
+    <value>To be QM processed</value>
+  </data>
+  <data name="Txt_Tolerance" xml:space="preserve">
+    <value>Tolerance</value>
+  </data>
+  <data name="Txt_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Txt_Unapproved" xml:space="preserve">
+    <value>Unapproved</value>
+  </data>
+  <data name="Txt_Unconfirmed" xml:space="preserve">
+    <value>Unconfirmed</value>
+  </data>
+  <data name="Txt_Unhandled" xml:space="preserve">
+    <value>Unhandled</value>
+  </data>
+  <data name="Txt_Unmark" xml:space="preserve">
+    <value>Unmark</value>
+  </data>
+  <data name="Txt_Unsplit" xml:space="preserve">
+    <value>Unsplit</value>
+  </data>
+  <data name="Txt_UpdateFailed" xml:space="preserve">
+    <value>Update failed</value>
+  </data>
+  <data name="Txt_UpdateRightConfirm" xml:space="preserve">
+    <value>Are you sure to update user right?</value>
+  </data>
+  <data name="Txt_UploadCAD" xml:space="preserve">
+    <value>Upload CAD</value>
+  </data>
+  <data name="Txt_UploadCustomerDrawing" xml:space="preserve">
+    <value>Upload customer drawing</value>
+  </data>
+  <data name="Txt_UploadExceedMax" xml:space="preserve">
+    <value>The number of files selected to upload ({n}) exceeds the maximum allowed value {m}</value>
+  </data>
+  <data name="Txt_UploadFailed" xml:space="preserve">
+    <value>Upload failed</value>
+  </data>
+  <data name="Txt_UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="Txt_UploadHCFirst" xml:space="preserve">
+    <value>Please upload the heatcode first</value>
+  </data>
+  <data name="Txt_UploadHeatcode" xml:space="preserve">
+    <value>Please upload heatcode</value>
+  </data>
+  <data name="Txt_Uploading" xml:space="preserve">
+    <value>Uploading file, wait for a moment please</value>
+  </data>
+  <data name="Txt_UploadSucceeded" xml:space="preserve">
+    <value>Succeeded to upload</value>
+  </data>
+  <data name="Txt_UserDetails" xml:space="preserve">
+    <value>User Details</value>
+  </data>
+  <data name="Txt_UserExists" xml:space="preserve">
+    <value>User already exists</value>
+  </data>
+  <data name="Txt_UserList" xml:space="preserve">
+    <value>User List</value>
+  </data>
+  <data name="Txt_UserManagement" xml:space="preserve">
+    <value>User right management</value>
+  </data>
+  <data name="Txt_Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Txt_UsernameNotEmpty" xml:space="preserve">
+    <value>Username can not be empty</value>
+  </data>
+  <data name="Txt_UsernamePasswordError" xml:space="preserve">
+    <value>Username or password error</value>
+  </data>
+  <data name="Txt_UsernamePasswordNoEmpty" xml:space="preserve">
+    <value>Username or password cannot be empty</value>
+  </data>
+  <data name="Txt_UsernameTooLong" xml:space="preserve">
+    <value>Username is too long</value>
+  </data>
+  <data name="Txt_UserRight" xml:space="preserve">
+    <value>User Right</value>
+  </data>
+  <data name="Txt_UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="Txt_Valid" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="Txt_Vendor" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="Txt_VendorReturns" xml:space="preserve">
+    <value>Vendor returns</value>
+  </data>
+  <data name="Txt_Verify" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="Txt_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Txt_ViewLotTraveller" xml:space="preserve">
+    <value>View Lot Traveller</value>
+  </data>
+  <data name="Txt_VMIQualityInspection" xml:space="preserve">
+    <value>VMI Quality Inspection</value>
+  </data>
+  <data name="Txt_Warining" xml:space="preserve">
+    <value>Warining</value>
+  </data>
+  <data name="Txt_WebAppUser" xml:space="preserve">
+    <value>Web/App User</value>
+  </data>
+  <data name="Txt_WebJobNum" xml:space="preserve">
+    <value>Web JobNum</value>
+  </data>
+  <data name="Txt_WebUser" xml:space="preserve">
+    <value>Web User</value>
+  </data>
+  <data name="Txt_WelcomeUseMES" xml:space="preserve">
+    <value>Welcome to the Compact MES Web Platform</value>
+  </data>
+  <data name="Txt_WINo" xml:space="preserve">
+    <value>WI Number</value>
+  </data>
+  <data name="SQL_DefaultOPIncorrect" xml:space="preserve">
+    <value>Incorrect default job process version</value>
+  </data>
+  <data name="Txt_OPSeq" xml:space="preserve">
+    <value>OP Seq</value>
+  </data>
+  <data name="Txt_SessionExpired" xml:space="preserve">
+    <value>Session has expired, please login again</value>
+  </data>
+  <data name="SQL_NoPartOP" xml:space="preserve">
+    <value>Part OP is not synchronized, please contact IT to resynchronize!</value>
+  </data>
+</root>

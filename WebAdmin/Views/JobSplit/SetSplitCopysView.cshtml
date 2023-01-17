@@ -1,0 +1,70 @@
+﻿@using WebAdmin.Models;
+@using Resources;
+@{
+
+    SimpleEpicorJob job = (SimpleEpicorJob)(ViewBag.Job);
+
+    ViewBag.Title = Resource.Txt_EpicorJobList;
+}
+
+@section style{
+
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">@Resource.Menu_EpicorJobSplit</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">@Resource.Txt_JobNum</label>
+                                <p>@job.JobNum</p>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">@Resource.Txt_JobnumQuantity</label>
+                                <p>@job.ProdQty</p>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">@Resource.Txt_SplitPerQty</label>
+                                <input type="text" class="form-control" id="SplitCopys" value="@job.SplitPerQty">
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button id="btnSave" type="submit" class="btn btn-primary">@Resource.Txt_Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section script {
+
+
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        $("#btnSave").click(function () {
+            var param = {};
+            param.id = @job.id;
+            param.copys = $("#SplitCopys").val();
+            $.post("/JobSplit/SetSplitCopys", param, function (data) {
+                $(location).attr("href", "EpicorJobListView");
+            });
+        });
+    </script>
+}
