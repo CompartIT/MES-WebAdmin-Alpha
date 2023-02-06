@@ -351,7 +351,12 @@
                 "searching": true,
                 "ajax": {
                     "url": "/JobSplit/GetWebJobList",
-                    "type": "POST"
+                    "type": "POST",
+                    "error": function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    }
                 },
                 "columns": columnDefs
             });
@@ -380,7 +385,7 @@
                 if (isConfirm.dismiss === 'cancel') {
 
                 } else {
-                    $.ajax({
+                    @*$.ajax({
                         type: "POST",
                         url: "/JobSplit/CheckWebJobSplit",
                         async: false,
@@ -417,9 +422,9 @@
                             var endTitle = e.responseText.indexOf('</title>');
                             swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                         }
-                    });
+                    });*@
 
-                    @*$.post("/JobSplit/CheckWebJobSplit", param, function (data) {
+                    $.post("/JobSplit/CheckWebJobSplit", param, function (data) {
                         if (data == '1') {
                             swal(
                                 '@Resource.Txt_Splitted!',
@@ -444,7 +449,11 @@
                                 'warning'
                             );
                         }
-                    });*@
+                    }).error(function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    });
                 }
 
             });

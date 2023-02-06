@@ -705,7 +705,12 @@
                 "searching": true,
                 "ajax": {
                     "url": "/Security/GetWebUserList",
-                    "type": "POST"
+                    "type": "POST",
+                    "error": function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    }
                 },
                 "order": [[1, 'asc']],
                 "columns": columnDefs

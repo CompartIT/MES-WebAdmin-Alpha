@@ -603,7 +603,7 @@
                 return;
             }
 
-            $.ajax({
+            @*$.ajax({
                 type: "POST",
                 url: "/MRB/UpdateMRBProcess_new",
                 async: false,
@@ -640,9 +640,9 @@
                     var endTitle = e.responseText.indexOf('</title>');
                     swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                 }
-            });
+            });*@
 
-            @*$.post("/MRB/UpdateMRBProcess_new", param, function (data) {
+            $.post("/MRB/UpdateMRBProcess_new", param, function (data) {
                 _clicked = false;
 
                 $("#ModalMRBHandle").modal("hide");
@@ -667,7 +667,11 @@
                 } else {
                     swal('','@Resource.Txt_MRBJobnumErrorOccurred！','error');
                 }
-            });*@
+            }).error(function (e) {
+                var startTitle = e.responseText.indexOf('<title>') + 7;
+                var endTitle = e.responseText.indexOf('</title>');
+                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+            });
         }
 
         //Create Rework job

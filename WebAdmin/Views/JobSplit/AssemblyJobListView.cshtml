@@ -22,7 +22,7 @@
                 <h3>
                     <button class="btn btn-info" type="button" id="btnRefresh"><i class="fa fa-refresh"></i> @Resource.Txt_Refresh</button>
                     @*<button class="btn btn-info" type="button" id="btnSplit"><i class="fa fa-edit"></i> @Resource.Txt_Split</button>*@
-                    <button class="btn btn-info" type="button" id="btnPrint"><i class="fa fa-edit"></i>@Resource.Txt_Print</button>
+                    <button class="btn btn-info" type="button" id="btnPrint" style="display:none;"><i class="fa fa-edit"></i>@Resource.Txt_Print</button>
                 </h3>
             </div>
             <div class="col-md-7">
@@ -251,13 +251,13 @@
 
         //加载heatcode语言包
         if ('@Language' == 'ms') {
-            document.write("<script src='~/Content/Compart/assets/plugins/fileinput/js/locales/ms.js'><\/script>");
+            document.write("<script src='/Content/Compart/assets/plugins/fileinput/js/locales/ms.js'><\/script>");
         }
         else if ('@Language' == 'zh-cn') {
             document.write("<script src='/Content/Compart/assets/plugins/fileinput/js/locales/zh.js'><\/script>");
         }
         else {//默认英语
-            document.write("<script src='~/Content/Compart/assets/plugins/fileinput/js/locales/LANG.js'><\/script>");
+            document.write("<script src='/Content/Compart/assets/plugins/fileinput/js/locales/LANG.js'><\/script>");
         }
 
         var pageTableId = 'AssemblyJobList', table;
@@ -439,7 +439,7 @@
                                     jobNumList = [];
                                     jobNumList.push($("#txtModalJobId").val());
 
-                                    $.ajax({
+                                    @*$.ajax({
                                         type: "POST",
                                         url: "/JobSplit/EpicorJobSplit",
                                         async: false,
@@ -460,9 +460,9 @@
                                             var endTitle = e.responseText.indexOf('</title>');
                                             swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                                         }
-                                    });
+                                    });*@
 
-                                    @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                                    $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                                         $("#ModalSetSplitCopys").modal("hide");
                                         $('#myTable').DataTable().draw();
 
@@ -471,7 +471,11 @@
                                             '@Resource.Txt_SplitJobnumSucceeded.',
                                             'success'
                                         );
-                                    });*@
+                                    }).error(function (e) {
+                                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                                        var endTitle = e.responseText.indexOf('</title>');
+                                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                                    });
 
                                 });
                             } else {
@@ -529,7 +533,7 @@
                         //  'error'
                         //);
                     } else {
-                        $.ajax({
+                        @*$.ajax({
                             type: "POST",
                             url: "/JobSplit/EpicorJobSplit",
                             async: false,
@@ -548,16 +552,20 @@
                                 var endTitle = e.responseText.indexOf('</title>');
                                 swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                             }
-                        });
+                        });*@
 
-                        @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                        $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                             $('#myTable').DataTable().draw();
                             swal(
                                 '@Resource.Txt_Splitted!',
                                 '@Resource.Txt_SplitJobnumSucceeded.',
                                 'success'
                             );
-                        });*@
+                        }).error(function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        });
                     }
 
                 });
@@ -713,7 +721,12 @@
                 "searching": true,
                 "ajax": {
                     "url": "/JobSplit/GetAssemblyJobList",
-                    "type": "POST"
+                    "type": "POST",
+                    "error": function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    }
                 },
                 "order": [[1, 'asc']],//设置第二列为升序，如果不设置order，则默认会按第一列升序，这样Checkbox旁边会出现一个排序的小三角
                 "columns": columnDefs

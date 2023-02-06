@@ -518,6 +518,11 @@
                                     return InitialProduct;
                                 }
                             },
+                            "error": function (e) {
+                                var startTitle = e.responseText.indexOf('<title>') + 7;
+                                var endTitle = e.responseText.indexOf('</title>');
+                                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                            }
                         },
                         "aLengthMenu": [10, 25, 50, 100],
                         "iDisplayLength": 10,
@@ -585,6 +590,11 @@
                                     return InitialMachine;
                                 }
                             },
+                            "error": function (e) {
+                                var startTitle = e.responseText.indexOf('<title>') + 7;
+                                var endTitle = e.responseText.indexOf('</title>');
+                                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                            }
                         },
                         "aLengthMenu": [10, 25, 50, 100],
                         "iDisplayLength": 10,
@@ -652,6 +662,11 @@
                                     return InitialTestInstrument;
                                 }
                             },
+                            "error": function (e) {
+                                var startTitle = e.responseText.indexOf('<title>') + 7;
+                                var endTitle = e.responseText.indexOf('</title>');
+                                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                            }
                         },
                         "colReorder": true,
                         "aLengthMenu": [10, 25, 50, 100],

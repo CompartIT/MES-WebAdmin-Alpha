@@ -421,7 +421,7 @@
                             jobNumList = [];
                             jobNumList.push($("#txtModalJobId").val());
 
-                            $.ajax({
+                            @*$.ajax({
                                 type: "POST",
                                 url: "/JobSplit/EpicorJobSplit",
                                 async: false,
@@ -442,9 +442,9 @@
                                     var endTitle = e.responseText.indexOf('</title>');
                                     swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                                 }
-                            });
+                            });*@
 
-                            @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                            $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                                 $("#ModalSetSplitCopys").modal("hide");
                                 $('#myTable').DataTable().draw();
 
@@ -453,7 +453,11 @@
                                     '@Resource.Txt_SplitJobnumSucceeded.',
                                     'success'
                                 );
-                            });*@
+                            }).error(function (e) {
+                                var startTitle = e.responseText.indexOf('<title>') + 7;
+                                var endTitle = e.responseText.indexOf('</title>');
+                                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                            });
 
                         });
 
@@ -501,7 +505,7 @@
                         //  'error'
                         //);
                     } else {
-                        $.ajax({
+                        @*$.ajax({
                             type: "POST",
                             url: "/JobSplit/EpicorJobSplit",
                             async: false,
@@ -520,16 +524,20 @@
                                 var endTitle = e.responseText.indexOf('</title>');
                                 swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                             }
-                        });
+                        });*@
 
-                        @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                        $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                             $('#myTable').DataTable().draw();
                             swal(
                                 '@Resource.Txt_Splitted!',
                                 '@Resource.Txt_SplitJobnumSucceeded.',
                                 'success'
                             );
-                        });*@
+                        }).error(function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        });
                     }
 
                 });
@@ -649,7 +657,12 @@
                     "searching": true,
                     "ajax": {
                         "url": "/JobReturn/GetReturnJobList",
-                        "type": "POST"
+                        "type": "POST",
+                        "error": function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        }
                     },
                     destroy: true,
                     scrollY: 400,
@@ -734,7 +747,7 @@
                     param.jobNum = $("#epicorjobnum").val();
                     param.opers = opers;
 
-                    $.ajax({
+                    @*$.ajax({
                         type: "POST",
                         url: "/JobReturn/CreateReworkJob",
                         async: false,
@@ -763,9 +776,9 @@
                             var endTitle = e.responseText.indexOf('</title>');
                             swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                         }
-                    });
+                    });*@
 
-                    @*$.post("/JobReturn/CreateReworkJob", param, function (getResponse) {
+                    $.post("/JobReturn/CreateReworkJob", param, function (getResponse) {
                         $("#ModalJobRetrun").modal("hide");
 
                         var getData = getResponse.Data;
@@ -793,7 +806,11 @@
 
 
                         });
-                    });*@
+                    }).error(function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    });
 
                 }
             });

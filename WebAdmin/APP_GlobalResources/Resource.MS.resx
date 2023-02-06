@@ -1692,4 +1692,31 @@
   <data name="SQL_NoPartOP" xml:space="preserve">
     <value>Proses produk tidak disegerakkan, sila hubungi IT untuk disegerakkan semula!</value>
   </data>
+  <data name="Txt_ChangePassword" xml:space="preserve">
+    <value>密码修改</value>
+  </data>
+  <data name="Txt_ErrPwdRegular" xml:space="preserve">
+    <value>密码至少包含1个大写字母、1个小写字母、1个数字，且长度为8位</value>
+  </data>
+  <data name="Txt_ErrPwdRegularEasy" xml:space="preserve">
+    <value>密码为字母、数字、字符，且长度为8至16位</value>
+  </data>
+  <data name="Txt_ErrUserPwd" xml:space="preserve">
+    <value>用户名或密码不正确</value>
+  </data>
+  <data name="Txt_IsInitialPwd" xml:space="preserve">
+    <value>当前为初始密码，请修改密码</value>
+  </data>
+  <data name="Txt_NewPassword" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="Txt_NewPasswordConfirm" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="Txt_OldPassword" xml:space="preserve">
+    <value>当前密码</value>
+  </data>
+  <data name="Txt_PasswordNotMatch" xml:space="preserve">
+    <value>新密码和确认密码不一致</value>
+  </data>
 </root>

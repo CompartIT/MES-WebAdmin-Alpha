@@ -357,7 +357,7 @@
                             jobNumList = [];
                             jobNumList.push($("#txtModalJobId").val());
 
-                            $.ajax({
+                            @*$.ajax({
                                 type: "POST",
                                 url: "/JobSplit/EpicorJobSplit",
                                 async: false,
@@ -366,6 +366,7 @@
                                 success: function (data) {
                                     $("#ModalSetSplitCopys").modal("hide");
                                     $('#myTable').DataTable().draw();
+                                    console.log(data);
                                     if (data == "OK") {
                                         swal(
                                             '@Resource.Txt_Splitted!',
@@ -381,13 +382,14 @@
                                     }
                                 },
                                 error: function (e) {
+                                    console.log(2,e);
                                     var startTitle = e.responseText.indexOf('<title>') + 7;
                                     var endTitle = e.responseText.indexOf('</title>');
                                     swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                                 }
-                            });
+                            });*@
 
-                            @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                            $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                                 $("#ModalSetSplitCopys").modal("hide");
                                 $('#myTable').DataTable().draw();
                                 if (data == "OK") {
@@ -403,7 +405,11 @@
                                         'error'
                                     );
                                 }
-                            });*@
+                            }).error(function (e) {
+                                var startTitle = e.responseText.indexOf('<title>') + 7;
+                                var endTitle = e.responseText.indexOf('</title>');
+                                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                            });
 
                         });
 
@@ -451,7 +457,7 @@
                         //  'error'
                         //);
                     } else {
-                        $.ajax({
+                        @*$.ajax({
                             type: "POST",
                             url: "/JobSplit/EpicorJobSplit",
                             async: false,
@@ -470,16 +476,20 @@
                                 var endTitle = e.responseText.indexOf('</title>');
                                 swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                             }
-                        });
+                        });*@
 
-                        @*$.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
+                        $.post("/JobSplit/EpicorJobSplit", { "jobList": jobNumList }, function (data) {
                             $('#myTable').DataTable().draw();
                             swal(
                                 '@Resource.Txt_Splitted!',
                                 '@Resource.Txt_JobnumSplitCompleted。',
                                 'success'
                             );
-                        });*@
+                        }).error(function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        });
                     }
 
                 });
@@ -599,7 +609,12 @@
                 "searching": true,
                 "ajax": {
                     "url": "/JobSplit/GetEpicorJobList",
-                    "type": "POST"
+                    "type": "POST",
+                    "error": function (e) {
+                        var startTitle = e.responseText.indexOf('<title>') + 7;
+                        var endTitle = e.responseText.indexOf('</title>');
+                        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                    }
                 },
                 "order": [[1, 'asc']],//设置第二列为升序，如果不设置order，则默认会按第一列升序，这样Checkbox旁边会出现一个排序的小三角
                 "columns": columnDefs

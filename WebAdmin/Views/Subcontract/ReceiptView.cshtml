@@ -543,7 +543,7 @@
                 }).then(function (isConfirm) {
                     if (isConfirm.dismiss === 'cancel') {
                     } else {
-                        $.ajax({
+                        @*$.ajax({
                             type: "POST",
                             url: "/Subcontract/ConfirmReceipt",
                             async: false,
@@ -562,16 +562,20 @@
                                 var endTitle = e.responseText.indexOf('</title>');
                                 swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                             }
-                        });
+                        });*@
 
-                        @*$.post("/Subcontract/ConfirmReceipt", { "jobList": jobNumList }, function (data) {
+                        $.post("/Subcontract/ConfirmReceipt", { "jobList": jobNumList }, function (data) {
                             $('#myTable').DataTable().draw();
                             swal(
                                 '@Resource.Txt_Confirmed!',
                                 '@Resource.Txt_OutRecordConfirmSucceeded。',
                                 'success'
                             );
-                        });*@
+                        }).error(function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        });
                     }
 
                 });
@@ -793,27 +797,31 @@
                 return;
             }
 
-            $.ajax({
-                type: "POST",
-                url: "/Subcontract/ConfirmReceiptSingle",
-                async: false,
-                dataType: "json",
-                data: param,
-                success: function (data) {
-                    $("#ModalShipment").modal("hide");
-                    $('#myTable').DataTable().draw();
-                },
-                error: function (e) {
-                    var startTitle = e.responseText.indexOf('<title>') + 7;
-                    var endTitle = e.responseText.indexOf('</title>');
-                    swal(e.responseText.substring(startTitle, endTitle), '', 'error');
-                }
-            });
-
-            //$.post("/Subcontract/ConfirmReceiptSingle", param, function (data) {
-            //    $("#ModalShipment").modal("hide");
-            //    $('#myTable').DataTable().draw();
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Subcontract/ConfirmReceiptSingle",
+            //    async: false,
+            //    dataType: "json",
+            //    data: param,
+            //    success: function (data) {
+            //        $("#ModalShipment").modal("hide");
+            //        $('#myTable').DataTable().draw();
+            //    },
+            //    error: function (e) {
+            //        var startTitle = e.responseText.indexOf('<title>') + 7;
+            //        var endTitle = e.responseText.indexOf('</title>');
+            //        swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+            //    }
             //});
+
+            $.post("/Subcontract/ConfirmReceiptSingle", param, function (data) {
+                $("#ModalShipment").modal("hide");
+                $('#myTable').DataTable().draw();
+            }).error(function (e) {
+                var startTitle = e.responseText.indexOf('<title>') + 7;
+                var endTitle = e.responseText.indexOf('</title>');
+                swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+            });
         }
 
         function printReceipt(id) {

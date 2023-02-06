@@ -111,3 +111,21 @@ function saveColumnSettings(pageTableId, table) {
     // Save (or update) the settings in localStorage
     localStorage.setItem(pageTableId, JSON.stringify(userColumnDefs));
 }
+
+
+//右上角弹框
+function ShowWaringMsg(Msg = '', MsgDetail = '', time = 5000, fun = null) {
+    $.toast({
+        heading: Msg,
+        text: MsgDetail,
+        position: 'top-right',
+        loaderBg: '#ffb22b',
+        icon: 'warning',
+        hideAfter: time,
+        stack: 6,
+        afterHidden: function () {
+            if (fun != null)
+                fun();
+            }
+    });
+}

@@ -230,3 +230,31 @@ table.dataTable thead {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
+
+
+/*跳动边框*/
+.WarningBord {
+    border: 1px solid #ffb22b;
+    animation: mymove 1s infinite;
+    -webkit-animation: mymove 1s infinite; /*Safari and Chrome*/
+}
+
+@keyframes mymove {
+    from {
+        border: 1px solid transparent;
+    }
+
+    to {
+        border: 1px solid #ffb22b;
+    }
+}
+
+@-webkit-keyframes mymove /*Safari and Chrome*/ {
+    from {
+        border: 1px solid transparent;
+    }
+
+    to {
+        border: 1px solid #ffb22b;
+    }
+}

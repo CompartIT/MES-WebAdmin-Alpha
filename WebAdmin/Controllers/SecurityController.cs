@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using System.Data;
+using System.Text.RegularExpressions;
 
 using WebAdmin.Models;
 namespace WebAdmin.Controllers
@@ -436,6 +437,58 @@ namespace WebAdmin.Controllers
             
 
             return Json(result);
+        }
+
+        public JsonResult UpdatePassword(ChangePasswordViewModel ChangePassword)
+        {
+            BaseResponse<string> returnResponse = new BaseResponse<string>();
+            returnResponse.Msg = "";
+
+            SysAdmin user = GetAdminInfo();
+            if (user == null)
+                returnResponse.Msg = GetResValue("Txt_SessionExpired");
+            else
+            {
+                //至少8个字符，至少1个大写字母，1个小写字母，1个数字和1个特殊字符：
+                //string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$,./<>?;':!@#$%*&]{8,}";
+                string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d,./<>?:;'!@_]{8,}";
+                string patternEasy = @"^[A-Za-z\d,./<>?:;'!@_]{8,}";
+
+                string strSql = string.Format("SP_User_ChangePwd '{0}','','',{1}",
+                        user.UserName, 0);
+                DataSet ds = SqlHelper.ExecuteDataSet(CommandType.Text, strSql);
+
+                string UserType = "";
+                if (ds.Tables[0].Rows.Count != 0)
+                    UserType = ds.Tables[0].Rows[0][0].ToString();
+
+                if (ChangePassword.NewPassword != ChangePassword.ConfirmPassword)
+                {
+                    returnResponse.Msg = GetResValue("Txt_PasswordNotMatch");
+                }
+                else if (UserType == "1" && !Regex.IsMatch(ChangePassword.NewPassword, pattern))
+                {
+                    returnResponse.Msg = GetResValue("Txt_ErrPwdRegular");
+                }
+                else if (UserType == "3" && !Regex.IsMatch(ChangePassword.NewPassword, patternEasy))
+                {
+                    returnResponse.Msg = GetResValue("Txt_ErrPwdRegularEasy");
+                }
+                else
+                {
+                    strSql = string.Format("SP_User_ChangePwd '{0}','{1}','{2}'",
+                        user.UserName, ChangePassword.OldPassword, ChangePassword.NewPassword.Replace("'","''"));
+                    returnResponse.Msg = SqlHelper.ExecteNonQuery2(CommandType.Text, strSql);
+                    if (returnResponse.Msg != "")
+                        returnResponse.Msg = GetResValue(returnResponse.Msg);
+                    else {
+                        HttpCookie HCuser = Request.Cookies["user"];
+                        HCuser.Values["password"] = ChangePassword.NewPassword;
+                        System.Web.HttpContext.Current.Response.SetCookie(HCuser);
+                    }
+                }
+            }
+            return Json(returnResponse, JsonRequestBehavior.AllowGet);
         }
     }
 }

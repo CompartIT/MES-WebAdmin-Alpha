@@ -1675,7 +1675,7 @@
     <value>Web User</value>
   </data>
   <data name="Txt_WelcomeUseMES" xml:space="preserve">
-    <value>Welcome to the Compact MES Web Platform</value>
+    <value>Welcome to the Compart MES Web Platform</value>
   </data>
   <data name="Txt_WINo" xml:space="preserve">
     <value>WI Number</value>
@@ -1691,5 +1691,32 @@
   </data>
   <data name="SQL_NoPartOP" xml:space="preserve">
     <value>Part OP is not synchronized, please contact IT to resynchronize!</value>
+  </data>
+  <data name="Txt_ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="Txt_ErrPwdRegular" xml:space="preserve">
+    <value>The password must contains at least 1 uppercase letter, 1 lowercase letter and 1 number, and the length shall be 8 digits</value>
+  </data>
+  <data name="Txt_ErrPwdRegularEasy" xml:space="preserve">
+    <value>The password is alphabetic, numeric  or character with a length of at least 8 digits</value>
+  </data>
+  <data name="Txt_ErrUserPwd" xml:space="preserve">
+    <value>Username or password is incorrect</value>
+  </data>
+  <data name="Txt_IsInitialPwd" xml:space="preserve">
+    <value>It is the initial password, change the it please</value>
+  </data>
+  <data name="Txt_NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Txt_NewPasswordConfirm" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Txt_OldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="Txt_PasswordNotMatch" xml:space="preserve">
+    <value>New password is different from Confirm Password</value>
   </data>
 </root>

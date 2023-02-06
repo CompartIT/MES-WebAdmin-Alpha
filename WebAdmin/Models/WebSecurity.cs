@@ -18,7 +18,7 @@ namespace WebAdmin.Models
         public string UserRole { get; set; }
         public string OperGroup { get; set; }
         public string LimitedOpCode { get; set; }
-
+        public string Remember { get; set; }
     }
 
     public class SimpleWebGroup

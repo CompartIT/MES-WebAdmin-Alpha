@@ -1069,6 +1069,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Change Password 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ChangePassword {
+            get {
+                return ResourceManager.GetString("Txt_ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Change to 的本地化字符串。
         /// </summary>
         internal static string Txt_ChangeTo {
@@ -1843,6 +1852,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 The password must contains at least 1 uppercase letter, 1 lowercase letter and 1 number, and the length shall be 8 digits 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ErrPwdRegular {
+            get {
+                return ResourceManager.GetString("Txt_ErrPwdRegular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 The password is alphabetic, numeric  or character with a length of at least 8 digits 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ErrPwdRegularEasy {
+            get {
+                return ResourceManager.GetString("Txt_ErrPwdRegularEasy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Username or password is incorrect 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ErrUserPwd {
+            get {
+                return ResourceManager.GetString("Txt_ErrUserPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 EWI Approval 的本地化字符串。
         /// </summary>
         internal static string Txt_EWIApprove {
@@ -2163,6 +2199,15 @@ namespace Resources {
         internal static string Txt_Invoice {
             get {
                 return ResourceManager.GetString("Txt_Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 It is the initial password, change the it please 的本地化字符串。
+        /// </summary>
+        internal static string Txt_IsInitialPwd {
+            get {
+                return ResourceManager.GetString("Txt_IsInitialPwd", resourceCulture);
             }
         }
         
@@ -2680,6 +2725,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 New Password 的本地化字符串。
+        /// </summary>
+        internal static string Txt_NewPassword {
+            get {
+                return ResourceManager.GetString("Txt_NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Confirm Password 的本地化字符串。
+        /// </summary>
+        internal static string Txt_NewPasswordConfirm {
+            get {
+                return ResourceManager.GetString("Txt_NewPasswordConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Next 的本地化字符串。
         /// </summary>
         internal static string Txt_Next {
@@ -2829,6 +2892,15 @@ namespace Resources {
         internal static string Txt_NPI {
             get {
                 return ResourceManager.GetString("Txt_NPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Old Password 的本地化字符串。
+        /// </summary>
+        internal static string Txt_OldPassword {
+            get {
+                return ResourceManager.GetString("Txt_OldPassword", resourceCulture);
             }
         }
         
@@ -3171,6 +3243,15 @@ namespace Resources {
         internal static string Txt_PasswordNotEmpty {
             get {
                 return ResourceManager.GetString("Txt_PasswordNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 New password is different from Confirm Password 的本地化字符串。
+        /// </summary>
+        internal static string Txt_PasswordNotMatch {
+            get {
+                return ResourceManager.GetString("Txt_PasswordNotMatch", resourceCulture);
             }
         }
         
@@ -4768,7 +4849,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///  查找类似 Welcome to the Compact MES Web Platform 的本地化字符串。
+        ///  查找类似 Welcome to the Compart MES Web Platform 的本地化字符串。
         /// </summary>
         internal static string Txt_WelcomeUseMES {
             get {

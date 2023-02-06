@@ -443,7 +443,7 @@
                 }).then(function (isConfirm) {
                     if (isConfirm.dismiss === 'cancel') {
                     } else {
-                        $.ajax({
+                        @*$.ajax({
                             type: "POST",
                             url: "/Subcontract/ConfirmShipment",
                             async: false,
@@ -462,16 +462,20 @@
                                 var endTitle = e.responseText.indexOf('</title>');
                                 swal(e.responseText.substring(startTitle, endTitle), '', 'error');
                             }
-                        });
+                        });*@
 
-                        @*$.post("/Subcontract/ConfirmShipment", { "jobList": jobNumList }, function (data) {
+                        $.post("/Subcontract/ConfirmShipment", { "jobList": jobNumList }, function (data) {
                             $('#myTable').DataTable().draw();
                             swal(
                                 '@Resource.Txt_Confirmed!',
                                 '@Resource.Txt_OutRecordConfirmSucceeded。',
                                 'success'
                             );
-                        });*@
+                        }).error(function (e) {
+                            var startTitle = e.responseText.indexOf('<title>') + 7;
+                            var endTitle = e.responseText.indexOf('</title>');
+                            swal(e.responseText.substring(startTitle, endTitle), '', 'error');
+                        });
                     }
 
                 });

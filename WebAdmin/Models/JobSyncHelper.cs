@@ -39,6 +39,7 @@ namespace WebAdmin.Models
             string cmdAddOper = string.Empty;
             string cmdSync = string.Empty;
             string currJob = string.Empty;
+            string Company = ConfigurationManager.AppSettings["CompanyCode"];
 
             lock (obj)
             {
@@ -67,14 +68,20 @@ namespace WebAdmin.Models
 	                            0 as SplitPerQty,
 	                            0 as Backflush,
                                 JH.ShortChar01 as ShortChar01,
-                                JO.SubContract as SubContract
+                                JO.SubContract as SubContract,
+                                JH.Checkbox01 as IsSpecMtl, JH.Character09 VendorId
                             from JobHead as JH
                             left join erp.JobOper as JO on JH.Company = JO.Company and JH.JobNum = JO.JobNum
                             left join erp.OpMaster as OM on JO.OpCode = OM.OpCode and JH.Company = OM.Company
                             where JH.Company = '{0}' and JobClosed = 0 and WebSync_c = 0 and exists(select * from erp.JobMtl as JM where JH.JobNum = JM.JobNum and JM.IssuedQty > 0) and JO.OpCode <> 'CU01'
+                                and ('{0}' != '19268F'
+                                        or ('{0}' = '19268F'
+                                                and exists(select 1 from erp.part x where JH.PartNum = x.PartNum and JH.Company = x.Company and x.ClassID like '2%')
+                                            )
+                                    )
                             order by JH.JobNum,JO.OprSeq
                         ",
-                        ConfigurationManager.AppSettings["CompanyCode"],
+                        Company,
                         ConfigurationManager.AppSettings["SkipOperList"]
                     );
 
@@ -118,7 +125,7 @@ namespace WebAdmin.Models
                                 ORDER BY JOH.JobNum, CASE WHEN LEFT(JOMT.HeatCode,4) IN ('NNNN','0000') THEN 999 ELSE 0 END, JOMT.HeatCode DESC
                                 ",
                                 currJob,
-                                ConfigurationManager.AppSettings["CompanyCode"]
+                                Company
                             );
                             DataTableCollection dtcEpicJobHeatCode = SqlHelper.GetTable(ConfigurationManager.AppSettings["EpicorConn"], CommandType.Text, cmdTextHeatcode, null);
 
@@ -148,8 +155,9 @@ namespace WebAdmin.Models
                             }
 
                             cmdAddJob = string.Format(@"
-                                    insert into EpicorJobHead(Company,JobNum,PartNum,RevisionNum,DrawNum,PartDescription,ProdQty,EpicorProdQty,IUM,SplitPerQty,ShortChar01,HeatCode,MaterialId,PartDesc,CustomVersion,CustomerPartNum,Division)
-                                    values('{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}')
+                                if not exists(select 1 from EpicorJobHead where Company = '{0}' and JobNum = '{1}')
+                                    insert into EpicorJobHead(Company,JobNum,PartNum,RevisionNum,DrawNum,PartDescription,ProdQty,EpicorProdQty,IUM,SplitPerQty,ShortChar01,HeatCode,MaterialId,PartDesc,CustomVersion,CustomerPartNum,Division,IsSpecMtl,VendorId)
+                                    values('{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}',{17},'{18}')
                                 ",
                                 ConfigurationManager.AppSettings["CompanyCode"],    //0:Company
                                 row["JobNum"],                                      //1:JobNum
@@ -167,7 +175,9 @@ namespace WebAdmin.Models
                                 partDesc.ToString().Replace("'", "‘"),             //13:Material Description
                                 customVersion,                                      //14:客户PO号
                                 customerPartNumber,                                 //15:客户物料代码
-                                Division                                            //16.Division
+                                Division,                                            //16.Division
+                                Convert.ToBoolean(row["IsSpecMtl"]) == true ? 1 : 0,                   //17:IsSpecMtl
+                                row["VendorId"]                                     //18:VendorId
                             );
                             LogHelper.Info(cmdAddJob);
                             SqlHelper.ExecteNonQueryText(cmdAddJob, null);
@@ -191,6 +201,7 @@ namespace WebAdmin.Models
                         }
 
                         cmdAddOper = string.Format(@"
+                            if not exists(select 1 from EpicorJobOper where Company = '{0}' and JobNum = '{1}' and OpCode = '{4}')
                                 insert into EpicorJobOper(Company,JobNum,AssemblySeq,OprSeq,OpCode,OpDesc,Backflush,SubContract)
                                 values('{0}','{1}',{2},{3},'{4}','{5}',{6},'{7}')
                             ",
@@ -206,24 +217,6 @@ namespace WebAdmin.Models
                         SqlHelper.ExecteNonQueryText(cmdAddOper, null);
                         
                     }
-
-                    /*
-                    cmdText = string.Format(@"
-                            delete
-                            from EpicorJobOper
-                            where id in (
-	                            select id
-	                            from EpicorJobOper as EJO
-	                            where not exists(
-		                            select *
-		                            from EpicorJobHead as EJH
-		                            where EJO.Company = EJH.Company and EJO.JobNum = EJH.JobNum
-	                            )
-                            )
-                        "
-                    );
-                    SqlHelper.ExecteNonQueryText(cmdText, null);
-                    */
 
                     string cmdTextClean = string.Format(@"
                             delete 
