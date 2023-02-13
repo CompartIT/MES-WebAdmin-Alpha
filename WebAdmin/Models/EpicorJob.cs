@@ -33,5 +33,7 @@ namespace WebAdmin.Models
         public string OpDesc { get; set; }
         public string DiscrepReason { get; set;}
         public string JobType { get; set; }
+        public string CreatedBy { get; set; }
+        public string CreatedDateTime { get; set; }
     }
 }

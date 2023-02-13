@@ -1,0 +1,303 @@
+﻿@using Resources;
+@{
+    ViewBag.Title = Resource.Menu_ReportCentre;
+    ViewBag.Item = Resource.Menu_MRBReworkReport;
+}
+
+@section style{
+    <style>
+        .table-condensed > thead > tr > td,
+        .table-condensed > tbody > tr > td,
+        .table-condensed > tfoot > tr > td {
+            padding: 3px;
+        }
+    </style>
+}
+
+
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <form runat="server" id="formList">
+        <div class="col-12">
+            <div class="card m-b-5">
+                <div class="card-body p-b-10">
+                    <div id="searchFields">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group m-b-5">
+                                    <label>Start Date Range</label>
+                                    <input class="form-control form-control-sm  input-daterange-datepicker" type="text" name="inputTimeRange" id="inputTimeRange" />
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>Product Family</label>
+                                            <input type="text" class="form-control form-control-sm" name="inputProductFamily" id="inputProductFamily" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>Item Code</label>
+                                            <input type="text" class="form-control form-control-sm" name="inputItemCode" id="inputItemCode" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>Lot #</label>
+                                            <input type="text" class="form-control form-control-sm" name="inputLotNo" id="inputLotNo" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>OP Code </label>
+                                            <input class="form-control form-control-sm" type="text" name="inputOpCode" id="inputOpCode" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>>User ID</label>
+                                            <input class="form-control form-control-sm" type="text" name="inputUserID" id="inputUserID" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group m-b-5">
+                                            <label>Site</label>
+                                            <input class="form-control form-control-sm" type="text" name="inputSite" id="inputSite" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> Search</button>
+                            <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> Show All</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnExport">
+                                    Export
+                                </button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 32px, 0px); top: 0px; left: 0px; will-change: transform;" id="ExportOptions">
+                                    <a class="dropdown-item" href="javascript:;" data-format="Excel"><i class="fa fa-file-excel-o"></i> Excel</a>
+                                    <a class="dropdown-item" href="javascript:;" data-format="PDF"><i class="fa fa-file-pdf-o"></i> PDF</a>
+                                    <a class="dropdown-item" href="javascript:;" data-format="Word"><i class="fa fa-file-word-o"></i> Word</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-b-5">
+                <div class="card-body p-t-0">
+                    <table id="tblDataList" class="table table-striped table-condensed table-bordered table-hover dataTable no-footer dataTablesObject dt-responsive nowrap" style="width:100%">
+                        <thead>
+                            <tr class="bordered-darkorange">
+                                <th>JType</th>
+                                <th>Trans type</th>
+                                <th>Epicor Job Num</th>
+                                <th>Product</th>
+                                <th>Item Code</th>
+                                <th>Lot No</th>
+                                <th>Op Code</th>
+                                <th>WDate</th>
+                                <th>ProdQty</th>
+                                <th>Print User Id</th>
+                                <th>Site</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+
+@section script {
+    <script>
+        $(function () {
+            var tableOrderBy = "";
+            var tableOrderDir = "";
+
+            //the date compare query for Top 10
+            var dateCompareSQL = "";
+
+            //绑定回车事件
+            $('#inputTimeRange,#inputProductFamily,#inputItemCode,#inputLotNo,#inputOpCode,#inputUserID,#inputSite').on("keypress", function () {
+                if (event.keyCode == "13") {
+                    event.preventDefault();
+                    $("#btnSearch").click();
+                }
+            });
+
+            // Daterange picker
+            $('.input-daterange-datepicker').daterangepicker({
+                autoUpdateInput: false,
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-info',
+                cancelClass: 'btn-inverse'
+            });
+            $('.input-daterange-datepicker').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('.input-daterange-datepicker').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+            //Load the List of the table
+            LoadList();
+
+            function LoadList() {
+
+                var table = $("#tblDataList").DataTable({
+                    serverSide: true, searching: false, processing: true, pageLength: 10, responsive: true, destroy: true,
+                    paging: true, lengthChange: true, info: true, ordering: true,
+                    ajax: {
+                        type: "post", url: "../Handler/MESData.ashx?CommandType=GetMRBRework",
+                        dataSrc: "data",
+                        data: function (d) {
+                            var param = {};
+                            param.start = d.start;
+                            param.length = d.length;
+                            param.order = d.order;
+                            tableOrderBy = d.columns[d.order[0].column].data; //For exporting
+                            tableOrderDir = d.order[0].dir; //For exporting
+                            param.columns = d.columns;
+                            param.SqlCriteria = getSearchCriteria();
+                            var formData = $("#filter_form").serializeArray();
+                            formData.forEach(function (e) {
+                                param[e.name] = e.value;
+                            });
+                            return param;
+                        },
+                    },
+                    columns: [
+                        { data: "JType", },
+                        { data: "Transtype", },
+                        { data: "EpicorJobNum", },
+                        { data: "ProductFamily", },
+                        { data: "ItemCode", },
+                        { data: "LotNo", },
+                        { data: "OpCode", },
+                        { data: "WDate", },
+                        { data: "ProdQty", },
+                        { data: "PrintUserId", },
+                        { data: "Site", },
+                    ],
+                    order: [[7, "desc"]]
+                });
+            }
+
+
+            function getSearchCriteria() {
+                var returnSQL = "";
+                if ($("#inputTimeRange").val().trim() != "") {
+                    var getVal = $("#inputTimeRange").val().trim().split('-');
+                    returnSQL += " and WDate between '" + getVal[0] + "' and '" + getVal[1] + "'";
+                }
+                if ($("#inputProductFamily").val().trim() != "") {
+                    returnSQL += " and ProductFamily='" + $("#inputProductFamily").val().trim() + "'";
+                }
+                if ($("#inputItemCode").val().trim() != "") {
+                    returnSQL += " and ItemCode='" + $("#inputItemCode").val().trim() + "'";
+                }
+                if ($("#inputLotNo").val().trim() != "") {
+                    returnSQL += " and LotNo='" + $("#inputLotNo").val().trim() + "'"
+                }
+                if ($("#inputOpCode").val().trim() != "") {
+                    returnSQL += " and OpCode='" + $("#inputOpCode").val().trim() + "'";
+                }
+                if ($("#inputSite").val().trim() != "") {
+                    returnSQL += " and Site like '%" + $("#inputSite").val().trim() + "%'";
+                }
+                if ($("#inputUserID").val().trim() != "") {
+                    returnSQL += " and PrintUserId='" + $("#inputUserID").val().trim() + "'";
+                }
+
+                return returnSQL;
+            }
+
+            //Search
+            $("#btnSearch").click(function () {
+                dateCompareSQL = "";
+
+                LoadList();
+            });
+            //Show All
+            $("#btnShowAll").click(function () {
+                ResetForm("formList");
+
+                dateCompareSQL = "";
+
+                LoadList();
+            });
+
+
+
+            //Export buttons
+            $("#ExportOptions a").click(function () {
+
+                var fileFormat = $(this).attr("data-format");
+                var fileExt = "";
+                switch (fileFormat) {
+                    case ("PDF"):
+                        fileExt = "pdf";
+                        break;
+                    case ("Excel"):
+                        fileExt = "xls";
+                        break;
+                    case ("Word"):
+                        fileExt = "doc";
+                        break;
+                }
+                swal({
+                    title: "",
+                    text: "Are you sure you want to export the report?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#1e88e5",
+                    confirmButtonText: "Download"
+                }).then(function (isConfirm) {
+
+                    var loadingMsg = "Generating report to download, Please wait...";
+                    HoldOnLoading(loadingMsg);
+
+                    var ReportCriteria = getSearchCriteria();
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('post', '../Reports/ReportForExport.aspx?ReportName=MRBReworkReport&ReportFormat=' + fileFormat + '&orderBy=' + tableOrderBy + '&dir=' + tableOrderDir + '&ReportCriteria=' + ReportCriteria);
+                    xhr.responseType = 'blob';
+                    xhr.send();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var blob = this.response;
+                            var reader = new FileReader();
+                            reader.readAsDataURL(blob);
+                            reader.onload = function (e) {
+                                var a = document.createElement('a');
+                                a.download = 'InputToBEReport.' + fileExt;
+                                a.href = e.target.result;
+                                $("body").append(a);
+                                a.click();
+                                $(a).remove();
+                                //Closing the mask
+                                HoldOn.close();
+                            }
+                        } else {
+                            // swal("Error, Please check with IT team!");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

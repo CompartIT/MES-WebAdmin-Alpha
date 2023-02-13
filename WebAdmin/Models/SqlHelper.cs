@@ -7,6 +7,14 @@ using System.Configuration;
 
 namespace WebAdmin.Models
 {
+    //Access to different database to get the data
+    public enum SQLConnectionSelection
+    {
+        MES = 0,
+        Epicor = 1,
+        EpicorReportingData = 2,
+    }
+
     public abstract class SqlHelper
     {
         /// <summary>
@@ -14,7 +22,26 @@ namespace WebAdmin.Models
         /// </summary>
 
         public static string connectionString = ConfigurationManager.AppSettings["CompartConn"];
+        public static string connectionString_Epicor = ConfigurationManager.AppSettings["EpicorConn"].ToString();
+        public static string connectionString_EpicorReportingData = ConfigurationManager.AppSettings["EpicorReportConn"].ToString();
 
+        public static string GetSqlConn(SQLConnectionSelection conn)
+        {
+            string result = string.Empty;
+            switch (conn)
+            {
+                case SQLConnectionSelection.Epicor:
+                    result = connectionString_Epicor;
+                    break;
+                case SQLConnectionSelection.EpicorReportingData:
+                    result = connectionString_EpicorReportingData;
+                    break;
+                default:
+                    result = connectionString;
+                    break;
+            }
+            return result;
+        }
 
         // Hashtable to store cached parameters
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());
@@ -472,6 +499,73 @@ namespace WebAdmin.Models
             catch
             {
 
+                throw;
+            }
+        }
+        #endregion
+
+        #region // ExecuteData
+        /// <summary>
+        /// Execute a SqlCommand that returns a resultset against the database specified in the connection string 
+        /// using the provided parameters.
+        /// </summary>
+        /// <remarks>
+        /// e.g.:  
+        ///  SqlDataReader r = ExecuteReader(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+        /// </remarks>
+        /// <param name="cmdType">the CommandType (stored procedure, text, etc.)</param>
+        /// <param name="cmdText">the stored procedure name or T-SQL command</param>
+        /// <param name="cmdParms">an array of SqlParamters used to execute the command</param>
+        /// <returns>A DataTable containing the results</returns>
+        public static DataTable ExecuteDataTable(CommandType cmdType, string cmdText, params SqlParameter[] cmdParms)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection conn = new SqlConnection(connectionString);
+            cmd.CommandTimeout = 0;
+            // we use a try/catch here because if the method throws an exception we want to 
+            // close the connection throw code, because no datareader will exist, hence the 
+            // commandBehaviour.CloseConnection will not work
+            try
+            {
+                PrepareCommand(cmd, conn, null, cmdType, cmdText, cmdParms);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dtReturn = new DataTable();
+                da.Fill(dtReturn);
+
+                //SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                cmd.Parameters.Clear();
+                return dtReturn;
+            }
+            catch
+            {
+                conn.Close();
+                throw;
+            }
+        }
+
+        //Based on the different database selection to access to get the DataTable
+        public static DataTable ExecuteDataTable(SQLConnectionSelection connectionSelect, CommandType cmdType, string cmdText, params SqlParameter[] cmdParms)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection conn = new SqlConnection(GetSqlConn(connectionSelect));
+            cmd.CommandTimeout = 0;
+            // we use a try/catch here because if the method throws an exception we want to 
+            // close the connection throw code, because no datareader will exist, hence the 
+            // commandBehaviour.CloseConnection will not work
+            try
+            {
+                PrepareCommand(cmd, conn, null, cmdType, cmdText, cmdParms);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dtReturn = new DataTable();
+                da.Fill(dtReturn);
+
+                //SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                cmd.Parameters.Clear();
+                return dtReturn;
+            }
+            catch
+            {
+                conn.Close();
                 throw;
             }
         }

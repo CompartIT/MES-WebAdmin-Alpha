@@ -1,0 +1,495 @@
+﻿@using Resources;
+@{
+    ViewBag.Title = Resource.Menu_Kanban;
+    ViewBag.Item = Resource.Menu_BurnishingStatus;
+}
+
+@section style{
+    <style>
+        .table td, th {
+            padding: 0px !important;
+        }
+
+        .ribbon-wrapper.card {
+            min-width: 130px;
+        }
+    </style>
+}
+
+<div class="row searchPanel hide">
+    <div class="col-lg-12">
+        <form id="formList">
+            <div class="card m-b-5">
+                <div class="card-body p-b-10">
+                    <div id="searchFields">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group m-b-5">
+                                            <label>Part#</label>
+                                            <input type="text" class="form-control form-control-sm" name="inputPartNum" id="inputPartNum" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group m-b-5">
+                                            <label>Machine ID</label>
+                                            <input type="text" class="form-control form-control-sm" name="inputMachineID" id="inputMachineID" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> Search</button>
+                                <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> Show All</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div id="KanbanContainer">
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+
+<div class="row PanelForGroupClone hide" id="PanelForGroupClone">
+    <div class="col-lg-12 col-md-12 col-12">
+        <div class="card m-b-5">
+            <div class="card-header">
+                <div class="card-actions">
+                    <a class="" data-action="collapse"><i class="ti-minus"></i></a>
+                    <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a>
+                    <a class="btn-close" data-action="close"><i class="ti-close"></i></a>
+                </div>
+                <h4 class="card-title m-b-0 LocationGroupName"></h4>
+            </div>
+            <div class="card-body b-t collapse show p-b-5 p-t-5">
+                <div class="row KanbanListContainer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ribbon-wrapper card p-l-5 p-r-5 m-b-0 p-b-0 PanelForKanbanClone hide " id="PanelForKanbanClone">
+    <div class="ribbon lblMachineBG"><i class="fa fa-product-hunt"></i> <span class="lblMachineID"></span></div>
+    <table class="table v-middle no-border no-padding font-11 m-b-0">
+        <tbody>
+            <tr>
+                <td>产品</td>
+                <td align="right"><span class="lblProductName"></span></td>
+            </tr>
+            <tr>
+                <td>工单</td>
+                <td align="right"><span class="lblJobNum"></span></td>
+            </tr>
+            <tr>
+                <td>工序</td>
+                <td align="right"><span class="lblOpCode"></span></td>
+            </tr>
+            <tr>
+                <td>开工时间</td>
+                <td align="right"><span class="lblStartTime"></span></td>
+            </tr>
+            <tr>
+                <td>已用时</td>
+                <td align="right"><span class="lblElapsedTime"></span></td>
+            </tr>
+            <tr>
+                <td>开工数量</td>
+                <td align="right"><span class="lblStartQty"></span></td>
+            </tr>
+            <tr>
+                <td>操作员</td>
+                <td align="right"><span class="lblOperator"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card PanelForSummarizeClone hide " id="PanelForSummarizeClone">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center">
+                        <span class="round lblSumLocation"></span>
+                    </div>
+                    <div class="align-self-center">
+                        <h3 class="card-title lblSumPercentage">Bandwidth usage</h3>
+                    </div>
+                </div>
+                <table class="table v-middle no-border">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>L-车床</td>
+                            <td>M-铣床</td>
+                        </tr>
+                        <tr>
+                            <td class="text-success">Running [运行]</td>
+                            <td><span class="label label-light-info lblRunning_l" style="width:35px"></span></td>
+                            <td><span class="label label-light-warning lblRunning_m" style="width:35px"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Idle [空闲]</td>
+                            <td><span class="label label-light-info lblIdle_l" style="width:35px"></span></td>
+                            <td><span class="label label-light-warning lblIdle_m" style="width:35px"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-info">Total [总数]</td>
+                            <td><span class="label label-light-info lblSumTotal_l" style="width:35px"></span></td>
+                            <td><span class="label label-light-warning lblSumTotal_m" style="width:35px"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-12">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script>
+        //Record the latest list of Kanban items and Groups
+        var LatestKanbanItems = [];
+        var LatestKanbanGroup = [];
+
+        //For showing the summary info of machine type, locations
+        var statisticsObj = {};
+
+        //Machine list
+        var machineList = {};
+
+        //Total location
+        var totalLocationLength = 0;
+
+
+        function GetElapsedTime(startTime, obj) {
+            var date = new Date().getTime() - Date.parse(new Date(startTime));
+            var days = date / 1000 / 60 / 60 / 24;
+            var daysRound = Math.floor(days);
+            var hours = date / 1000 / 60 / 60 - (24 * daysRound);
+            var hoursRound = Math.floor(hours);
+            var minutes = date / 1000 / 60 - (24 * 60 * daysRound) - (60 * hoursRound);
+            var minutesRound = Math.floor(minutes);
+            var seconds = date / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+            var secondsRound = Math.floor(seconds);
+            var time = (daysRound + "<span class='text-success'>d</span>" + hoursRound + "<span class='text-success'>h</span>" + minutesRound + "<span class='text-success'>m</span>" + secondsRound + "<span class='text-success'>s</span>");
+
+            //return time;
+            obj.html(time);
+        }
+
+
+        //Get the Machine List
+        function LoadMachineList() {
+            $.ajax({
+                type: "POST", url: "../Handler/MESData.ashx", dataType: "json", async: false,
+                data: { CommandType: "GetBurnishingMachine", sqlCriteria: getSearchCriteria() },
+                success: function (getData) {
+                    var totalMachine = 0;
+
+
+                    $(getData.data).each(function (i, t) {
+
+                        //Location's length
+                        totalLocationLength = i++;
+
+                        var subItem = {};
+                        subItem.machines = [];
+
+
+                        totalMachine += t.LocationGroupCount;
+
+
+                        //Adding machines
+                        $(t.MachineList).each(function (k, g) {
+                            //console.log(g.MachineID);
+                            subItem.machines.push(g.MachineID);
+                        });
+
+                        machineList[t.LocationGroup] = subItem;
+
+                    });
+                    //Adding the total
+                    machineList["total"] = totalMachine;
+
+                    console.log(machineList);
+                }
+            });
+        }
+
+        function LoadKanban() {
+
+            $.ajax({
+                type: "POST", url: "../Handler/MESData.ashx", dataType: "json",
+                data: { CommandType: "GetShopFloorKanbansByLocation_Burnishing", sqlCriteria: getSearchCriteria() },
+                success: function (getData) {
+
+                    //Empty the container before loading
+                    $("#KanbanContainer").empty();
+                    $("#inputLocation").empty().append("<option >All</option>");;
+
+                    $(getData.data).each(function (i, t) {
+                        DisplayKanban(t.LocationGroup, t.ShopFloorKanbanList);
+
+                        LatestKanbanGroup.push(t.LocationGroup);
+
+                        $("#inputLocation").append("<option value='" + t.LocationGroup + "'>" + t.LocationGroup + "</option>");
+
+
+                    });
+
+                    //Nothing running
+                    if (getData.data == "") {
+                        showUnRunningMachine();
+                    }
+                    //Showing the summary quanity of machine for each location
+                    var totalMachine = 0;
+                    var totalMachineStr = "";
+
+                    $.each(statisticsObj, function (k, v) {
+
+                        $(statisticsObj[k].machines).each(function (t, c) {
+
+                            console.log("totalMachineStr-" + totalMachineStr + "-" + "statisticsObj[k].machines" + totalMachineStr.indexOf(statisticsObj[k].machines));
+
+                            if (totalMachineStr.indexOf(c) < 0) {
+                                totalMachineStr += c + ",";
+
+                                console.log(c);
+                                totalMachine++;
+
+                            }
+                        });
+                    });
+                    //Gets the server time
+                    $("#lblServerTime").html("( Last Refresh Time: " + getData.serverTimeStamp + ")");
+                    $("#HeaderSummary").html("<div class='d-flex flex-row'><div class='b-r p-l-5 p-r-10 text-primary' >Total</div> <div class='b-r p-l-5 p-r-10 text-primary'>" + (totalMachine / machineList.total * 100).toFixed(2) + "%<h6 class='text-primary'>" + totalMachine + "/" + machineList.total + "</h6></div> </div>");
+
+
+                    //Refresh the list of location
+                    $('.selectpicker').selectpicker('refresh');
+
+                    //Remove these already finished Kanban Group and Items
+                    $(".PanelForGroupClone").each(function () {
+                        var getObj = $(this).attr("ID");
+
+                        //Not remove the clone object 
+                        if ($.inArray(getObj, LatestKanbanGroup) < 0 && getObj != 'PanelForGroupClone') {
+                            $("#" + getObj).remove();
+                        }
+                    });
+                    $(".PanelForKanbanClone").each(function () {
+                        var getObj = $(this).attr("ID");
+
+                        //Not remove the clone object 
+                        if ($.inArray(getObj, LatestKanbanItems) < 0 && getObj != 'PanelForKanbanClone') {
+                            $("#" + getObj).remove();
+                        }
+                    });
+
+                    //Empty the objects
+                    LatestKanbanItems = [];
+                    LatestKanbanGroup = [];
+                    statisticsObj = {};
+
+                    //Show the search panel
+                    $(".searchPanel").removeClass("hide");
+                },
+                error: function (err) {
+                }
+            });
+
+
+        }
+
+        //Display the Kanban by Locations
+        function DisplayKanban(Location, Kanbanlist) {
+            var ifClonedGrpExists = false;
+            var getClonedGrp;
+
+
+            //Check if the Group locations hasn't closed off
+            if ($("#" + Location).length == 0) {
+                getClonedGrp = $(".PanelForGroupClone").clone(true).removeClass("PanelForGroupClone hide").attr("ID", Location);
+            } else {
+                ifClonedGrpExists = true;
+                getClonedGrp = $("#" + Location);
+            }
+            getClonedGrp.find('.LocationGroupName').text(Location).attr("ID", Location + "_label");
+            $("#KanbanContainer").append(getClonedGrp);
+
+            //Display the detail kanban list
+            DisplayKanbanList(Kanbanlist, getClonedGrp);
+
+            //Here to display the un-running 
+            if (machineList[Location] != undefined) {
+                $.each(machineList[Location].machines, function (i, t) {
+
+                    if (statisticsObj[Location].machines != undefined) {
+                        //Check if exists in the Loaded machines
+                        if ($.inArray(t, statisticsObj[Location].machines) < 0) {
+                            //Append the un-loaded machines shwoing in Gray color
+
+                            var kanbanObj = $("#PanelForKanbanClone").clone(true).removeClass("hide").addClass("bg-gray");
+                            kanbanObj.removeAttr("ID");
+                            kanbanObj.find('.lblMachineBG').removeClass("ribbon-info ribbon-warning").addClass("ribbon-gray");
+                            kanbanObj.find('.lblMachineID').text(t);
+                            getClonedGrp.find(".KanbanListContainer").append(kanbanObj);
+
+                        }
+                    }
+                });
+            }
+        }
+
+        //Showing un-running machines
+        function showUnRunningMachine() {
+            $.each(machineList, function (k, v) {
+                console.log("here" + k);
+                var Location = k;
+                $.each(v.machines, function (i, t) {
+
+
+                    //Append the un-loaded machines shwoing in Gray color
+                    var getClonedGrp;
+
+                    //Check if the Group locations hasn't closed off
+                    if ($("#" + Location).length == 0) {
+                        getClonedGrp = $(".PanelForGroupClone").clone(true).removeClass("PanelForGroupClone hide").attr("ID", Location);
+                    } else {
+                        ifClonedGrpExists = true;
+                        getClonedGrp = $("#" + Location);
+                    }
+                    getClonedGrp.find('.LocationGroupName').text(Location).attr("ID", Location + "_label");
+                    $("#KanbanContainer").append(getClonedGrp);
+
+                    var kanbanObj = $("#PanelForKanbanClone").clone(true).removeClass("hide").addClass("bg-gray");
+                    kanbanObj.removeAttr("ID");
+                    kanbanObj.find('.lblMachineBG').removeClass("ribbon-info ribbon-warning").addClass("ribbon-gray");
+                    kanbanObj.find('.lblMachineID').text(t);
+                    getClonedGrp.find(".KanbanListContainer").append(kanbanObj);
+
+                });
+            });
+
+        }
+
+        //Getting the search Criteria
+        function getSearchCriteria() {
+            var returnSQL = "";
+            if ($("#inputPartNum").val().trim() != "") {
+                returnSQL += " and PartNum like'%" + $("#inputPartNum").val().trim() + "%'";
+            }
+
+            if ($("#inputMachineID").val().trim() != "") {
+                returnSQL += " and MachineID='" + $("#inputMachineID").val().trim() + "'";
+            }
+
+            return returnSQL;
+        }
+
+        //Display the kanbanlist and exclusive the FA machines
+        //Also display the un-running machine by each of locations
+        function DisplayKanbanList(kanbanList, container) {
+            $(kanbanList).each(function (s, item) {
+                //console.log("Machine:"+item.MachineID+"  -- "+ifFAExists);
+                if (statisticsObj[item.Location] == undefined) {
+                    //Adding the quanity for lath & mill
+                    var subItem = {};
+                    subItem.machines = [];
+                    subItem.machines.push(item.MachineID);
+
+                    statisticsObj[item.Location] = subItem;
+                } else {
+                    //Adding the Machines
+                    statisticsObj[item.Location].machines.push(item.MachineID);
+                }
+                LatestKanbanItems.push(item.JobNum);
+                //Check if the object exists
+                if ($("#" + item.JobNum).length > 0) {
+                    var kanbanObj = $("#" + item.JobNum);
+                    //console.log("kanban exists ID-" + item.JobNum);
+                } else {
+                    var kanbanObj = $("#PanelForKanbanClone").clone(true).removeClass("hide");
+                    kanbanObj.removeAttr("ID").attr("ID", item.JobNum);
+                    kanbanObj.addClass(item.JobNum);
+
+                    container.find(".KanbanListContainer").append(kanbanObj);
+
+                    //console.log("kanban doesn't exists ID-" + item.JobNum + " -- " + kanbanObj.attr("ID"));
+                }
+
+
+                //Show different color based on  FE_M or FE_L or Setup
+                var itemsBgColor = "ribbon-info";
+                var machineID = item.MachineID;
+
+                kanbanObj.find('.lblMachineBG').removeClass("ribbon-info ribbon-warning").addClass(itemsBgColor);
+                kanbanObj.find('.lblMachineID').text(machineID);
+                kanbanObj.find('.lblJobNum').text(item.JobNum);
+                kanbanObj.find('.lblProductName').text(item.PartNum);
+                kanbanObj.find('.lblOpCode').text(item.OpDesc);
+                var transTime = new Date(item.TransTime).Format("MM-dd HH:mm:ss");
+                kanbanObj.find('.lblStartTime').text(transTime);
+                setInterval(function () { GetElapsedTime(item.TransTime, kanbanObj.find('.lblElapsedTime')) }, 1000);
+                kanbanObj.find('.lblStartQty').text(item.ReportingQTY);
+                kanbanObj.find('.lblOperator').text(item.UserID);
+            });
+
+            console.log(statisticsObj);
+        }
+
+
+
+        $(function () {
+            //绑定回车事件
+            $('#inputPartNum,#inputMachineID').on("keypress", function () {
+                if (event.keyCode == "13") {
+                    event.preventDefault();
+                    $("#btnSearch").click();
+                }
+            });
+
+            LoadMachineList();
+            //First loading
+            LoadKanban();
+            setInterval(LoadKanban, 60000);
+
+            //Search
+            $("#btnSearch").click(function () {
+
+                LoadKanban();
+            });
+
+            //Show All
+            $("#btnShowAll").click(function () {
+                ResetForm("formList");
+                //Refresh the list of location
+                $('.selectpicker').selectpicker('refresh');
+
+
+                LoadKanban();
+            });
+
+        });
+    </script>
+}

@@ -88,10 +88,12 @@ namespace WebAdmin.Controllers
                         user.Values["LanguageShow"] = "English";
                         user.Values["Language"] = "en";
                     }
+
                     if (remember.Equals("1"))
                     {
                         user.Values["username"] = username;
                         user.Values["password"] = password;
+                        user.Values["passwordActual"] = password;
                         user.Expires = DateTime.Now.AddYears(1);
                         System.Web.HttpContext.Current.Response.SetCookie(user);
                     }
@@ -99,6 +101,7 @@ namespace WebAdmin.Controllers
                     {
                         user.Values["username"] = "";
                         user.Values["password"] = "";
+                        user.Values["passwordActual"] = password;
                         user.Expires = DateTime.Now.AddYears(1);
                         System.Web.HttpContext.Current.Response.SetCookie(user);
                     }

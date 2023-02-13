@@ -9,9 +9,8 @@
 
 @section style{
     <!-- Bootstrap CheckBox -->
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/iCheck/all.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/bootstrap-select2/select2.min.css" />
-    <link href="~/Content/Compart/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Content/Compart/assets/plugins/wizard/steps-mod.css" rel="stylesheet" />
+    <link href="~/Content/Compart/assets/plugins/icheck/skins/all.css" rel="stylesheet" />
 }
 
 <div class="card">
@@ -194,12 +193,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-
                     <h4 class="modal-title" id="myModalLabelTitle">@Resource.Txt_UserRight</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form id="frmUser" role="form">
+                    <form id="frmUserRole" role="form">
                         <div class="card-body">
                             @foreach (SimpleWebRole role in roleList)
                             {
@@ -213,7 +211,6 @@
                                 </div>
                             }
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -230,7 +227,10 @@
 @section script {
     @*<script src="~/Content/plugins/form-validator/multifield.js"></script>
         <script src="~/Content/plugins/form-validator/validator.js"></script>*@
-    <script src="~/Content/plugins/iCheck/icheck.js"></script>
+    <script src="~/Content/Compart/assets/plugins/wizard/jquery.steps.min.js"></script>
+    <script src="~/Content/Compart/assets/plugins/wizard/steps-mod.js"></script>
+    <script src="~/Content/Compart/assets/plugins/icheck/icheck-mod.js"></script>
+    <script src="~/Content/Compart/assets/plugins/icheck/icheck.init.js"></script>
     <script>
         var CONSTANT = {
             // datatables常量
@@ -837,7 +837,6 @@
         }
 
         function submitUserInfo() {
-
             var param = {};
             param.id = $("#txtModalId").val();
             param.UserName = $("#txtModalUserName").val();

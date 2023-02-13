@@ -1699,7 +1699,7 @@
     <value>密码至少包含1个大写字母、1个小写字母、1个数字，且长度为8位</value>
   </data>
   <data name="Txt_ErrPwdRegularEasy" xml:space="preserve">
-    <value>密码为字母、数字、字符，且长度为8至16位</value>
+    <value>密码为字母、数字、字符，且长度为6至16位</value>
   </data>
   <data name="Txt_ErrUserPwd" xml:space="preserve">
     <value>用户名或密码不正确</value>
@@ -1718,5 +1718,50 @@
   </data>
   <data name="Txt_PasswordNotMatch" xml:space="preserve">
     <value>新密码和确认密码不一致</value>
+  </data>
+  <data name="Txt_OutsourceShipment" xml:space="preserve">
+    <value>Penghantaran Sumber Luar</value>
+  </data>
+  <data name="Menu_BurnishingStatus" xml:space="preserve">
+    <value>Burnishing Status</value>
+  </data>
+  <data name="Menu_EBWStatus" xml:space="preserve">
+    <value>EBW Status</value>
+  </data>
+  <data name="Menu_FAMachineStatus" xml:space="preserve">
+    <value>FA Machine Status</value>
+  </data>
+  <data name="Menu_FEMachineStatus" xml:space="preserve">
+    <value>FE Machine Status</value>
+  </data>
+  <data name="Menu_Kanban" xml:space="preserve">
+    <value>Kanban</value>
+  </data>
+  <data name="Menu_LappingStatus" xml:space="preserve">
+    <value>Lapping Status</value>
+  </data>
+  <data name="Menu_OrbtialWelderStatus" xml:space="preserve">
+    <value>Orbtial Welder Status</value>
+  </data>
+  <data name="Txt_ErrPwd" xml:space="preserve">
+    <value>旧密码不正确</value>
+  </data>
+  <data name="Menu_InputToBEReport" xml:space="preserve">
+    <value>Input to BE Report</value>
+  </data>
+  <data name="Menu_MRBReworkReport" xml:space="preserve">
+    <value>MRB Rework Report</value>
+  </data>
+  <data name="Menu_ProcessTimeComparisonReport" xml:space="preserve">
+    <value>Process Time Report</value>
+  </data>
+  <data name="Menu_WIPReport" xml:space="preserve">
+    <value>WIP Report</value>
+  </data>
+  <data name="Txt_Splitter" xml:space="preserve">
+    <value>拆分人</value>
+  </data>
+  <data name="Txt_SplitTime" xml:space="preserve">
+    <value>拆分时间</value>
   </data>
 </root>

@@ -88,6 +88,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Burnishing Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_BurnishingStatus {
+            get {
+                return ResourceManager.GetString("Menu_BurnishingStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 EBW Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_EBWStatus {
+            get {
+                return ResourceManager.GetString("Menu_EBWStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Epicor Job Split 的本地化字符串。
         /// </summary>
         internal static string Menu_EpicorJobSplit {
@@ -151,6 +169,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 FA Machine Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_FAMachineStatus {
+            get {
+                return ResourceManager.GetString("Menu_FAMachineStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 FE Machine Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_FEMachineStatus {
+            get {
+                return ResourceManager.GetString("Menu_FEMachineStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 First Inspect 的本地化字符串。
         /// </summary>
         internal static string Menu_FirstInspect {
@@ -165,6 +201,15 @@ namespace Resources {
         internal static string Menu_FirstReport {
             get {
                 return ResourceManager.GetString("Menu_FirstReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Input to BE Report 的本地化字符串。
+        /// </summary>
+        internal static string Menu_InputToBEReport {
+            get {
+                return ResourceManager.GetString("Menu_InputToBEReport", resourceCulture);
             }
         }
         
@@ -214,6 +259,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Kanban 的本地化字符串。
+        /// </summary>
+        internal static string Menu_Kanban {
+            get {
+                return ResourceManager.GetString("Menu_Kanban", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Lapping Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_LappingStatus {
+            get {
+                return ResourceManager.GetString("Menu_LappingStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 MRB Fast Process 的本地化字符串。
         /// </summary>
         internal static string Menu_MRBFastProcess {
@@ -250,11 +313,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 MRB Rework Report 的本地化字符串。
+        /// </summary>
+        internal static string Menu_MRBReworkReport {
+            get {
+                return ResourceManager.GetString("Menu_MRBReworkReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 My EWI 的本地化字符串。
         /// </summary>
         internal static string Menu_MyEWI {
             get {
                 return ResourceManager.GetString("Menu_MyEWI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Orbtial Welder Status 的本地化字符串。
+        /// </summary>
+        internal static string Menu_OrbtialWelderStatus {
+            get {
+                return ResourceManager.GetString("Menu_OrbtialWelderStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Process Time Report 的本地化字符串。
+        /// </summary>
+        internal static string Menu_ProcessTimeComparisonReport {
+            get {
+                return ResourceManager.GetString("Menu_ProcessTimeComparisonReport", resourceCulture);
             }
         }
         
@@ -426,6 +516,15 @@ namespace Resources {
         internal static string Menu_WebJobSplit {
             get {
                 return ResourceManager.GetString("Menu_WebJobSplit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 WIP Report 的本地化字符串。
+        /// </summary>
+        internal static string Menu_WIPReport {
+            get {
+                return ResourceManager.GetString("Menu_WIPReport", resourceCulture);
             }
         }
         
@@ -1852,6 +1951,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Old Password is incorrect 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ErrPwd {
+            get {
+                return ResourceManager.GetString("Txt_ErrPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 The password must contains at least 1 uppercase letter, 1 lowercase letter and 1 number, and the length shall be 8 digits 的本地化字符串。
         /// </summary>
         internal static string Txt_ErrPwdRegular {
@@ -1861,7 +1969,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///  查找类似 The password is alphabetic, numeric  or character with a length of at least 8 digits 的本地化字符串。
+        ///  查找类似 The password is alphabetic, numeric  or character with a length of at least 6 digits 的本地化字符串。
         /// </summary>
         internal static string Txt_ErrPwdRegularEasy {
             get {
@@ -3157,6 +3265,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Outsource Shipment 的本地化字符串。
+        /// </summary>
+        internal static string Txt_OutsourceShipment {
+            get {
+                return ResourceManager.GetString("Txt_OutsourceShipment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Parameter 的本地化字符串。
         /// </summary>
         internal static string Txt_Parameter {
@@ -3913,7 +4030,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///  查找类似 Right 的本地化字符串。
+        ///  查找类似 Access 的本地化字符串。
         /// </summary>
         internal static string Txt_Right {
             get {
@@ -4197,6 +4314,24 @@ namespace Resources {
         internal static string Txt_Splitted {
             get {
                 return ResourceManager.GetString("Txt_Splitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Splitter 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Splitter {
+            get {
+                return ResourceManager.GetString("Txt_Splitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Split Time 的本地化字符串。
+        /// </summary>
+        internal static string Txt_SplitTime {
+            get {
+                return ResourceManager.GetString("Txt_SplitTime", resourceCulture);
             }
         }
         

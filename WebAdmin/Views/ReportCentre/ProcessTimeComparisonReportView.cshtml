@@ -1,0 +1,350 @@
+﻿@using Resources;
+@{
+    ViewBag.Title = Resource.Menu_ReportCentre;
+    ViewBag.Item = Resource.Menu_ProcessTimeComparisonReport;
+}
+
+@section style{
+    <style>
+        .table-condensed > thead > tr > td,
+        .table-condensed > tbody > tr > td,
+        .table-condensed > tfoot > tr > td {
+            padding: 3px;
+        }
+    </style>
+}
+
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <form runat="server" id="formList">
+        <div class="col-12">
+            <div class="card m-b-5">
+                <div class="card-body p-b-10">
+                    <div id="searchFields">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group m-b-5">
+                                    <label>Time Range</label>
+                                    <input class="form-control form-control-sm  input-daterange-datepicker" type="text" name="inputTimeRange" id="inputTimeRange" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group m-b-5">
+                                    <label>Job#</label>
+                                    <input type="text" class="form-control form-control-sm" name="inputJobNum" id="inputJobNum" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group m-b-5">
+                                    <label>OP Code</label>
+                                    <input class="form-control form-control-sm" type="text" name="inputOpCode" id="inputOpCode" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group m-b-5">
+                                    <label>Part#</label>
+                                    <input class="form-control form-control-sm" type="text" name="inputPartNum" id="inputPartNum" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group m-b-5">
+                                    <label>User ID</label>
+                                    <input class="form-control form-control-sm" type="text" name="inputUserID" id="inputUserID" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> Search</button>
+                            <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> Show All</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnExport">
+                                    Export
+                                </button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 32px, 0px); top: 0px; left: 0px; will-change: transform;" id="ExportOptions">
+                                    <a class="dropdown-item" href="javascript:;" data-format="Excel"><i class="fa fa-file-excel-o"></i> Excel</a>
+                                    <a class="dropdown-item" href="javascript:;" data-format="PDF"><i class="fa fa-file-pdf-o"></i> PDF</a>
+                                    <a class="dropdown-item" href="javascript:;" data-format="Word"><i class="fa fa-file-word-o"></i> Word</a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ProcessTimeRangeTitle" data-orignal-text="Quick View the Top 10">
+                                    Quick View the Top 10
+                                </button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 32px, 0px); top: 0px; left: 0px; will-change: transform;" id="ProcessTimeRange">
+                                    <a class="dropdown-item" href="javascript:;" data-range="today">Today's top 10</a>
+                                    <a class="dropdown-item" href="javascript:;" data-range="yesterday">Yesterday's top 10</a>
+                                    <a class="dropdown-item" href="javascript:;" data-range="last7">Top 10 in Last 7 Days</a>
+                                    <a class="dropdown-item" href="javascript:;" data-range="last30">Top 10 in Last 30 Days</a>
+                                    <a class="dropdown-item" href="javascript:;" data-range="thisMonth">Top 10 in This Month</a>
+                                    <a class="dropdown-item" href="javascript:;" data-range="lastMonth">Top 10 in Last Month</a>
+                                    <div class="dropdown-divider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-b-5">
+                <div class="card-body p-t-0">
+                    <table id="tblProcessTime" class="table table-striped table-condensed table-bordered table-hover dataTable no-footer dataTablesObject dt-responsive nowrap" style="width:100%">
+                        <thead>
+                            <tr class="bordered-darkorange">
+                                <th style="display:none"></th>
+                                <th>Job#</th>
+                                <th>Part#</th>
+                                <th>OP Code</th>
+                                <th>User ID</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Std OP Time</th>
+                                <th>Act OP Time</th>
+                                <th>Var%</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+
+@section script {
+    <script>
+        $(function () {
+            var tableOrderBy = "";
+            var tableOrderDir = "";
+
+            //If it's showing the top 10
+            var IsShowTop = false;
+            //the date compare query for Top 10
+            var dateCompareSQL = "";
+
+            //绑定回车事件
+            $('#inputTimeRange,#inputJobNum,#inputOpCode,#inputPartNum,#inputUserID').on("keypress", function () {
+                if (event.keyCode == "13") {
+                    console.log(1);
+                    event.preventDefault();
+                    $("#btnSearch").click();
+                }
+            });
+
+            // Daterange picker
+            $('.input-daterange-datepicker').daterangepicker({
+                autoUpdateInput: false,
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-info',
+                cancelClass: 'btn-inverse'
+            });
+            $('.input-daterange-datepicker').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('.input-daterange-datepicker').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+            //Load the List of the table
+            LoadList();
+
+            function LoadList() {
+                //if it's for top 10 then no need to show the paging info
+                var showInfo = true;
+                if (IsShowTop) {
+                    showInfo = false;
+                }
+
+                var table = $("#tblProcessTime").DataTable({
+                    serverSide: true, searching: false, processing: true, pageLength: 10, responsive: true, destroy: true,
+                    paging: showInfo, lengthChange: showInfo, info: showInfo, ordering: showInfo,
+                    ajax: {
+                        type: "post", url: "../Handler/MESData.ashx?CommandType=GetProcessTimeComparision",
+                        dataSrc: "data",
+                        data: function (d) {
+                            var param = {};
+                            param.start = d.start;
+                            param.length = IsShowTop == true ? 10 : d.length;
+                            param.order = d.order;
+                            tableOrderBy = IsShowTop == true ? d.columns[0].data : d.columns[d.order[0].column].data; //For exporting
+                            tableOrderDir = IsShowTop == true ? "desc" : d.order[0].dir; //For exporting
+                            param.columns = d.columns;
+                            param.SqlCriteria = getSearchCriteria();
+                            var formData = $("#filter_form").serializeArray();
+                            formData.forEach(function (e) {
+                                param[e.name] = e.value;
+                            });
+                            return param;
+                        },
+                    },
+                    columns: [
+                        { data: "ABSPercentageVariance", visible: false },
+                        { data: "JobNum", },
+                        { data: "PartNum", },
+                        { data: "OpCode", },
+                        { data: "UserID", },
+                        { data: "StartTime", },
+                        { data: "EndTime", },
+                        { data: "StandardOprTime", orderable: false },
+                        { data: "ActualOprTime", orderable: false },
+                        { data: function (e) { return e.Percentage + '%' }, orderable: false },
+                    ],
+                    order: [[0, "desc"]]
+                });
+            }
+
+            $("#ProcessTimeRange a").click(function () {
+                var getrangeTypeText = $(this).text().trim();
+                var rangeType = $(this).attr("data-range");
+                $("#ProcessTimeRangeTitle").text(getrangeTypeText);
+
+                switch (rangeType) {
+                    case ("today"):
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())=0";
+                        break;
+                    case ("yesterday"):
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())=1";
+                        break;
+                    case ("last7"):
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())<=7";
+                        break;
+                    case ("last30"):
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())<=30";
+                        break;
+                    case ("thisMonth"):
+                        dateCompareSQL = " and DateDiff(mm,StartTime,getdate())=0";
+                        break;
+                    case ("lastMonth"):
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())=1";
+                        break;
+                    default:
+                        dateCompareSQL = " and DateDiff(dd,StartTime,getdate())=0";
+                }
+                IsShowTop = true;
+
+                ResetForm("formList");
+
+                LoadList();
+            });
+
+            function getSearchCriteria() {
+                var returnSQL = "";
+                if ($("#inputTimeRange").val().trim() != "") {
+                    var getVal = $("#inputTimeRange").val().trim().split('-');
+                    returnSQL += " and CONVERT(date, StartTime,1) between '" + getVal[0] + "' and '" + getVal[1] + "'";
+                }
+                if ($("#inputJobNum").val().trim() != "") {
+                    returnSQL += " and JobNum='" + $("#inputJobNum").val().trim() + "'";
+                }
+                if ($("#inputOpCode").val().trim() != "") {
+                    returnSQL += " and OpCode='" + $("#inputOpCode").val().trim() + "'";
+                }
+                if ($("#inputPartNum").val().trim() != "") {
+                    returnSQL += " and PartNum='" + $("#inputPartNum").val().trim() + "'"
+                }
+                if ($("#inputUserID").val().trim() != "") {
+                    returnSQL += " and UserID='" + $("#inputUserID").val().trim() + "'";
+                }
+
+                if (IsShowTop == true) {
+                    return dateCompareSQL
+                } else {
+                    return returnSQL;
+                }
+            }
+
+            //Search
+            $("#btnSearch").click(function () {
+                IsShowTop = false;
+                dateCompareSQL = "";
+                //Reset the title of time range
+                ResetTopOptions();
+
+                LoadList();
+            });
+            //Show All
+            $("#btnShowAll").click(function () {
+                ResetForm("formList");
+                ResetTopOptions();
+
+                //Load Report
+                IsShowTop = false;
+                dateCompareSQL = "";
+
+                LoadList();
+            });
+
+
+            //Reset the Top 10 options
+            function ResetTopOptions() {
+                var getOriginalText = $("#ProcessTimeRangeTitle").attr("data-orignal-text");
+                $("#ProcessTimeRangeTitle").text(getOriginalText);
+            }
+
+            //Export buttons
+            $("#ExportOptions a").click(function () {
+
+                var fileFormat = $(this).attr("data-format");
+                var fileExt = "";
+                switch (fileFormat) {
+                    case ("PDF"):
+                        fileExt = "pdf";
+                        break;
+                    case ("Excel"):
+                        fileExt = "xls";
+                        break;
+                    case ("Word"):
+                        fileExt = "doc";
+                        break;
+                }
+                swal({
+                    title: "",
+                    text: "Are you sure you want to export the report?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#1e88e5",
+                    confirmButtonText: "Download"
+                }).then(function (isConfirm) {
+
+                    var loadingMsg = "Generating report to download, Please wait...";
+                    HoldOnLoading(loadingMsg);
+
+                    var ReportCriteria = getSearchCriteria();
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('post', '../Reports/ReportForExport.aspx?ReportName=ProcessTimeComparison&ReportFormat=' + fileFormat + '&orderBy=' + tableOrderBy + '&dir=' + tableOrderDir + '&ReportCriteria=' + ReportCriteria);
+                    xhr.responseType = 'blob';
+                    xhr.send();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var blob = this.response;
+                            var reader = new FileReader();
+                            reader.readAsDataURL(blob);
+                            reader.onload = function (e) {
+                                var a = document.createElement('a');
+                                a.download = 'MESProcessTimeReport.' + fileExt;
+                                a.href = e.target.result;
+                                $("body").append(a);
+                                a.click();
+                                $(a).remove();
+                                //Closing the mask
+                                HoldOn.close();
+                            }
+                        } else {
+                            // swal("Error, Please check with IT team!");
+                        }
+                    }
+                });
+
+
+            });
+        });
+    </script>
+}

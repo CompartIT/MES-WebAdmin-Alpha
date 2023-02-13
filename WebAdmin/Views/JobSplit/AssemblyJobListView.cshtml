@@ -274,6 +274,7 @@
             },
             {
                 "data": "PartDescription",
+                "orderable": false,
                 "targets": 3,
                 "render": function (data, type, row, meta) {
                     var s = "";
@@ -285,10 +286,12 @@
             },
             {
                 "data": "DrawNum",
+                "orderable": false,
                 "targets": 4
             },
             {
                 "data": "ProdQty",
+                "orderable": false,
                 "targets": 5,
                 "render": function (data, type, row, meta) {
                     return Math.round(data);
@@ -763,6 +766,7 @@
                     //导入文件上传完成之后的事件
                     $("#txt_file").on("fileuploaded", function (event, data, previewId, index) {
                         $("#txt_file").fileinput('refresh');
+                        swal('@Resource.Txt_UploadSucceeded！','','success');
                     });
                 }
                 return oFile;

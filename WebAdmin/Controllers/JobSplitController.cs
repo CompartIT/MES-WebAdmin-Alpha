@@ -181,7 +181,8 @@ namespace WebAdmin.Controllers
                                     JH.ShortChar01,
                                     JH.PrintUserId,
 									JH.PrintDateTime,
-									JH.PrintCount
+									JH.PrintCount,
+                                    JH.CreatedBy, convert(varchar(20),Jh.CreatedDateTime, 120) CreatedDateTime
                                 from WebJobHead as JH
                             ) as JHO
                         ) as JobHead
@@ -230,6 +231,8 @@ namespace WebAdmin.Controllers
                 job.PrintUserId = row["PrintUserId"].ToString();
                 job.PrintDateTime = row["PrintDateTime"].ToString();
                 job.PrintCount = row["PrintCount"].ToString();
+                job.CreatedBy = row["CreatedBy"].ToString();
+                job.CreatedDateTime = row["CreatedDateTime"].ToString();
 
                 jobList.Add(job);
             }

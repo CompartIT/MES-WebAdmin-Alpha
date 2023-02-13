@@ -69,6 +69,8 @@
                         <th>@Resource.Txt_Printer</th>
                         <th>@Resource.Txt_PrintTime</th>
                         <th>@Resource.Txt_PrintTimes</th>
+                        <th>@Resource.Txt_Splitter</th>
+                        <th>@Resource.Txt_SplitTime</th>
                         <th>@Resource.Txt_Print</th>
                     </tr>
                 </thead>
@@ -236,10 +238,20 @@
                 "targets": 9
             },
             {
+                "data": "CreatedBy",
+                "sortable": false,
+                "targets": 10,
+            },
+            {
+                "data": "CreatedDateTime",
+                "sortable": false,
+                "targets": 11,
+            },
+            {
                 "data": "JobNum",
                 "sortable": false,
                 "width": '100px',
-                "targets": 10,
+                "targets": 12,
                 "render": function (data, type, row, meta) {
                     return '<a href="javascript:jobTravelerPrint(\'' + row["id"] + '\',\'' + row["JobType"] + '\')">@Resource.Txt_LotTraveller</a>';
                 }
@@ -247,7 +259,7 @@
             {
                 "data": "JobType",
                 "visible": false,
-                "targets": 11
+                "targets": 13
             }
         ];
 

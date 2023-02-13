@@ -452,7 +452,7 @@ namespace WebAdmin.Controllers
                 //至少8个字符，至少1个大写字母，1个小写字母，1个数字和1个特殊字符：
                 //string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$,./<>?;':!@#$%*&]{8,}";
                 string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d,./<>?:;'!@_]{8,}";
-                string patternEasy = @"^[A-Za-z\d,./<>?:;'!@_]{8,}";
+                string patternEasy = @"^[A-Za-z\d,./<>?:;'!@_]{6,}";
 
                 string strSql = string.Format("SP_User_ChangePwd '{0}','','',{1}",
                         user.UserName, 0);
@@ -470,7 +470,8 @@ namespace WebAdmin.Controllers
                 {
                     returnResponse.Msg = GetResValue("Txt_ErrPwdRegular");
                 }
-                else if (UserType == "3" && !Regex.IsMatch(ChangePassword.NewPassword, patternEasy))
+                else if ((UserType == "2" || UserType == "3") 
+                    && !Regex.IsMatch(ChangePassword.NewPassword, patternEasy))
                 {
                     returnResponse.Msg = GetResValue("Txt_ErrPwdRegularEasy");
                 }
