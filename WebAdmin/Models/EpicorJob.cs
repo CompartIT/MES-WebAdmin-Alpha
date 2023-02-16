@@ -35,5 +35,6 @@ namespace WebAdmin.Models
         public string JobType { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedDateTime { get; set; }
+        public string HeatCode { get; set; }
     }
 }

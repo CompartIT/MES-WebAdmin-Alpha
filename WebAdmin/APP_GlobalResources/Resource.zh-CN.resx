@@ -1766,4 +1766,7 @@
   <data name="Txt_SplitTime" xml:space="preserve">
     <value>拆分时间</value>
   </data>
+  <data name="Txt_HeatNo" xml:space="preserve">
+    <value>Heat No.</value>
+  </data>
 </root>

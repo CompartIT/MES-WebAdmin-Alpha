@@ -57,9 +57,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Remark  备注</Value>
+                              <Value>Remark  </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#131313</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>备注</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#131313</Color>
                               </Style>
                             </TextRun>
@@ -124,7 +131,7 @@
                                           <TextRun>
                                             <Value>REV.LEVEL</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -138,7 +145,7 @@
                                           <TextRun>
                                             <Value>版本</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -173,7 +180,7 @@
                                           <TextRun>
                                             <Value>EFFECTIVE DATE</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -187,7 +194,7 @@
                                           <TextRun>
                                             <Value>生效日期</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -222,7 +229,7 @@
                                           <TextRun>
                                             <Value>P.C.N. &amp; E.C.N. NO.</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -236,7 +243,7 @@
                                           <TextRun>
                                             <Value>工序更改 &amp;工程更改编号</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -271,7 +278,7 @@
                                           <TextRun>
                                             <Value>INITIATOR</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -285,7 +292,7 @@
                                           <TextRun>
                                             <Value>起草</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -320,7 +327,7 @@
                                           <TextRun>
                                             <Value>DESCRIPTION OF CHANGE</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -334,7 +341,7 @@
                                           <TextRun>
                                             <Value>更改内容</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -374,7 +381,7 @@
                                           <TextRun>
                                             <Value>=Fields!Revision.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -409,7 +416,7 @@
                                           <TextRun>
                                             <Value>=Fields!EffectiveDate.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Format>yyyy-MM-dd</Format>
                                               <Color>#131313</Color>
                                             </Style>
@@ -445,7 +452,7 @@
                                           <TextRun>
                                             <Value>=Fields!PCN_ECN_NO.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -480,7 +487,7 @@
                                           <TextRun>
                                             <Value>=Fields!Iniatior.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -516,7 +523,7 @@
                                             <Value>=Fields!Description.Value</Value>
                                             <MarkupType>HTML</MarkupType>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                               <Color>#131313</Color>
                                             </Style>
                                           </TextRun>
@@ -586,7 +593,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>FORM#:EN-01-004-D</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Times New Roman</FontFamily>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -706,7 +715,7 @@
                             <TextRun>
                               <Value>CONTROLLED DOCUMENT REVISION HISTORY</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>#191919</Color>
@@ -722,7 +731,7 @@
                             <TextRun>
                               <Value>控制文件版本记录</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>#191919</Color>
@@ -823,7 +832,7 @@
                             <TextRun>
                               <Value>Prototype</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -835,7 +844,7 @@
                             <TextRun>
                               <Value>样件</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -889,7 +898,7 @@
                             <TextRun>
                               <Value>Pre-launch</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -901,7 +910,7 @@
                             <TextRun>
                               <Value>试生产</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -955,7 +964,7 @@
                             <TextRun>
                               <Value>Production</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -967,7 +976,7 @@
                             <TextRun>
                               <Value>正式投产</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1003,7 +1012,7 @@
                             <TextRun>
                               <Value>Key Contact/Phone</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1015,7 +1024,7 @@
                             <TextRun>
                               <Value>主要联系人/电话:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1053,7 +1062,7 @@
                             <TextRun>
                               <Value>Date (Orig.)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1065,7 +1074,7 @@
                             <TextRun>
                               <Value>日期(初始)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1101,7 +1110,7 @@
                             <TextRun>
                               <Value>Latest Date / Latest Rev.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1113,7 +1122,7 @@
                             <TextRun>
                               <Value>最新日期 / 最新版本</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1152,16 +1161,23 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Control Plan Number 控制计划编号: </Value>
+                              <Value>Control Plan Number </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>控制计划编号: </Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!ControlPlanNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1202,7 +1218,7 @@
                             <TextRun>
                               <Value>=Fields!KeyContact.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1240,7 +1256,7 @@
                             <TextRun>
                               <Value>=Fields!OriginDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -1279,7 +1295,7 @@
                             <TextRun>
                               <Value>=Fields!LatestDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -1287,14 +1303,14 @@
                             <TextRun>
                               <Value> / </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!LatestRev.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1333,32 +1349,60 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Part Number/Latest Change Level
-产品编号/最新更改级别
-Customer: </Value>
+                              <Value>Part Number/Latest Change Level</Value>
+                              <Style>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value xml:space="preserve">
+</Value>
                               <Style>
                                 <FontFamily>微软雅黑</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>产品编号/最新更改级别</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value xml:space="preserve">
+</Value>
+                              <Style>
+                                <FontFamily>微软雅黑</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>Customer: </Value>
+                              <Style>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!CustomerPartNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value> / REV: </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!CustomerRev.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1366,14 +1410,14 @@ Customer: </Value>
                               <Value>
 Compart: </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!PartNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1412,9 +1456,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Core Team 核心组员</Value>
+                              <Value>Core Team </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>核心组员</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1426,7 +1477,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CoreTeam.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1463,7 +1514,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Custoer Engineering Approval/Date (If Req'd)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1475,7 +1526,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>客户工程认可/日期(若要求)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1487,7 +1538,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CustomerEngApprovalDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -1528,7 +1579,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Part Name/Description</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1540,7 +1591,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!PartDesc.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1579,7 +1630,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Supplier/Plant Approval/Date</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1593,7 +1644,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>供应商/厂商认可/日期 </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1605,7 +1656,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!SupplierApprovalDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -1640,7 +1691,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Customer Quality Approval/Date (If Req'd)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1652,7 +1703,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>客户品质认可/日期(若要求) </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1664,7 +1715,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CustomerQualityApprovalDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -1703,9 +1754,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Supplier/Plant 供应商/厂商</Value>
+                              <Value>Supplier/Plant </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>供应商/厂商</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1745,7 +1803,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Supplier Code</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1757,7 +1815,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>供应商代码</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1795,7 +1853,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Other Approval/Date (If Req'd)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1807,7 +1865,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>其他认可/日期(若要求)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1845,7 +1903,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Other Approval/Date (If Req'd)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1857,7 +1915,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>其他认可/日期(若要求)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1900,7 +1958,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Supplier.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1940,7 +1998,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!SupplierCode.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -1978,7 +2036,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!OtherApprovalDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -2019,7 +2077,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!OtherApprovalDate2.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>yyyy-MM-dd</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -2158,7 +2216,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>产品编号</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2190,7 +2248,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>=ReportItems!PartNum.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2227,7 +2285,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>客户编号/版本</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2259,7 +2317,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>=ReportItems!Customer.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2296,7 +2354,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>工    序</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2328,7 +2386,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>=ReportItems!OpCodeDesc.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2365,7 +2423,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>适用机型</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>楷体_GB2312</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2397,7 +2455,7 @@ Compart: </Value>
                                           <TextRun>
                                             <Value>=ReportItems!Machine.Value</Value>
                                             <Style>
-                                              <FontFamily>微软雅黑</FontFamily>
+                                              <FontFamily>Times New Roman</FontFamily>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -2458,7 +2516,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>工序作业指导书          </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>26pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -2521,7 +2579,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>文件编号</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2553,7 +2611,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!ControlPlanNum1.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>Times New Roman</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2585,7 +2643,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>版本</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2617,7 +2675,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!Revision2.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>Times New Roman</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2654,7 +2712,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>起稿人</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2686,7 +2744,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!Iniatior1.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2718,7 +2776,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>日期</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2750,7 +2808,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!CreateDate2.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>Times New Roman</FontFamily>
                                                   <Format>yyyy-MM-dd</Format>
                                                 </Style>
                                               </TextRun>
@@ -2790,7 +2848,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>审核人</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2822,7 +2880,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!ReviewBy1.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2854,7 +2912,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>日期</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2886,7 +2944,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!ReviewDate2.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>Times New Roman</FontFamily>
                                                   <Format>yyyy-MM-dd</Format>
                                                 </Style>
                                               </TextRun>
@@ -2926,7 +2984,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>批准人</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2958,7 +3016,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!ApproveBy1.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2990,7 +3048,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>日期</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>楷体_GB2312</FontFamily>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -3022,7 +3080,7 @@ Compart: </Value>
                                               <TextRun>
                                                 <Value>=ReportItems!ApproveDate2.Value</Value>
                                                 <Style>
-                                                  <FontFamily>微软雅黑</FontFamily>
+                                                  <FontFamily>Times New Roman</FontFamily>
                                                   <Format>yyyy-MM-dd</Format>
                                                 </Style>
                                               </TextRun>
@@ -3621,7 +3679,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>工序描述</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3653,7 +3711,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!OpDesc.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
@@ -3690,7 +3748,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>工序时间</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3722,7 +3780,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CycleTime.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3764,7 +3822,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>注意事项</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3797,7 +3855,7 @@ Compart: </Value>
                               <Value>=Fields!AttentionItem.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -3831,7 +3889,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>夹具编号</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3863,7 +3921,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!FixtureNo.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3903,7 +3961,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>定义</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3935,7 +3993,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Definition.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3981,7 +4039,6 @@ Compart: </Value>
                       </Style>
                     </Subreport>
                     <ColSpan>2</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -4050,7 +4107,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>反应计划</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4082,7 +4139,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ResponsePlan.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
@@ -4128,7 +4185,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>FORM#:EN-01-003-D</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4148,6 +4205,7 @@ Compart: </Value>
                       </Style>
                     </Textbox>
                     <ColSpan>9</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -4285,7 +4343,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>ENGINEERING CHANGE NOTIFICATION</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>#191919</Color>
@@ -4301,7 +4359,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>工程变更通知</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>#191919</Color>
@@ -4384,16 +4442,23 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ECN NO.工程更改通知编号:</Value>
+                              <Value>ECN NO.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>工程更改通知编号:</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
                             <TextRun>
                               <Value>=Fields!ECNNo.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4430,9 +4495,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Date 日期:</Value>
+                              <Value>Date </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>日期:</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4503,7 +4575,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Customer Part/Dwg No.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4515,7 +4587,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>客户产品/图纸编号:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4548,7 +4620,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CustomerPartNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4584,7 +4656,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Rev.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4596,7 +4668,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>版本:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4632,7 +4704,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!CustomerRev.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4671,7 +4743,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Initiator.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4683,7 +4755,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>发起人:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4716,7 +4788,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Iniatior.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4752,7 +4824,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Initiator Dept.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4764,7 +4836,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>发起部门:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4797,7 +4869,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!IniDept.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4838,7 +4910,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Compart Part/Dwg No.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4850,7 +4922,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>肯发产品/图纸编号:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4883,7 +4955,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!PartNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4919,7 +4991,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Rev.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4931,7 +5003,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>版本:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -4967,7 +5039,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Revision.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5006,7 +5078,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>ECR No.:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5018,7 +5090,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>ECR编号:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5051,7 +5123,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ECRNo.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5095,7 +5167,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Implementation Date</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5107,7 +5179,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>更改执行日期:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5140,7 +5212,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!EffectiveDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Format>d</Format>
                                 <Color>#191919</Color>
                               </Style>
@@ -5177,7 +5249,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Affected Doc. No.(Rev.)</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5189,7 +5261,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>受影响的文件编号及版本</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5224,7 +5296,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!EffeRevision.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5264,7 +5336,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Title</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5276,7 +5348,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>题目:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5315,7 +5387,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Title.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5369,7 +5441,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Reasons</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5381,7 +5453,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>变更原因:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5424,7 +5496,7 @@ Compart: </Value>
                               <Value>=Fields!ChangeReason.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5481,7 +5553,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Description Of Change:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5493,7 +5565,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>变更详情:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5580,7 +5652,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Compart No.</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5592,7 +5664,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>肯发编号</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5627,7 +5699,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Old Revision</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5639,7 +5711,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>更改前版本</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5674,7 +5746,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Update Revision</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5686,7 +5758,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>更改后版本</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5850,7 +5922,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!PartNum.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5885,7 +5957,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!LastRevision.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5920,7 +5992,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!Revision.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -5995,9 +6067,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Change from 变更前:</Value>
+                              <Value>Change from </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>变更前:</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6040,7 +6119,7 @@ Compart: </Value>
                               <Value>=Fields!ChangeFrom.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6095,9 +6174,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Change to 变更后:</Value>
+                              <Value>Change to </Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>变更后:</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6137,7 +6223,7 @@ Compart: </Value>
                               <Value>=Fields!ChangeTo.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6189,9 +6275,16 @@ Compart: </Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Remarks备注:</Value>
+                              <Value>Remarks</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <Color>#191919</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>备注:</Value>
+                              <Style>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6228,7 +6321,7 @@ Compart: </Value>
                               <Value>=Fields!Remark.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6277,7 +6370,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Signatures in the section below indicate that the ECN has been approved and can be released and documents distributed:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6289,7 +6382,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Distribute to: MFG Mgmt      Material Mgmt</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6301,7 +6394,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>下面签名的部分表明,ECN已经批准,可以发布给相关部门:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6313,7 +6406,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>发放给: 生产管理层，物料管理层</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6359,7 +6452,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Checked By:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6371,7 +6464,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>审核人:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6383,7 +6476,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ReviewBy.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6397,7 +6490,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Date:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6409,7 +6502,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>日期:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6421,7 +6514,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ReviewDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6458,7 +6551,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Approved by:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6470,7 +6563,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>审核人:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6489,7 +6582,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ApproveBy.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6503,7 +6596,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Date:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6515,7 +6608,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>日期:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6527,7 +6620,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!ApproveDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6565,7 +6658,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Related Dept. Approval:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6577,7 +6670,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>相关部门审批:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6589,7 +6682,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!RelateDept.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6603,7 +6696,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>Date:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6615,7 +6708,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>日期:</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>楷体_GB2312</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6627,7 +6720,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>=Fields!LastestRelateDate.Value</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6670,7 +6763,7 @@ Compart: </Value>
                             <TextRun>
                               <Value>FORM#: EN-00-016-C</Value>
                               <Style>
-                                <FontFamily>微软雅黑</FontFamily>
+                                <FontFamily>Times New Roman</FontFamily>
                                 <Color>#191919</Color>
                               </Style>
                             </TextRun>
@@ -6774,30 +6867,37 @@ Compart: </Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>页码: </Value>
+                  <Value>页码:</Value>
                   <Style>
-                    <FontFamily>微软雅黑</FontFamily>
+                    <FontFamily>楷体_GB2312</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve"> </Value>
+                  <Style>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>
                 <TextRun>
                   <Value>=Globals!PageNumber - First(Fields!PageReduce.Value, "DataSet4")</Value>
                   <Style>
-                    <FontFamily>微软雅黑</FontFamily>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>
                 <TextRun>
                   <Value>/</Value>
                   <Style>
-                    <FontFamily>微软雅黑</FontFamily>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>
                 <TextRun>
                   <Value>=Globals!TotalPages - First(Fields!PageReduce.Value, "DataSet4")</Value>
                   <Style>
-                    <FontFamily>微软雅黑</FontFamily>
+                    <FontFamily>Times New Roman</FontFamily>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>

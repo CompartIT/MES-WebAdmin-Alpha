@@ -2167,6 +2167,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Heat No. 的本地化字符串。
+        /// </summary>
+        internal static string Txt_HeatNo {
+            get {
+                return ResourceManager.GetString("Txt_HeatNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Home Page 的本地化字符串。
         /// </summary>
         internal static string Txt_HomePage {

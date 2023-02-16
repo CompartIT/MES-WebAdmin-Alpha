@@ -101,7 +101,7 @@
                                 <TextRun>
                                   <Value>序号</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -136,7 +136,7 @@
                                 <TextRun>
                                   <Value>控制参数</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -171,7 +171,7 @@
                                 <TextRun>
                                   <Value>图位</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -206,7 +206,7 @@
                                 <TextRun>
                                   <Value>控制公差</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -241,7 +241,7 @@
                                 <TextRun>
                                   <Value>抽样频率</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -276,7 +276,7 @@
                                 <TextRun>
                                   <Value>检测仪器</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <Color>#131313</Color>
                                   </Style>
                                 </TextRun>
@@ -316,7 +316,7 @@
                                 <TextRun>
                                   <Value>=Fields!CriteriaSeq.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>
@@ -339,6 +339,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -353,7 +354,7 @@
                                   <Value>=Fields!Criteria.Value</Value>
                                   <MarkupType>HTML</MarkupType>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>
@@ -389,7 +390,7 @@
                                 <TextRun>
                                   <Value>=Fields!Figure.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>
@@ -426,7 +427,7 @@
                                   <Value>=Fields!Tolerance.Value</Value>
                                   <MarkupType>HTML</MarkupType>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>
@@ -462,7 +463,7 @@
                                 <TextRun>
                                   <Value>=Fields!TestFrequency.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>
@@ -498,7 +499,7 @@
                                 <TextRun>
                                   <Value>=Fields!TestInstrument.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <Color>#131313</Color>
                                   </Style>

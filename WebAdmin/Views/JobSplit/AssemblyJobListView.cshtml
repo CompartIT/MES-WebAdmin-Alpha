@@ -66,6 +66,7 @@
                         <th>@Resource.Txt_Material</th>
                         <th>@Resource.Txt_Description</th>
                         <th>@Resource.Txt_Drawing</th>
+                        <th>@Resource.Txt_HeatNo</th>
                         <th>@Resource.Txt_Quantity</th>
                         <th>@Resource.Txt_BatchQuantity</th>
                         <th>@Resource.Txt_Status</th>
@@ -290,9 +291,13 @@
                 "targets": 4
             },
             {
+                "data": "HeatCode",
+                "targets": 5
+            },
+            {
                 "data": "ProdQty",
                 "orderable": false,
-                "targets": 5,
+                "targets": 6,
                 "render": function (data, type, row, meta) {
                     return Math.round(data);
                 }
@@ -301,11 +306,11 @@
                 "data": "SplitPerQty",
                 "orderable": false,
                 "width": '100px',
-                "targets": 6
+                "targets": 7
             },
             {
                 "data": "Split",
-                "targets": 7,
+                "targets": 8,
                 "render": function (data, type, row, meta) {
                     var result = "";
                     if (data == "True") {
@@ -321,7 +326,7 @@
                 "data": "SplitPerQty",
                 "orderable": false,
                 "width": '180px',
-                "targets": 8,
+                "targets": 9,
                 "render": function (data, type, row, meta) {
                     if (row["Split"] == "False") {
                         return '<a href="javascript:openSetQtyView(\'' + row["id"] + '\',\'' + row["JobNum"] + '\',\'' + row["ProdQty"] + '\',\'' + row["SplitPerQty"] + '\')">@Resource.Txt_Modify</a> | <a href="javascript:openHeatCodeView(\'' + row["JobNum"] + '\')">HeatCode</a>';

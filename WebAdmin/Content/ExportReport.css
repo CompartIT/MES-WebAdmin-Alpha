@@ -258,3 +258,14 @@ table.dataTable thead {
         border: 1px solid #ffb22b;
     }
 }
+
+
+/*KanBan*/
+.bg-gray {
+    background-color: #f2f4f8 !important;
+    color: gainsboro;
+}
+
+.ribbon-gray {
+    background: #999
+}

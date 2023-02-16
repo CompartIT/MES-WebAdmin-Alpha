@@ -46,11 +46,11 @@ namespace WebAdmin.Controllers
             try
             {
                 HttpPostedFileBase file = Request.Files[0];
-
                 string filepath = string.Format("{0}tmp\\{1}.xls", Server.MapPath("~/"), Guid.NewGuid());
-
                 file.SaveAs(filepath);
-                string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + filepath + ";" + "Extended Properties=Excel 8.0;";
+
+                string ExcelEngine = ConfigurationManager.AppSettings["ExcelEngine"];
+                string strConn = "Provider=" + ExcelEngine + ";" + "Data Source=" + filepath + ";" + "Extended Properties=Excel 8.0;";
                 OleDbConnection conn = new OleDbConnection(strConn);
                 conn.Open();
                 string strExcel = "";
@@ -824,7 +824,8 @@ namespace WebAdmin.Controllers
                 job.IUM = row["IUM"].ToString();
                 job.Split = row["Split"].ToString();
                 job.SplitPerQty = row["SplitPerQty"].ToString();
-                
+                job.HeatCode = row["HeatCode"].ToString();
+
                 jobList.Add(job);
             }
 
@@ -900,6 +901,7 @@ namespace WebAdmin.Controllers
                 job.IUM = row["IUM"].ToString();
                 job.Split = row["Split"].ToString();
                 job.SplitPerQty = row["SplitPerQty"].ToString();
+                job.HeatCode = row["HeatCode"].ToString();
 
                 jobList.Add(job);
             }
@@ -1002,7 +1004,9 @@ namespace WebAdmin.Controllers
 	                        select ROW_NUMBER() over(order by {3} {4}) as rownum,*
 	                        from 
                             (
-                                select JH.id,JH.Company,JH.JobNum,JH.ParentJobNum,JH.EpicorJobNum,JH.PartNum,JH.RevisionNum,JH.DrawNum,JH.PartDescription,JH.ProdQty,JH.IUM,JH.JobClosed,JH.ClosedDate,JS.Split,JH.SplitDate,JS.SplitQty,JS.OperSeq,JS.OprQty,JS.JobStatus
+                                select JH.id,JH.Company,JH.JobNum,JH.ParentJobNum,JH.EpicorJobNum,JH.PartNum,JH.RevisionNum,
+                                    JH.DrawNum,JH.PartDescription,JH.ProdQty,JH.IUM,JH.JobClosed,JH.ClosedDate,JS.Split,
+                                    JH.SplitDate,JS.SplitQty,JS.OperSeq,JS.OprQty,JS.JobStatus,JH.HeatCode
                                 from WebJobHead as JH
                                 inner join (
 	                                select JS1.*,JO1.JobStatus
@@ -1012,7 +1016,7 @@ namespace WebAdmin.Controllers
                                 where JH.Company = '{0}'
                             )
                             as WebJobHead
-                            where  Company = '{0}' {5}
+                            where Company = '{0}' {5}
                         ) as JobHead
                         where rownum > {2} and  JobHead.Company = '{0}' {5}
                     ",
@@ -1046,6 +1050,8 @@ namespace WebAdmin.Controllers
                 job.CurOperQty = row["OprQty"].ToString();
                 job.CurOprStatus = row["JobStatus"].ToString();
                 job.Split = row["Split"].ToString();
+                job.HeatCode = row["HeatCode"].ToString();
+
                 jobList.Add(job);
             }
 

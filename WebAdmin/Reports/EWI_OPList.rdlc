@@ -85,7 +85,7 @@
                                 <TextRun>
                                   <Value>工  艺  流  程</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -123,7 +123,7 @@
                                 <TextRun>
                                   <Value>=Fields!OpCodeDesc.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>楷体_GB2312</FontFamily>
                                     <FontSize>6pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -154,7 +154,7 @@
                                 <TextRun>
                                   <Value>=Fields!OpCode.Value</Value>
                                   <Style>
-                                    <FontFamily>微软雅黑</FontFamily>
+                                    <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>6pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -170,6 +170,7 @@
                             </Border>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

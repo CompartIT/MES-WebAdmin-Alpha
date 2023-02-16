@@ -59,6 +59,7 @@
                         <th>@Resource.Txt_Material</th>
                         <th>@Resource.Txt_Description</th>
                         <th>@Resource.Txt_Drawing</th>
+                        <th>@Resource.Txt_HeatNo</th>
                         <th>@Resource.Txt_Quantity</th>
                         <th>@Resource.Txt_BatchQuantity</th>
                         <th>@Resource.Txt_Operation</th>
@@ -233,13 +234,17 @@
                     return data = data.substring(0, 50) + s;
                 }
             },
-
             {
                 "data": "DrawNum",
-                "targets": 4},
+                "targets": 4
+            },
+            {
+                "data": "HeatCode",
+                "targets": 5
+            },
             {
                 "data": "ProdQty",
-                "targets": 5,
+                "targets": 6,
                 "render": function (data, type, row, meta) {
                     return Math.round(data);
                 }
@@ -248,13 +253,13 @@
                 "data": "SplitPerQty",
                 "orderable": false,
                 "width": '100px',
-                "targets": 6
+                "targets": 7
             },
             {
                 "data": "SplitPerQty",
                 "orderable": false,
                 "width": '90px',
-                "targets": 7,
+                "targets": 8,
                 "render": function (data, type, row, meta) {
                     return '<a href="javascript:openSetQtyView(\'' + row["id"] + '\',\'' + row["JobNum"] + '\',\'' + row["ProdQty"] + '\',\'' + row["SplitPerQty"] + '\')">@Resource.Txt_Modify</a>';
                 }

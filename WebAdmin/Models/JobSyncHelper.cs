@@ -99,7 +99,7 @@ namespace WebAdmin.Models
                                  SELECT TOP(1) 
                                     JOH.ShortChar01 AS IsAssemblyJob,
                                     JOH.Character10 as CustomerVersion,
-                                    JOMT.HeatCode,
+                                    JOMT.HeatCode, JOMT.GRRNO,
                                     JOMT.MaterialDesc,
                                     case when JOH.Character04 = '' then JOMT.Specification else JOH.Character04 end Specification,
                                     FGPart.ShortChar01 AS DrawNum,
@@ -110,12 +110,25 @@ namespace WebAdmin.Models
                                 INNER JOIN Part AS FGPart ON JOH.Company = FGPart.Company AND JOH.PartNum = FGPart.PartNum
                                 INNER JOIN 
 	                                (
-		                                SELECT JOM.MtlSeq, JOM.JobNum,Case when isnull(joh.shortchar03,'')<>'' then JOH.shortchar03 else  LEFT(REPLACE(ISNULL(ITN.LotNum,'NNNN'),' ',''),4) end AS HeatCode, PH.PartDescription AS MaterialDesc, PH.Specification FROM Erp.JobMtl AS JOM
+		                                SELECT JOM.MtlSeq, JOM.JobNum,
+                                            Case when isnull(joh.shortchar03,'')<>'' then JOH.shortchar03 
+                                            else 
+                                                case when '{1}' = '19268F' then 
+                                                   case when charindex('[', Pl.HeatCode) > 0 then substring(Pl.HeatCode, 1, charindex('[', Pl.HeatCode)-1) else Pl.HeatCode end
+                                                else LEFT(REPLACE(ISNULL(ITN.LotNum,'NNNN'),' ',''),4) end 
+                                            end AS HeatCode, Pl.GRRNO,
+                                            PH.PartDescription AS MaterialDesc, PH.Specification FROM Erp.JobMtl AS JOM
 		                                INNER JOIN JobHead AS JOH ON JOH.JobNum = JOM.JobNum
 		                                INNER Join Jobmtl AS JOMTL ON JOMTL.JobNum = JOH.JobNum  AND JOMTL.Company = JOH.Company  and   JOMTL.IssuedQty >0 
 		                                INNER JOIN Part AS PMTL ON JOMTL.Company =PMTL.Company AND JOMTL.PartNum = PMTL.PartNum   and  PMTL.ClassId  in('FG','SFG','DM','1001','1002','1003','1004','2001','2002','2003','2004')
 		                                INNER JOIN Part AS PH ON JOMTL.Company = PH.Company AND JOMTL.PartNum = PH.PartNum
 		                                LEFT JOIN Erp.PartTran AS ITN ON ITN.JobNum = JOM.JobNum AND JOM.PartNum = ITN.PartNum  and ITN.TranType='STK-MTL'
+                                        outer apply(select top 1 case when len(ltrim(x.Character01))=0 then x.lotnum else x.Character01 end HeatCode,
+                                                        x.PartLotDescription GRRNO
+                                                    from PartLot x 
+                                                    where ITN.Company = x.Company and ITN.PartNum = x.PartNum and ITN.LotNum = x.LotNum
+                                                        and x.Company = '19268F'
+                                                    )  Pl
 		                                WHERE  
 		                                JOM.JobNum='{0}'
 	                                ) AS JOMT ON JOMT.JobNum = JOH.JobNum
@@ -130,6 +143,7 @@ namespace WebAdmin.Models
                             DataTableCollection dtcEpicJobHeatCode = SqlHelper.GetTable(ConfigurationManager.AppSettings["EpicorConn"], CommandType.Text, cmdTextHeatcode, null);
 
                             string heatCode = string.Empty;
+                            string GRRNO = string.Empty;
                             string materialId = string.Empty;
                             string partDesc = string.Empty;
                             string customVersion = string.Empty;
@@ -142,6 +156,7 @@ namespace WebAdmin.Models
                             {
                                 DataRow rowHeatCode = dtcEpicJobHeatCode[0].Rows[0];
                                 heatCode = rowHeatCode["HeatCode"].ToString();
+                                GRRNO = rowHeatCode["GRRNO"].ToString();
                                 partDesc  = rowHeatCode["MaterialDesc"].ToString();
                                 materialId = rowHeatCode["Specification"].ToString();
                                 splitQty = rowHeatCode["SplitQty"].ToString();
@@ -156,8 +171,8 @@ namespace WebAdmin.Models
 
                             cmdAddJob = string.Format(@"
                                 if not exists(select 1 from EpicorJobHead where Company = '{0}' and JobNum = '{1}')
-                                    insert into EpicorJobHead(Company,JobNum,PartNum,RevisionNum,DrawNum,PartDescription,ProdQty,EpicorProdQty,IUM,SplitPerQty,ShortChar01,HeatCode,MaterialId,PartDesc,CustomVersion,CustomerPartNum,Division,IsSpecMtl,VendorId)
-                                    values('{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}',{17},'{18}')
+                                    insert into EpicorJobHead(Company,JobNum,PartNum,RevisionNum,DrawNum,PartDescription,ProdQty,EpicorProdQty,IUM,SplitPerQty,ShortChar01,HeatCode,MaterialId,PartDesc,CustomVersion,CustomerPartNum,Division,IsSpecMtl,VendorId,GRRNO)
+                                    values('{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}',{17},'{18}','{19}')
                                 ",
                                 ConfigurationManager.AppSettings["CompanyCode"],    //0:Company
                                 row["JobNum"],                                      //1:JobNum
@@ -177,7 +192,8 @@ namespace WebAdmin.Models
                                 customerPartNumber,                                 //15:客户物料代码
                                 Division,                                            //16.Division
                                 Convert.ToBoolean(row["IsSpecMtl"]) == true ? 1 : 0,                   //17:IsSpecMtl
-                                row["VendorId"]                                     //18:VendorId
+                                row["VendorId"],                                     //18:VendorId
+                                GRRNO                                                //19:GRRNO
                             );
                             LogHelper.Info(cmdAddJob);
                             SqlHelper.ExecteNonQueryText(cmdAddJob, null);

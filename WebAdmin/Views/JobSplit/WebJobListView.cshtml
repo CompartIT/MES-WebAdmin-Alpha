@@ -58,6 +58,7 @@
                         <th>@Resource.Txt_Material</th>
                         <th>@Resource.Txt_Description</th>
                         <th>@Resource.Txt_Drawing</th>
+                        <th>@Resource.Txt_HeatNo</th>
                         <th>@Resource.Txt_QuantityStarted</th>
                         <th>@Resource.Txt_Reported</th>
                         <th>@Resource.Txt_OPSeq</th>
@@ -140,25 +141,30 @@
             },
             {
                 "data": "DrawNum",
-                "targets": 4 },
+                "targets": 4
+            },
+            {
+                "data": "HeatCode",
+                "targets": 5
+            },
             {
                 "data": "CurOperQty",
-                "targets": 5,
+                "targets": 6,
                 "render": function (data, type, row, meta) {
                     return Math.round(data);
                 }
             },
             {
                 "data": "SplitPerQty",
-                "targets": 6
-            },
-            {
-                "data": "SplitOpr",
                 "targets": 7
             },
             {
+                "data": "SplitOpr",
+                "targets": 8
+            },
+            {
                 "data": "Split",
-                "targets": 8,
+                "targets": 9,
                 "render": function (data, type, row, meta) {
                     var result = "";
                     if (data == "True") {
@@ -173,7 +179,7 @@
                 "data": "JobNum",
                 "sortable": false,
                 "width": '90px',
-                "targets": 9,
+                "targets": 10,
                 "render": function (data, type, row, meta) {
                     if (row["Split"] == "False") {
                         return '<a href="javascript:openSplitView(' + row["id"] + ',\'' + row["JobNum"] + '\',' + row["SplitOpr"] + ',' + row["SplitPerQty"] + ',' + row["CurOperQty"] + ')">@Resource.Txt_Split</a>';
