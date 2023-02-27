@@ -48,14 +48,15 @@ namespace WebAdmin
                         MachineID = r.Field<string>("MachineID"),
                         PDAID = r.Field<string>("PDAID"),
                         OpCode = r.Field<string>("OpCode"),
+                        OpDesc = r.Field<string>("OpDesc"),
                         OprSeq = r.Field<int>("OprSeq"),
                         OpGroup = r.Field<string>("OpGroup"),
                         StartTime = Convert.ToDateTime(r.Field<DateTime>("StartTime")).ToString("MM/dd/yyyy HH:mm:ss"),
                         EndTime =Convert.ToDateTime(r.Field<DateTime>("EndTime")).ToString("MM/dd/yyyy HH:mm:ss"),
                         StandardOprTime = r.Field<decimal>("StandardOprTime"),
                         ActualOprTime = r.Field<decimal>("ActualOprTime"),
-                        Percentage = r.Field<decimal>("PercentageVariance"),
-                        ABSPercentageVariance = r.Field<decimal>("ABSPercentageVariance"),
+                        Percentage = r.Field<decimal?>("PercentageVariance"),
+                        ABSPercentageVariance = r.Field<decimal?>("ABSPercentageVariance"),
                     }
                     );
         }
@@ -649,7 +650,7 @@ namespace WebAdmin
             DataTable dtRsult = SqlHelper.ExecuteDataTable(CommandType.Text, strSQL);
             TotalRecords = dtRsult.Rows.Count;
 
-            var skipIndex = (intPageStart - 1) * intPageLength;
+            var skipIndex = intPageStart;
 
             return (
 
@@ -763,9 +764,7 @@ namespace WebAdmin
             };
             DataTable dtRsult = SqlHelper.ExecuteDataTable(CommandType.StoredProcedure, "SP_Pagination", objParams);
 
-            TotalRecords = (int)SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "SP_Pagination_AllRecords",
-               new SqlParameter("@TableName", objQueryObjectName),
-               new SqlParameter("@SqlQuery", SqlQuery));
+            TotalRecords = dtRsult.Rows.Count;
 
             return (from r in dtRsult.AsEnumerable()
 
@@ -786,6 +785,65 @@ namespace WebAdmin
                         Site = r.Field<string>("Site"),
                     }
                     );
+        }
+
+        public static IEnumerable<MRBDetailEntity> GetMRBDetail(out int TotalRecords, int intPageStart, int intPageLength, string SqlQuery, string OrderColumn, string OrderDirection)
+        {
+            var objQueryObjectName = "V_MRBDetails";
+
+            SqlParameter[] objParams = {
+                new SqlParameter("@PageRowStart",intPageStart),
+                new SqlParameter("@PageLength",intPageLength),
+                new SqlParameter("@TableName",objQueryObjectName),
+                new SqlParameter("@FieldConnections","*"),
+                new SqlParameter("@SqlQuery",SqlQuery),
+                new SqlParameter("@OrderColumn",OrderColumn),
+                new SqlParameter("@OrderDirection",OrderDirection)
+            };
+            DataTable dtRsult = SqlHelper.ExecuteDataTable(CommandType.StoredProcedure, "SP_Pagination", objParams);
+
+            TotalRecords = dtRsult.Rows.Count;
+
+            return (from r in dtRsult.AsEnumerable()
+                    select new MRBDetailEntity
+                    {
+                        MRBID = r.Field<int?>("MRBID"),
+                        PartNum = r.Field<string>("PartNum"),
+                        EpicorJobNum = r.Field<string>("EpicorJobNum"),
+                        JobNum = r.Field<string>("JobNum"),
+                        HeatCode = r.Field<string>("HeatCode"),
+                        OprSeq = r.Field<int?>("OprSeq"),
+                        OPDescription = r.Field<string>("OPDescription"),
+                        Reason = r.Field<string>("Reason"),
+                        RejQty = r.Field<int?>("RejQty"),
+                        MRBCategoryDesc = r.Field<string>("MRBCategoryDesc"),
+                        ReportId = r.Field<string>("ReportId"),
+                        ReportPDAId = r.Field<string>("ReportPDAId"),
+                        ReportTime = r.Field<DateTime?>("ReportTime") != null ? Convert.ToDateTime(r.Field<DateTime?>("ReportTime")).ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        AcceptName = r.Field<string>("AcceptName"),
+                        ReceiptPDAId = r.Field<string>("ReceiptPDAId"),
+                        ReceiptTime = r.Field<DateTime?>("ReceiptTime") != null ? Convert.ToDateTime(r.Field<DateTime?>("ReceiptTime")).ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        MHAcceptName = r.Field<string>("MHAcceptName"),
+                        MHReceiptPDAId = r.Field<string>("MHReceiptPDAId"),
+                        MHReceiptTime = r.Field<DateTime?>("MHReceiptTime") != null ? Convert.ToDateTime(r.Field<DateTime?>("MHReceiptTime")).ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        ReworkQty = r.Field<int?>("ReworkQty"),
+                        ScrapQty = r.Field<int?>("ScrapQty"),
+                        ProcessId = r.Field<string>("ProcessId"),
+                        ProcessTime = r.Field<DateTime?>("ProcessTime") != null ? Convert.ToDateTime(r.Field<DateTime?>("ProcessTime")).ToString("yyyy-MM-dd hh:mm:ss") : "",
+                        ReJobNum = r.Field<string>("ReJobNum"),
+                        Location = r.Field<string>("Location"),
+                        ResourceId = r.Field<string>("ResourceId"),
+                        Remark = r.Field<string>("Remark"),
+                        VendorRemark = r.Field<string>("VendorRemark"),
+                        Category = r.Field<string>("Category"),
+                        Status1 = r.Field<string>("Status1"),
+                        Status = r.Field<string>("Status"),
+                        ShortChar01 = r.Field<string>("ShortChar01"),
+                        MachineId = r.Field<string>("MachineId"),
+                        MfgEmp = r.Field<string>("MfgEmp"),
+                        ProdFamily = r.Field<string>("ProdFamily"),
+                    }
+            );
         }
 
         /// <summary>

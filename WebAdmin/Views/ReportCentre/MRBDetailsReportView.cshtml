@@ -1,7 +1,7 @@
 ﻿@using Resources;
 @{
     ViewBag.Title = Resource.Menu_ReportCentre;
-    ViewBag.Item = Resource.Menu_WIPReport;
+    ViewBag.Item = Resource.Menu_MRBDetailsReport;
 }
 
 @section style{
@@ -14,62 +14,40 @@
     </style>
 }
 
+
 <!-- ============================================================== -->
 <!-- End Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
 <!-- ============================================================== -->
 <!-- Start Page Content -->
 <!-- ============================================================== -->
-
 <div class="card m-b-5">
     <div class="card-body p-b-10">
         <div id="searchFields">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group m-b-5">
-                        <label>Date Range</label>
-                        <input class="form-control form-control-sm  input-daterange-datepicker" type="text" name="inputTimeRange" id="inputTimeRange" />
-                    </div>
+                <div class="col-md-2">
+                    <label>JobNum</label>
+                    <input type="text" class="form-control form-control-sm" id="inputJobNum" />
                 </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>MO#</label>
-                                <input type="text" class="form-control form-control-sm" name="inputMoNum" id="inputMoNum" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>Heat Code</label>
-                                <input type="text" class="form-control form-control-sm" name="inputHeatCode" id="inputHeatCode" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>OP Code</label>
-                                <input type="text" class="form-control form-control-sm" name="inputOPCode" id="inputOPCode" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>Product Family</label>
-                                <input class="form-control form-control-sm" type="text" name="inputProductFamily" id="inputProductFamily" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>Part#</label>
-                                <input class="form-control form-control-sm" type="text" name="inputPartNum" id="inputPartNum" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group m-b-5">
-                                <label>User ID</label>
-                                <input class="form-control form-control-sm" type="text" name="inputUserID" id="inputUserID" />
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-2">
+                    <label>PartNum</label>
+                    <input type="text" class="form-control form-control-sm" id="inputPartNum" />
+                </div>
+                <div class="col-md-2">
+                    <label>ReasonDesc</label>
+                    <input type="text" class="form-control form-control-sm" id="inputReasonDesc" />
+                </div>
+                <div class="col-md-2">
+                    <label>ReportTime</label>
+                    <input class="form-control form-control-sm  input-daterange-datepicker" type="text" id="inputReportTime" />
+                </div>
+                <div class="col-md-2">
+                    <label>ProcessTime</label>
+                    <input class="form-control form-control-sm  input-daterange-datepicker" type="text" id="inputProcessTime" />
+                </div>
+                <div class="col-md-2">
+                    <label>Status</label>
+                    <input type="text" class="form-control form-control-sm" id="inputStatus" />
                 </div>
             </div>
         </div>
@@ -78,38 +56,54 @@
                 <button class="btn btn-secondary" type="button" id="btnSearch"><i class="fa fa-search"></i> Search</button>
                 <button class="btn btn-info" type="button" id="btnShowAll"><i class="fa fa-list"></i> Show All</button>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btnExport">
-                        Export
+                    <button type="button" class="btn btn-secondary" data-format="Excel" href="javascript:;" id="btnExport">
+                        Export Excel
                     </button>
-                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 32px, 0px); top: 0px; left: 0px; will-change: transform;" id="ExportOptions">
-                        <a class="dropdown-item" href="javascript:;" data-format="Excel"><i class="fa fa-file-excel-o"></i> Excel</a>
-                        <a class="dropdown-item" href="javascript:;" data-format="PDF"><i class="fa fa-file-pdf-o"></i> PDF</a>
-                        <a class="dropdown-item" href="javascript:;" data-format="Word"><i class="fa fa-file-word-o"></i> Word</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="card">
+<<div class="card">
     <div class="card-body">
         <table id="myTable" class="bordered" width="100%">
             <thead>
                 <tr role="row">
-                    <th>Jtype</th>
-                    <th>TransType</th>
-                    <th>MO#</th>
-                    <th>Product Family</th>
-                    <th>Item Code</th>
+                    <th>MRBID</th>
+                    <th>PartNum</th>
+                    <th>Epicor Job Num</th>
+                    <th>JobNum</th>
                     <th>Heat Code</th>
-                    <th>Lot#</th>
-                    <th>OP Code</th>
-                    <th>OP Desc</th>
-                    <th>OP Code Next</th>
-                    <th>OP Desc Next</th>
-                    <th>WDate</th>
-                    <th>WIP QTY</th>
-                    <th>UserId</th>
+                    <th>OprSeq</th>
+                    <th>OP Description</th>
+                    <th>Reason</th>
+                    <th>Reject Qty</th>
+                    <th>MRB Category Desc</th>
+                    <th>Report User</th>
+                    <th>Report PDAId</th>
+                    <th>Report Time</th>
+                    <th>Receipt User</th>
+                    <th>Receipt PDAId</th>
+                    <th>Receipt Time</th>
+                    <th>MH Receipt User</th>
+                    <th>MH Receipt PDAId</th>
+                    <th>MH Receipt Time</th>
+                    <th>Rework Qty</th>
+                    <th>Scrap Qty</th>
+                    <th>Process User</th>
+                    <th>Process Time</th>
+                    <th>Rework JobNum</th>
+                    <th>Location</th>
+                    <th>ResourceId</th>
+                    <th>Remark</th>
+                    <th>Vendor Remark</th>
+                    <th>Category</th>
+                    <th>Status1</th>
+                    <th>Status</th>
+                    <th>Draw</th>
+                    <th>MachineId</th>
+                    <th>Mfg User</th>
+                    <th>Prod Family</th>
                 </tr>
             </thead>
         </table>
@@ -199,77 +193,246 @@
 
         };
 
-        var pageTableId = 'WIPReport', table;
+        var pageTableId = 'MRBReworkTimeReport', table;
         var columnDefs = [
             {
-                data: "Jtype",
+                data: "MRBID",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 0 },
+                width:60,
+                "targets": 0},
             {
-                data: "TransType",
+                data: "PartNum",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 1 },
+                width: 100,
+                "targets": 1},
             {
-                data: "MONo",
-                "targets": 2 },
+                data: "EpicorJobNum",
+                width: 100,
+                "targets": 2},
             {
-                data: "ProductFamily",
-                "targets": 3, },
-            {
-                data: "ItemCode",
-                "targets": 3, },
+                data: "JobNum",
+                width: 100,
+                "targets": 3},
             {
                 data: "HeatCode",
-                "targets": 5, },
+                width: 70,
+                "targets": 4},
             {
-                data: "LotNo",
-                "targets": 6, },
-            {
-                data: "OPCode",
-                "targets": 7, },
-            {
-                data: "OPDesc",
+                data: "OprSeq",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 8, },
+                width: 40,
+                "targets": 5},
             {
-                data: "OPCodeNext",
+                data: "OPDescription",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 9, },
+                width: 120,
+                "targets": 6},
             {
-                data: "OPDescNext",
+                data: "Reason",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 10, },
+                width: 120,
+                "targets": 7},
             {
-                data: "WDate",
+                data: "RejQty",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 11, },
+                width: 30,
+                "targets": 8},
             {
-                data: "WIPQTY",
+                data: "MRBCategoryDesc",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 12, },
+                width: 110,
+                "targets": 9
+            },
             {
-                data: "UserId",
+                data: "ReportId",
                 "orderable": false,
                 "bSortable": false,
-                "targets": 13, },
+                width: 60,
+                "targets": 10
+            },
+            {
+                data: "ReportPDAId",
+                "orderable": false,
+                "bSortable": false,
+                width: 120,
+                "targets": 11
+            },
+            {
+                data: "ReportTime",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 12
+            },
+            {
+                data: "AcceptName",
+                "orderable": false,
+                "bSortable": false,
+                width: 120,
+                "targets": 13
+            },
+            {
+                data: "ReceiptPDAId",
+                "orderable": false,
+                "bSortable": false,
+                width: 130,
+                "targets": 14
+            },
+            {
+                data: "ReceiptTime",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 15
+            },
+            {
+                data: "MHAcceptName",
+                "orderable": false,
+                "bSortable": false,
+                width: 120,
+                "targets": 16
+            },
+            {
+                data: "MHReceiptPDAId",
+                "orderable": false,
+                "bSortable": false,
+                width: 130,
+                "targets": 17
+            },
+            {
+                data: "MHReceiptTime",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 18
+            },
+            {
+                data: "ReworkQty",
+                "orderable": false,
+                "bSortable": false,
+                width: 40,
+                "targets": 19
+            },
+            {
+                data: "ScrapQty",
+                "orderable": false,
+                "bSortable": false,
+                width: 40,
+                "targets": 20
+            },
+            {
+                data: "ProcessId",
+                "orderable": false,
+                "bSortable": false,
+                width: 60,
+                "targets": 21
+            },
+            {
+                data: "ProcessTime",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 22
+            },
+            {
+                data: "ReJobNum",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 23
+            },
+            {
+                data: "Location",
+                "orderable": false,
+                "bSortable": false,
+                width: 50,
+                "targets": 24
+            },
+            {
+                data: "ResourceId",
+                "orderable": false,
+                "bSortable": false,
+                width: 80,
+                "targets": 25
+            },
+            {
+                data: "Remark",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 26
+            },
+            {
+                data: "VendorRemark",
+                "orderable": false,
+                "bSortable": false,
+                width: 100,
+                "targets": 27
+            },
+            {
+                data: "Category",
+                "orderable": false,
+                "bSortable": false,
+                width: 80,
+                "targets": 28
+            },
+            {
+                data: "Status1",
+                "orderable": false,
+                "bSortable": false,
+                width: 120,
+                "targets": 29
+            },
+            {
+                data: "Status",
+                "orderable": false,
+                "bSortable": false,
+                width: 40,
+                "targets": 30
+            },
+            {
+                data: "ShortChar01",
+                "orderable": false,
+                "bSortable": false,
+                width: 40,
+                "targets": 31
+            },
+            {
+                data: "MachineId",
+                "orderable": false,
+                "bSortable": false,
+                width: 70,
+                "targets": 32
+            },
+            {
+                data: "MfgEmp",
+                "orderable": false,
+                "bSortable": false,
+                width: 120,
+                "targets": 33
+            },
+            {
+                data: "ProdFamily",
+                "orderable": false,
+                "bSortable": false,
+                width: 50,
+                "targets": 34
+            },
         ];
 
         $(function () {
             var tableOrderBy = "";
             var tableOrderDir = "";
 
-            //the date compare query for Top 10
-            var dateCompareSQL = "";
-
             //绑定回车事件
-            $('#inputTimeRange,#inputMoNum,#inputHeatCode,#inputOPCode').on("keypress", function () {
+            $('#inputJobNum,#inputPartNum,#inputReasonDesc,#inputStatus').on("keypress", function () {
                 if (event.keyCode == "13") {
                     event.preventDefault();
                     $("#btnSearch").click();
@@ -320,7 +483,7 @@
                     "serverSide": true,
                     "searching": true,
                     ajax: {
-                        type: "post", url: "../Handler/MESData.ashx?CommandType=GetWIP",
+                        type: "post", url: "../Handler/MESData.ashx?CommandType=GetMRBDetail",
                         dataSrc: "data",
                         data: function (d) {
                             var param = {};
@@ -339,34 +502,33 @@
                         },
                     },
                     columns: columnDefs,
-                    order: [[12, "desc"]]
+                    order: [[7, "desc"]]
                 });
             }
 
 
             function getSearchCriteria() {
                 var returnSQL = "";
-                if ($("#inputTimeRange").val().trim() != "") {
-                    var getVal = $("#inputTimeRange").val().trim().split('-');
-                    returnSQL += " and Wdate between '" + getVal[0] + "' and '" + getVal[1] + "'";
+                if ($("#inputReportTime").val().trim() != "") {
+                    var getVal = $("#inputReportTime").val().trim().split('-');
+                    returnSQL += " and ReportTime between '" + getVal[0] + "' and '" + getVal[1] + "'";
                 }
-                if ($("#inputMoNum").val().trim() != "") {
-                    returnSQL += " and MONo='" + $("#inputMoNum").val().trim() + "'";
+                if ($("#inputProcessTime").val().trim() != "") {
+                    var getVal = $("#inputProcessTime").val().trim().split('-');
+                    returnSQL += " and ProcessTime between '" + getVal[0] + "' and '" + getVal[1] + "'";
                 }
-                if ($("#inputHeatCode").val().trim() != "") {
-                    returnSQL += " and HeatCode='" + $("#inputHeatCode").val().trim() + "'";
-                }
-                if ($("#inputOPCode").val().trim() != "") {
-                    returnSQL += " and OPCode='" + $("#inputOPCode").val().trim() + "'"
-                }
-                if ($("#inputProductFamily").val().trim() != "") {
-                    returnSQL += " and ProductFamily='" + $("#inputProductFamily").val().trim() + "'";
+
+                if ($("#inputJobNum").val().trim() != "") {
+                    returnSQL += " and JobNum like '%" + $("#inputJobNum").val().trim() + "%'";
                 }
                 if ($("#inputPartNum").val().trim() != "") {
-                    returnSQL += " and ItemCode='" + $("#inputPartNum").val().trim() + "'";
+                    returnSQL += " and PartNum like '%" + $("#inputPartNum").val().trim() + "%'";
                 }
-                if ($("#inputUserID").val().trim() != "") {
-                    returnSQL += " and UserID='" + $("#inputUserID").val().trim() + "'";
+                if ($("#inputReasonDesc").val().trim() != "") {
+                    returnSQL += " and ReasonDesc like N'%" + $("#inputReasonDesc").val().trim() + "%'";
+                }
+                if ($("#inputStatus").val().trim() != "") {
+                    returnSQL += " and Status = '" + $("#inputStatus").val().trim() + "'";
                 }
 
                 return returnSQL;
@@ -388,8 +550,7 @@
             });
 
             //Export buttons
-            $("#ExportOptions a").click(function () {
-
+            $("#btnExport").click(function () {
                 var fileFormat = $(this).attr("data-format");
                 var fileExt = "";
                 switch (fileFormat) {
@@ -412,24 +573,25 @@
                     confirmButtonColor: "#1e88e5",
                     confirmButtonText: "Download"
                 }).then(function (isConfirm) {
-                    console.log(1);
                     var loadingMsg = "Generating report to download, Please wait...";
                     HoldOnLoading(loadingMsg);
 
-                    var ReportCriteria = getSearchCriteria();
+                    var RegN = new RegExp("%", "g");
+                    var ReportCriteria = getSearchCriteria().replace(RegN, '%25');
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open('post', '../Reports/ReportForExport.aspx?ReportName=WIPReport&ReportFormat=' + fileFormat + '&orderBy=' + tableOrderBy + '&dir=' + tableOrderDir + '&ReportCriteria=' + ReportCriteria);
+                    xhr.open('post', '../Reports/ReportForExport.aspx?ReportName=MRBDetailsReport&ReportFormat=' + fileFormat + '&orderBy=' + tableOrderBy + '&dir=' + tableOrderDir + '&ReportCriteria=' + ReportCriteria);
                     xhr.responseType = 'blob';
                     xhr.send();
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == 4 && xhr.status == 200) {
                             var blob = this.response;
+                            console.log(this);
                             var reader = new FileReader();
                             reader.readAsDataURL(blob);
                             reader.onload = function (e) {
                                 var a = document.createElement('a');
-                                a.download = 'WIPReport.' + fileExt;
+                                a.download = 'MRBDetailsReport.' + fileExt;
                                 a.href = e.target.result;
                                 $("body").append(a);
                                 a.click();
@@ -437,10 +599,9 @@
                                 //Closing the mask
                                 HoldOn.close();
                             }
-                        } else {
-                            // swal("Error, Please check with IT team!");
                         }
                     }
+
                 });
             });
         });

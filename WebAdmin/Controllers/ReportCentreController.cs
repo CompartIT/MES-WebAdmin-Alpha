@@ -24,6 +24,11 @@ namespace WebAdmin.Controllers
             return View();
         }
 
+        public ActionResult MRBDetailsReportView()
+        {
+            return View();
+        }
+
         public ActionResult ProcessTimeComparisonReportView()
         {
             return View();

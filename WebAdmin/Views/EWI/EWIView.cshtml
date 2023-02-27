@@ -456,8 +456,11 @@
             });
 
             $('.select2').change(function () {
+                var fullname = $(this).val();
+                if (fullname.substr(-2) == 'KT')
+                    fullname = fullname.substring(0,8);
                 $('#txtCustomerPartNum').val($(this).text().split(' | ')[1]);
-                $('#txtControlPlanNum').val($(this).val() + '-PWI');
+                $('#txtControlPlanNum').val(fullname + '-PWI');
                 $("#txtCustomerPartNum").focus();
             })
         });
@@ -597,7 +600,7 @@
                         $("#ModalEWIView").modal();
                     }
                     else {
-                        swal('@Resource.Txt_ContractIT', '@Resource.Txt_NoDetailsPartnum！', 'error');
+                        swal('@Resource.Txt_ContactIT', '@Resource.Txt_NoDetailsPartnum！', 'error');
                     }
                 }
             });
@@ -651,7 +654,7 @@
                         });
                     }
                     else {
-                        swal('@Resource.Txt_ContractIT', getResponse.Msg, 'error');
+                        swal('@Resource.Txt_ContactIT', getResponse.Msg, 'error');
                     }
                 },
                 error: function (e) {

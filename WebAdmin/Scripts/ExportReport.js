@@ -129,3 +129,11 @@ function ShowWaringMsg(Msg = '', MsgDetail = '', time = 5000, fun = null) {
             }
     });
 }
+
+
+//Report Forms - Reset the form
+function ResetForm(formID) {
+    $("#" + formID).find('input[type=text],select,input[type=hidden]').each(function () {
+        $(this).val('');
+    });
+}

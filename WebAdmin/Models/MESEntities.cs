@@ -17,13 +17,14 @@ namespace WebAdmin.Models
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string OpCode { get; set; }
+        public string OpDesc { get; set; }
         public int OprSeq { get; set; }
         public string OpGroup { get; set; }
         public decimal StandardOprTime { get; set; }
         public decimal ActualOprTime { get; set; }
         public decimal Variance { get; set; }
-        public decimal Percentage { get; set; }
-        public decimal ABSPercentageVariance { get; set; }
+        public decimal? Percentage { get; set; }
+        public decimal? ABSPercentageVariance { get; set; }
     }
 
     public class ShopFloorKanbanEntity
@@ -144,6 +145,45 @@ namespace WebAdmin.Models
         public string PrintDateTime { get; set; }
         public string TransTime { get; set; }
         public string Site { get; set; }
+    }
+
+    public class MRBDetailEntity
+    {
+        public int? MRBID { get; set; }
+        public string PartNum { get; set; }
+        public string EpicorJobNum { get; set; }
+        public string JobNum { get; set; }
+        public string HeatCode { get; set; }
+        public int? OprSeq { get; set; }
+        public string OPDescription { get; set; }
+        public string Reason { get; set; }
+        public int? RejQty { get; set; }
+        public string MRBCategoryDesc { get; set; }
+        public string ReportId { get; set; }
+        public string ReportPDAId { get; set; }
+        public string ReportTime { get; set; }
+        public string AcceptName { get; set; }
+        public string ReceiptPDAId { get; set; }
+        public string ReceiptTime { get; set; }
+        public string MHAcceptName { get; set; }
+        public string MHReceiptPDAId { get; set; }
+        public string MHReceiptTime { get; set; }
+        public int? ReworkQty { get; set; }
+        public int? ScrapQty { get; set; }
+        public string ProcessId { get; set; }
+        public string ProcessTime { get; set; }
+        public string ReJobNum { get; set; }
+        public string Location { get; set; }
+        public string ResourceId { get; set; }
+        public string Remark { get; set; }
+        public string VendorRemark { get; set; }
+        public string Category { get; set; }
+        public string Status1 { get; set; }
+        public string Status { get; set; }
+        public string ShortChar01 { get; set; }
+        public string MachineId { get; set; }
+        public string MfgEmp { get; set; }
+        public string ProdFamily { get; set; }
     }
 
     //Process Kanban

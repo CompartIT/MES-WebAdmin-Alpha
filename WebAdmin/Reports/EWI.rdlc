@@ -4082,9 +4082,11 @@ Compart: </Value>
                           <Color>#131313</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Subreport>
                     <ColSpan>5</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -4205,7 +4207,6 @@ Compart: </Value>
                       </Style>
                     </Textbox>
                     <ColSpan>9</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

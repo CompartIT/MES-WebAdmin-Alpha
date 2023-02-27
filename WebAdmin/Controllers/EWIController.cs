@@ -29,7 +29,7 @@ namespace WebAdmin.Controllers
         public string MailFromAddress = ConfigurationManager.AppSettings["MailFromAddress"];
         public bool UseSsl = bool.Parse(ConfigurationManager.AppSettings["UseSsl"]);
         public string UserName = ConfigurationManager.AppSettings["UserName"];
-        public string Password = ConfigurationManager.AppSettings["Password"];
+        //public string Password = ConfigurationManager.AppSettings["Password"];
         public string DoMain = ConfigurationManager.AppSettings["DoMain"];
         public string ServerName = ConfigurationManager.AppSettings["ServerName"];
         public int ServerPort = int.Parse(ConfigurationManager.AppSettings["ServerPort"]);
@@ -497,7 +497,7 @@ namespace WebAdmin.Controllers
 
                 EWIRevisionList.Add(EWIRevision);
             }
-            DataTablesResult<SimpleEWIRevision> result = new DataTablesResult<SimpleEWIRevision>(0, recordsTotal, recordsTotal, EWIRevisionList);
+            DataTablesResult<SimpleEWIRevision> result = new DataTablesResult<SimpleEWIRevision>(param.Draw, recordsTotal, recordsTotal, EWIRevisionList);
             return Json(result);
         }
 

@@ -326,6 +326,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsEWI.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DsReportCentre.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsReportCentre.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6626,6 +6631,17 @@
       <DependentUpon>DsEWI.xsd</DependentUpon>
     </Content>
     <Content Include="Scripts\datatables.js" />
+    <Content Include="Reports\DsReportCentre.xsc">
+      <DependentUpon>DsReportCentre.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DsReportCentre.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsReportCentre.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DsReportCentre.xss">
+      <DependentUpon>DsReportCentre.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\extended.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -6723,6 +6739,7 @@
     <Content Include="Views\ReportCentre\InputToBEReportView.cshtml" />
     <Content Include="Views\ReportCentre\MRBReworkReportView.cshtml" />
     <Content Include="Views\ReportCentre\ProcessTimeComparisonReportView.cshtml" />
+    <Content Include="Views\ReportCentre\MRBDetailsReportView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -6986,6 +7003,7 @@
     <EmbeddedResource Include="Reports\EWI_Images.rdlc" />
     <EmbeddedResource Include="Reports\EWI_OPList.rdlc" />
     <EmbeddedResource Include="Reports\InputToBEReport.rdlc" />
+    <EmbeddedResource Include="Reports\MRBDetailsReport.rdlc" />
     <EmbeddedResource Include="Reports\MRBReworkInfoReport.rdlc" />
     <EmbeddedResource Include="Reports\ProcessTimeComparisonReport.rdlc" />
     <EmbeddedResource Include="Reports\WebWipReport.rdlc" />

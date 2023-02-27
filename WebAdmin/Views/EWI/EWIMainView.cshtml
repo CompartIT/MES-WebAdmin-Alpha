@@ -910,7 +910,7 @@
                                 });
                             }
                             else {
-                                swal('@Resource.Txt_ContractIT', Msg, 'error');
+                                swal('@Resource.Txt_ContactIT', Msg, 'error');
                             }
                         });
 
@@ -1250,8 +1250,8 @@
             $("#txtOtherApprovalDateModal").val('');
             $('#txtOtherApprovalDate2Modal').prop('placeholder', '');
             $("#txtOtherApprovalDate2Modal").val('');
-            $('#txtSupplierModal').val('');
-            $('#txtSupplierCodeModal').val('');
+            $('#txtSupplierModal').val('Compart Hi-Precision Equipment (Shenzhen), China');
+            $('#txtSupplierCodeModal').val('NA');
             $('#txtAltMethodModal').val('');
 
             $("#ModalEWIView").modal();
@@ -1371,6 +1371,12 @@
                 return;
             }
 
+            var IRev = parseInt(EWIMain.LatestRev);
+            if (isNaN(IRev) && arrEWI.indexOf('@CurRight.Menu') < 0) {
+                showAlert("@Resource.Txt_RevisionMustNumeric");
+                return;
+            }
+
             var CurRev = $('#txtLatestRevModal').val();
             $.ajax({
                 type: "POST",
@@ -1431,7 +1437,7 @@
                     else {
                         EWIMain.ID = '@EWIMain.ID';
                         EWIMain.LatestRev = '@EWIMain.LatestRev';
-                        swal(getResponse.Msg, '@Resource.Txt_ContractIT', 'error');
+                        swal(getResponse.Msg, '@Resource.Txt_ContactIT', 'error');
                     }
                 },
                 error: function (e) {
@@ -1478,7 +1484,7 @@
                             });
                     }
                     else {
-                        swal('@Resource.Txt_ContractIT', getResponse.Msg, 'error');
+                        swal('@Resource.Txt_ContactIT', getResponse.Msg, 'error');
                     }
                 },
                 error: function (e) {

@@ -372,7 +372,7 @@
   <data name="Txt_ContinuousScanningProcessing" xml:space="preserve">
     <value>持续扫描处理</value>
   </data>
-  <data name="Txt_ContractIT" xml:space="preserve">
+  <data name="Txt_ContactIT" xml:space="preserve">
     <value>请联系IT</value>
   </data>
   <data name="Txt_ControlFileRevisionRecordCurRev" xml:space="preserve">
@@ -1768,5 +1768,11 @@
   </data>
   <data name="Txt_HeatNo" xml:space="preserve">
     <value>Heat No.</value>
+  </data>
+  <data name="Menu_MRBDetailsReport" xml:space="preserve">
+    <value>MRB Details Report</value>
+  </data>
+  <data name="Txt_RevisionMustNumeric" xml:space="preserve">
+    <value>版本必须为数字</value>
   </data>
 </root>

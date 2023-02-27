@@ -72,7 +72,7 @@ namespace WebAdmin.Handler
                 length = length,
                 recordsTotal = recordsTotal,
                 recordsFiltered = recordsTotal,
-                data = getResult.Select(p => new ProcessTimeComparisionEntity { JobNum = p.JobNum, PartNum = p.PartNum, UserID = p.UserID, MachineID = p.MachineID, PDAID = p.PDAID, OpCode = p.OpCode, StartTime = p.StartTime, EndTime = p.EndTime, StandardOprTime = p.StandardOprTime, ActualOprTime = p.ActualOprTime, Percentage = p.Percentage, ABSPercentageVariance = p.ABSPercentageVariance })
+                data = getResult.Select(p => new ProcessTimeComparisionEntity { JobNum = p.JobNum, PartNum = p.PartNum, UserID = p.UserID, MachineID = p.MachineID, PDAID = p.PDAID, OpCode = p.OpCode, OprSeq = p.OprSeq, OpDesc = p.OpDesc, StartTime = p.StartTime, EndTime = p.EndTime, StandardOprTime = p.StandardOprTime, ActualOprTime = p.ActualOprTime, Percentage = p.Percentage, ABSPercentageVariance = p.ABSPercentageVariance })
             };
             context.Response.Write(_serializer.Serialize(returnReulst));
         }
@@ -585,6 +585,44 @@ namespace WebAdmin.Handler
                 recordsTotal = recordsTotal,
                 recordsFiltered = recordsTotal,
                 data = getResult.Select(p => new MRBReworkEEntity { JType = p.JType, LotNo = p.LotNo, OpCode = p.OpCode, ItemCode = p.ItemCode, EpicorJobNum = p.EpicorJobNum, PrintDateTime = p.PrintDateTime, PrintUserId = p.PrintUserId, ProdQty = p.ProdQty, ProductFamily = p.ProductFamily, Site = p.Site, TransTime = p.TransTime, Transtype = p.Transtype, WDate = p.WDate })
+            };
+            context.Response.Write(_serializer.Serialize(returnReulst));
+        }
+
+        public void GetMRBDetail(HttpContext context)
+        {
+            context.Response.ContentType = "application/json";
+
+            JavaScriptSerializer _serializer = new JavaScriptSerializer();
+
+            int start = context.Request["start"] != null ? int.Parse(context.Request["start"]) : 0;
+            int length = context.Request["length"] != null ? int.Parse(context.Request["length"]) : 10;
+
+            int orderColunmIndex = context.Request["order[0][column]"] != null ? int.Parse(context.Request["order[0][column]"]) : 0;
+            var orderColumnName = context.Request["columns[" + orderColunmIndex + "][data]"];
+            var orderDirection = context.Request["order[0][dir]"] != null ? context.Request["order[0][dir]"] : "desc";
+
+
+            var SqlQuery = "1=1 ";
+
+            var sqlCriteria = context.Request["SqlCriteria"].ToString();
+            if (sqlCriteria != "")
+                SqlQuery += " " + sqlCriteria + "";
+
+            int recordsTotal;
+
+            var getResult = DAL_MES.GetMRBDetail(out recordsTotal, start, length, SqlQuery, orderColumnName, orderDirection);
+
+            var returnReulst = new
+            {
+                orderColumnName = orderColumnName,
+                orderDirection = orderDirection,
+                orderColumn = orderColunmIndex,
+                startaa = start,
+                length = length,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = getResult
             };
             context.Response.Write(_serializer.Serialize(returnReulst));
         }

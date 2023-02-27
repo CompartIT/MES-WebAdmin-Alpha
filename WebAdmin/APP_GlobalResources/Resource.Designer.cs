@@ -277,6 +277,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 MRB Details Report 的本地化字符串。
+        /// </summary>
+        internal static string Menu_MRBDetailsReport {
+            get {
+                return ResourceManager.GetString("Menu_MRBDetailsReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 MRB Fast Process 的本地化字符串。
         /// </summary>
         internal static string Menu_MRBFastProcess {
@@ -1339,20 +1348,20 @@ namespace Resources {
         }
         
         /// <summary>
+        ///  查找类似 Please contact IT 的本地化字符串。
+        /// </summary>
+        internal static string Txt_ContactIT {
+            get {
+                return ResourceManager.GetString("Txt_ContactIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///  查找类似 Continuous scanning processing 的本地化字符串。
         /// </summary>
         internal static string Txt_ContinuousScanningProcessing {
             get {
                 return ResourceManager.GetString("Txt_ContinuousScanningProcessing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///  查找类似 Please contract IT 的本地化字符串。
-        /// </summary>
-        internal static string Txt_ContractIT {
-            get {
-                return ResourceManager.GetString("Txt_ContractIT", resourceCulture);
             }
         }
         
@@ -3972,6 +3981,15 @@ namespace Resources {
         internal static string Txt_RevisionList {
             get {
                 return ResourceManager.GetString("Txt_RevisionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///  查找类似 Revision must be numeric 的本地化字符串。
+        /// </summary>
+        internal static string Txt_RevisionMustNumeric {
+            get {
+                return ResourceManager.GetString("Txt_RevisionMustNumeric", resourceCulture);
             }
         }
         

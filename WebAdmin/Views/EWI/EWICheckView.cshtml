@@ -218,8 +218,7 @@
                 "width": '10%',
                 "orderable": false,
                 "bSortable": false,
-                "targets": 6
-                @*,
+                "targets": 6,
                 "render": function (data, type, row, meta) {
                     var content = '';
                     if (row["CanCheck"] === "1")
@@ -227,7 +226,7 @@
                     else
                         content = '<button type="button" class="btn waves-effect waves-light btn-secondary" onclick="ViewDetail(\'' + data + '\',\'' + row["WIType"] + '\')"><i class="fa fa-search-plus waves-effect"></i> @Resource.Txt_View</button>';
                     return content;
-                }*@
+                }
             }
         ];
 

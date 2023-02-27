@@ -461,6 +461,7 @@
                 { data: 'Figure' },
                 {
                     data: 'Tolerance',
+                    renderer: 'html',
                     className: 'GDT'
                 },
                 { data: 'TestFrequency' },
@@ -780,9 +781,10 @@
                             //转义单双引号，防止出现问题
                             var RegN = new RegExp("'", "g");
                             var RegT = new RegExp('"', "g");
+                            var RegA = new RegExp('&', "g");
                             var colData = data[i - coords[0].startRow][j - coords[0].startCol];
                             colData = colData == null ? "" : colData;
-                            colData = colData.replace(RegT, '&quot;').replace(RegN, "&apos;");
+                            colData = colData.replace(RegT, '&quot;').replace(RegN, "&apos;").replace(RegA, "&amp;");
                             switch (j) {
                                 case 1:
                                     DataList += " Criteria=\"" + colData + "\"";
@@ -1034,6 +1036,7 @@
                         { data: 'ID' },
                         {
                             data: 'Criteria',
+                            renderer: 'html',
                             readOnly: true,
                             className: 'darkgrey GDT'
                         },
@@ -1044,6 +1047,7 @@
                         },
                         {
                             data: 'Tolerance',
+                            renderer: 'html',
                             readOnly: true,
                             className: 'darkgrey GDT'
                         },
@@ -1122,6 +1126,7 @@
                             { data: 'ID' },
                             {
                                 data: 'Criteria',
+                                renderer: 'html',
                                 readOnly: true,
                                 className: 'darkgrey GDT'
                             },
@@ -1132,6 +1137,7 @@
                             },
                             {
                                 data: 'Tolerance',
+                                renderer: 'html',
                                 readOnly: true,
                                 className: 'darkgrey GDT'
                             },
@@ -1345,6 +1351,7 @@
                             { data: 'ID' },
                             {
                                 data: 'Criteria',
+                                renderer: 'html',
                                 readOnly: true,
                                 className: 'darkgrey GDT'
                             },
@@ -1355,6 +1362,7 @@
                             },
                             {
                                 data: 'Tolerance',
+                                renderer: 'html',
                                 readOnly: true,
                                 className: 'darkgrey GDT'
                             },
@@ -1412,6 +1420,7 @@
                             { data: 'Figure' },
                             {
                                 data: 'Tolerance',
+                                renderer: 'html',
                                 className: 'GDT'
                             },
                             {
@@ -1969,7 +1978,7 @@
                             swal('@Resource.Txt_ModifySucceeded！', '', 'success');
                         }
                         else {
-                            swal('@Resource.Txt_ContractIT', Msg, 'error');
+                            swal('@Resource.Txt_ContactIT', Msg, 'error');
                         }
                     });
 

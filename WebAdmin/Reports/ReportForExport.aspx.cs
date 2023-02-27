@@ -47,6 +47,26 @@ namespace WebAdmin.Reports
                         }
                     }
                 }
+                else if (Request.Form["ReportName"] != null)
+                {
+                    ReportFormat = Request.Form["ReportFormat"].ToString();
+
+                    //Base on the report name 
+                    if (Request.Form["ReportName"] != null)
+                    {
+                        var strReportName = Request.Form["ReportName"].ToString();
+                        var ReportCriteria = Request.Form["ReportCriteria"].ToString();
+                        var OrderBy = Request.Form["orderBy"].ToString();
+                        var OrderDir = Request.Form["dir"].ToString();
+
+                        MethodInfo method = this.GetType().GetMethod(strReportName);
+
+                        if (method != null)
+                        {
+                            method.Invoke(this, new object[] { ReportFormat, ReportCriteria, OrderBy, OrderDir });
+                        }
+                    }
+                }
                 else
                 {
                     Response.Write("invalid Request");
@@ -136,6 +156,28 @@ namespace WebAdmin.Reports
             dataSourceCollection.Add(new MESReportDataSources { DataSetName = "DataSet1", DataTable = dt });
 
             var reportPath = "MRBReworkInfoReport.rdlc";
+
+            //Load report
+            LoadReport(reportPath, ReportFormat, dataSourceCollection);
+
+        }
+
+        /// <summary>
+        /// MRB Rework Report
+        /// </summary>
+        /// <param name="ReportFormat"></param>
+        /// <param name="ReportCriteria"></param>
+        /// <param name="OrderBy"></param>
+        /// <param name="OrderDir"></param>
+        public void MRBDetailsReport(string ReportFormat, string ReportCriteria, string OrderBy, string OrderDir)
+        {
+            var strSQL = "select * from V_MRBDetails where 1=1 " + ReportCriteria + " order by  " + OrderBy + " " + OrderDir + "";
+            DataTable dt = SqlHelper.ExecuteDataTable(CommandType.Text, strSQL);
+
+            List<MESReportDataSources> dataSourceCollection = new List<MESReportDataSources>();
+            dataSourceCollection.Add(new MESReportDataSources { DataSetName = "DataSet1", DataTable = dt });
+
+            var reportPath = "MRBDetailsReport.rdlc";
 
             //Load report
             LoadReport(reportPath, ReportFormat, dataSourceCollection);

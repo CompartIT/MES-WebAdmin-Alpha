@@ -484,7 +484,7 @@ namespace WebAdmin.Controllers
                         returnResponse.Msg = GetResValue(returnResponse.Msg);
                     else {
                         HttpCookie HCuser = Request.Cookies["user"];
-                        HCuser.Values["password"] = ChangePassword.NewPassword;
+                        HCuser.Values["passwordActual"] = ChangePassword.NewPassword;
                         System.Web.HttpContext.Current.Response.SetCookie(HCuser);
                     }
                 }
